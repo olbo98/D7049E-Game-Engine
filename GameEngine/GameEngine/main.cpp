@@ -76,12 +76,12 @@ void MyTestApp::setup(void)
 //! [setup]
 
 //! [main]
-int main(int argc, char* argv[])
+/*int main(int argc, char* argv[])
 {
     MyTestApp app;
     app.initApp();
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;
-}
+}*/
 //! [main]
