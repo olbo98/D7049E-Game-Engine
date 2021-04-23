@@ -1,4 +1,4 @@
 #pragma once
-enum Message {
+enum class Message {
 	OPEN_MENU
 };

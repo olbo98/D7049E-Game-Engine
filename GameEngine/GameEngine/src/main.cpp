@@ -5,6 +5,11 @@
 
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
+#include <iostream>
+
+#include "EventSystem/Queue.h"
+
+using namespace MS;
 
 class MyTestApp : public OgreBites::ApplicationContext, public OgreBites::InputListener
 {
@@ -78,10 +83,10 @@ void MyTestApp::setup(void)
 //! [main]
 int main(int argc, char* argv[])
 {
-    MyTestApp app;
+    /*MyTestApp app;
     app.initApp();
     app.getRoot()->startRendering();
     app.closeApp();
-    return 0;
+    return 0;*/
 }
 //! [main]
