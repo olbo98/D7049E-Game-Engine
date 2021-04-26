@@ -1,7 +1,10 @@
-#include "libclass.h":
+#include "libclass.h"
 #include "Log.h"
+#include <iostream>
+#include <string>
 
-using namespace LOGGING;
+using namespace Logging;
+
 
 int main()
 {
@@ -10,9 +13,13 @@ int main()
 	int y = 9;
 	test.test_function(x,y);*/
 
-	Logging::Log::Init();
-	Logging::Log::GetCoreLogger()->critical("Initialized Log");
+	Log::Init();
 
+	std::string aloha = "hello";
+	ENGINE_LOG_INFO("Test_var = {}", aloha);
+
+	CLIENT_LOG_WARN("Initialized client logger");
+	
 	
 
 }
