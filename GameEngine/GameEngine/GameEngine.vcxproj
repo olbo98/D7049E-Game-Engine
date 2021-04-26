@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Components\Bites\include;$(SolutionDir)Dependencies\Ogre\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\out\build\include;$(SolutionDir)Dependencies\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Components\Bites\include;$(SolutionDir)Dependencies\Ogre\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\out\build\include;$(SolutionDir)Dependencies\spdlog\include;$(SolutionDir)Dependencies\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,12 +146,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="LoggingSystem\Log.cpp" />
     <ClCompile Include="LoggingSystem\libclass.cpp" />
     <ClCompile Include="LoggingSystem\testProgram.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="LoggingSystem\Log.h" />
     <ClInclude Include="LoggingSystem\libclass.h" />
   </ItemGroup>
