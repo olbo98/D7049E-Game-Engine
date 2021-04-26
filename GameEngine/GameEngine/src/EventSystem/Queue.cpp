@@ -2,52 +2,47 @@
 
 namespace MS {
 	Queue::Queue() {
-		maxLength = 5;
 		lengthOfQueue = 0;
-		currentIndex = 0;
-		queue = new Message[maxLength];
+		struct Node initHead;
+		struct Node initTail;
+
+		head = &initHead;
+		tail = &initTail;
+
+		head->msg = Message::NULL_MESSAGE;
+		head->next = tail;
+
+		tail->msg = Message::NULL_MESSAGE;
+		tail->next = head;
 	}
 
-	Queue::~Queue() {
-		delete[] queue;
-	}
+	Queue::~Queue() {}
 
 	void Queue::add(Message* msg) {
-		if (lengthOfQueue >= maxLength) {
-			queue = resize(queue, maxLength + 5);
-		}
+		struct Node* parent = tail->next;
+		struct Node newNode;
+		newNode.next = tail;
+		newNode.msg = *msg;
 
-		queue[currentIndex] = *msg;
-		currentIndex++;
+		parent->next = &newNode;
+		tail->next = &newNode;
+
 		lengthOfQueue++;
 	}
 
 	Message Queue::pop() {
-		Message msg = queue[currentIndex - 1];
-		currentIndex--;
+		Node* popedMessage = head->next;
+
+		head->next = popedMessage->next;
+
+		popedMessage->next = NULL;
+
 		lengthOfQueue--;
 
-		if (lengthOfQueue < maxLength - 5) {
-			queue = resize(queue, maxLength - 5);
-		}
-
-		return msg;
+		return popedMessage->msg;
 	}
 
 	int Queue::getLength() {
 		return lengthOfQueue;
-	}
-
-	Message* Queue::resize(Message* queue, int size) {
-		int amountToChangeSize = size - maxLength;
-
-		Message* new_queue = new Message[maxLength + amountToChangeSize];
-
-		for (int i = 0; i < lengthOfQueue; i++) {
-			new_queue[i] = queue[i];
-		}
-		maxLength += amountToChangeSize;
-
-		return new_queue;
 	}
 }
