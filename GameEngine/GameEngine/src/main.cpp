@@ -6,11 +6,8 @@
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include <iostream>
-#include "EventSystem/Queue.h"
-#include "EventSystem/Message.h"
+#include "Utils/SimpleList.h"
 #include <cstdio>
-
-using namespace MS;
 
 class MyTestApp : public OgreBites::ApplicationContext, public OgreBites::InputListener
 {
@@ -89,5 +86,11 @@ int main(int argc, char* argv[])
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;*/
+
+    SimpleList<int> l;
+    int value = 11;
+    l.add(&value);
+
+    std::cout << l.get(0) << std::endl;
 }
 //! [main]

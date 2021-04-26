@@ -35,11 +35,15 @@
     <ClInclude Include="src\EventSystem\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EventSystem\Queue.h">
+    <ClInclude Include="src\Utils\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\SimpleList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\EventSystem\Queue.tpp" />
+    <None Include="src\Utils\Queue.tpp" />
+    <None Include="src\Utils\SimpleList.tpp" />
   </ItemGroup>
 </Project>

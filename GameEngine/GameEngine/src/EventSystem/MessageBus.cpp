@@ -1,4 +1,4 @@
-/*#include "MessageBus.h"
+#include "MessageBus.h"
 
 namespace MS {
 	MessageBus::MessageBus() {}
@@ -11,4 +11,4 @@ namespace MS {
 	void MessageBus::addReciever(System* system) {
 		
 	}
-}*/
+}

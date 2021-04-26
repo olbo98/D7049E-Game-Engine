@@ -1,5 +1,5 @@
-/*#pragma once
-#include "Queue.h"
+#pragma once
+#include "../Utils/Queue.h"
 #include "System.h"
 #include "Message.h"
 
@@ -19,4 +19,4 @@ namespace MS {
 		System systens[10];
 		//TODO: Add reference to systems
 	};
-}*/
+}
