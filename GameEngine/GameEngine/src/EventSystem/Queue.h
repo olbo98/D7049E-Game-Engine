@@ -1,25 +1,26 @@
 #pragma once
-#include "Message.h"
-#define NULL nullptr
 
 namespace MS {
-    struct Node {
-        Message msg;
-        Node* next;
+    template <class T>
+    class Node {
+    public:
+        T value;
+        Node<T>* next;
     };
 
+    template <class T>
     class Queue {
     public:
-        Queue();
+        Queue<T>();
 
-        void add(Message* msg);
-
-        Message pop();
-
+        void add(T* value);
+        T pop();
         int getLength();
     private:
         int lengthOfQueue;
-        struct Node* head;
-        struct Node* tail;
+        struct Node<T>* head;
+        struct Node<T>* tail;
     };
 }
+
+#include "Queue.tpp"

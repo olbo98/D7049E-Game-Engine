@@ -24,9 +24,6 @@
     <ClCompile Include="src\EventSystem\System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EventSystem\Queue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EventSystem\MessageBus.h">
@@ -41,5 +38,8 @@
     <ClInclude Include="src\EventSystem\Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\EventSystem\Queue.tpp" />
   </ItemGroup>
 </Project>

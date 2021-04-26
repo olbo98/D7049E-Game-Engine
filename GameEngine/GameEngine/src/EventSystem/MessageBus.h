@@ -1,6 +1,7 @@
-#pragma once
-#include "Message.h"
+/*#pragma once
+#include "Queue.h"
 #include "System.h"
+#include "Message.h"
 
 namespace MS {
 	class MessageBus
@@ -11,10 +12,11 @@ namespace MS {
 
 		void addReciever(System* system); //TODO: Add parameters
 		void postMessage(Message* msg);
+		void notify();
 
 	private:
-		Message msgQueue[2] = {};
+		Queue<Message> msgQueue;
+		System systens[10];
 		//TODO: Add reference to systems
 	};
-}
-
+}*/

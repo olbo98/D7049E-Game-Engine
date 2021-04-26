@@ -6,8 +6,9 @@
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include <iostream>
-
 #include "EventSystem/Queue.h"
+#include "EventSystem/Message.h"
+#include <cstdio>
 
 using namespace MS;
 

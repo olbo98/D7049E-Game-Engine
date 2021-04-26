@@ -145,7 +145,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\EventSystem\Queue.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
@@ -155,6 +154,9 @@
     <ClInclude Include="src\EventSystem\Message.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
     <ClInclude Include="src\EventSystem\System.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\EventSystem\Queue.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
