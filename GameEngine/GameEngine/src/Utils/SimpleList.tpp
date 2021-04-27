@@ -34,3 +34,8 @@ T* SimpleList<T>::resize(int size) {
 
 	return resizedList;
 }
+
+template <typename T>
+int SimpleList<T>::getLength(){
+	return currentIndex;
+}

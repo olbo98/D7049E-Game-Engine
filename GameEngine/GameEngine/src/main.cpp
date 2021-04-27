@@ -86,11 +86,5 @@ int main(int argc, char* argv[])
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;*/
-
-    SimpleList<int> l;
-    int value = 11;
-    l.add(&value);
-
-    std::cout << l.get(0) << std::endl;
 }
 //! [main]

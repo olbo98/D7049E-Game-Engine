@@ -1,5 +1,6 @@
 #pragma once
 #include "../Utils/Queue.h"
+#include "../Utils/SimpleList.h"
 #include "System.h"
 #include "Message.h"
 
@@ -16,7 +17,7 @@ namespace MS {
 
 	private:
 		Queue<Message> msgQueue;
-		System systens[10];
+		SimpleList<System> systems;
 		//TODO: Add reference to systems
 	};
 }

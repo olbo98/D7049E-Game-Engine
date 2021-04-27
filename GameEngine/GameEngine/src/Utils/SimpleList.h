@@ -8,6 +8,7 @@ public:
 
 	void add(T* value);
 	T get(int index);
+	int getLength();
 private:
 	int maxLength;
 	int currentIndex;
