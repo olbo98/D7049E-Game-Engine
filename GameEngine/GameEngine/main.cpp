@@ -6,22 +6,19 @@
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 
-class MyTestApp : public OgreBites::ApplicationContext, public OgreBites::InputListener
+class Engine : public OgreBites::ApplicationContext, public OgreBites::InputListener
 {
 public:
-    MyTestApp();
+    Engine();
     void setup();
     bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
 
-//! [constructor]
-MyTestApp::MyTestApp() : OgreBites::ApplicationContext("OgreTutorialApp")
+Engine::Engine() : OgreBites::ApplicationContext("FightEngine")
 {
 }
-//! [constructor]
 
-//! [key_handler]
-bool MyTestApp::keyPressed(const OgreBites::KeyboardEvent& evt)
+bool Engine::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
     if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
     {
@@ -29,59 +26,98 @@ bool MyTestApp::keyPressed(const OgreBites::KeyboardEvent& evt)
     }
     return true;
 }
-//! [key_handler]
 
-//! [setup]
-void MyTestApp::setup(void)
+void Engine::setup(void)
 {
-    // do not forget to call the base first
+    // We first setup the base class
     OgreBites::ApplicationContext::setup();
 
-    // register for input events
+    // Register for input events
     addInputListener(this);
 
-    // get a pointer to the already created root
+    // Get a pointer to the already created root
     Ogre::Root* root = getRoot();
     Ogre::SceneManager* scnMgr = root->createSceneManager();
 
-    // register our scene with the RTSS
+    // Register our scene with the RTSS
     Ogre::RTShader::ShaderGenerator* shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
 
-    // without light we would just get a black screen    
-    Ogre::Light* light = scnMgr->createLight("MainLight");
-    Ogre::SceneNode* lightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-    lightNode->setPosition(0, 10, 15);
-    lightNode->attachObject(light);
+    // We add an ambient light and another one that we attach to a node
+    scnMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
-    // also need to tell where we are
+    // We create the camera
     Ogre::SceneNode* camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-    camNode->setPosition(0, 0, 15);
-    camNode->lookAt(Ogre::Vector3(0, 0, -1), Ogre::Node::TS_PARENT);
-
-    // create the camera
-    Ogre::Camera* cam = scnMgr->createCamera("myCam");
-    cam->setNearClipDistance(5); // specific to this sample
-    cam->setAutoAspectRatio(true);
+    Ogre::Camera* cam = scnMgr->createCamera("MainCam");
+    camNode->setPosition(200, 300, 400);
+    camNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
+    cam->setNearClipDistance(5);
     camNode->attachObject(cam);
 
-    // and tell it to render into the main window
-    getRenderWindow()->addViewport(cam);
 
-    // finally something to render
-    Ogre::Entity* ent = scnMgr->createEntity("Sinbad.mesh");
-    Ogre::SceneNode* node = scnMgr->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(ent);
+    // We render it into the main window
+    Ogre::Viewport* viewport = getRenderWindow()->addViewport(cam);
+
+    viewport->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
+    cam->setAspectRatio(Ogre::Real(viewport->getActualWidth()) / Ogre::Real(viewport->getActualHeight()));
+
+    // We add  a first entity
+    Ogre::Entity* ninja = scnMgr->createEntity("ninja.mesh");
+    ninja->setCastShadows(true);
+    scnMgr->getRootSceneNode()->createChildSceneNode()->attachObject(ninja);
+    
+    Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+    Ogre::MeshManager::getSingleton().createPlane(
+        "ground", Ogre::RGN_DEFAULT,
+        plane,
+        1500, 1500, 20, 20,
+        true,
+        1, 5, 5,
+        Ogre::Vector3::UNIT_Z);
+    Ogre::Entity* groundEntity = scnMgr->createEntity("ground");
+    scnMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+    groundEntity->setCastShadows(false);
+    groundEntity->setMaterialName("Examples/Rockwall");
+
+    scnMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+    scnMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_TEXTURE_ADDITIVE);
+
+    // SPOTLIGHT
+    Ogre::Light* spotLight = scnMgr->createLight("SpotLight");
+    spotLight->setDiffuseColour(0, 0, 1.0);
+    spotLight->setSpecularColour(0, 0, 1.0);
+    spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
+    Ogre::SceneNode* lightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+    lightNode->attachObject(spotLight);
+    lightNode->setDirection(-1, -1, 0);
+    lightNode->setPosition(200, 200, 0);
+    spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
+
+    // DIRECTIONNAL LIGHT
+    Ogre::Light* dirLight = scnMgr->createLight("DirectionnalLight");
+    dirLight->setDiffuseColour(0.4, 0, 0);
+    dirLight->setSpecularColour(0.4, 0, 0);
+    dirLight->setType(Ogre::Light::LT_DIRECTIONAL);
+    Ogre::SceneNode* lightNode2 = scnMgr->getRootSceneNode()->createChildSceneNode();
+    lightNode2->attachObject(dirLight);
+    lightNode2->setDirection(0, -1, 1);
+
+    // POINT LIGHT
+    Ogre::Light* ptLight = scnMgr->createLight("PointLight");
+    ptLight->setDiffuseColour(0.3, 0.3, 0.3);
+    ptLight->setSpecularColour(0.3, 0.3, 0.3);
+    ptLight->setType(Ogre::Light::LT_POINT);
+    Ogre::SceneNode* lightNode3 = scnMgr->getRootSceneNode()->createChildSceneNode();
+    lightNode3->attachObject(ptLight);
+    lightNode3->setPosition(0, 150, 250);
+
 }
-//! [setup]
-
-//! [main]
+/*
 int main(int argc, char* argv[])
 {
-    MyTestApp app;
+    Engine app;
     app.initApp();
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;
-}
-//! [main]
+}*/

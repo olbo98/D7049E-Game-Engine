@@ -88,10 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -102,12 +105,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,13 +122,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\D7049E_proj\ogre-1.12.11\out\build\include;D:\D7049E_proj\ogre-1.12.11\OgreMain\include;D:\D7049E_proj\ogre-1.12.11\Components\RTShaderSystem\include;D:\D7049E_proj\ogre-1.12.11\Components\Bites\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\D7049E_proj\ogre-1.12.11\out\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;OgreBites.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,19 +139,20 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\D7049E_proj\ogre-1.12.11\out\build\include;D:\D7049E_proj\ogre-1.12.11\OgreMain\include;D:\D7049E_proj\ogre-1.12.11\Components\RTShaderSystem\include;D:\D7049E_proj\ogre-1.12.11\Components\Bites\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\D7049E_proj\ogre-1.12.11\out\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;OgreBites.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
