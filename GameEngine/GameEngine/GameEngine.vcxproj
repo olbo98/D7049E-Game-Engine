@@ -81,6 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -131,31 +132,39 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Components\Bites\include;$(SolutionDir)Dependencies\Ogre\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\out\build\include;$(SolutionDir)Dependencies\spdlog\include;$(SolutionDir)Dependencies\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\Ogre\Components\Bites\include;$(SolutionDir)Dependencies\Ogre\Components\RTShaderSystem\include;$(SolutionDir)Dependencies\Ogre\OgreMain\include;$(SolutionDir)Dependencies\Ogre\out\build\include;$(SolutionDir)Dependencies\spdlog\include;$(SolutionDir)Dependencies\imgui;$(SolutionDir)Dependencies\opengl\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\Ogre\out\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;OgreBites.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PerUserRedirection>true</PerUserRedirection>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\opengl\glew-2.1.0\lib\Release\x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GUI\GUI.cpp" />
-    <ClCompile Include="LoggingSystem\Log.cpp" />
-    <ClCompile Include="LoggingSystem\libclass.cpp" />
-    <ClCompile Include="LoggingSystem\testProgram.cpp" />
+    <ClCompile Include="src\GUI\GUI.cpp" />
+    <ClCompile Include="src\imgui\include\imgui.cpp" />
+    <ClCompile Include="src\imgui\include\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\include\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\include\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\imgui\include\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\LoggingSystem\Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\testProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GUI\GUI.h" />
-    <ClInclude Include="LoggingSystem\Log.h" />
-    <ClInclude Include="LoggingSystem\libclass.h" />
+    <ClInclude Include="src\GUI\GUI.h" />
+    <ClInclude Include="src\imgui\include\imconfig.h" />
+    <ClInclude Include="src\imgui\include\imgui.h" />
+    <ClInclude Include="src\imgui\include\imgui_impl_glfw.h" />
+    <ClInclude Include="src\imgui\include\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\imgui\include\imgui_internal.h" />
+    <ClInclude Include="src\LoggingSystem\Log.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
