@@ -1,12 +1,15 @@
 #pragma once
+#include "Message.h"
 #include "MessageBus.h"
 
 namespace MS {
 	class System
 	{
 	public:
-		void handleMessage(Message* msg);
-	private:
+		System();
+		System(MessageBus* a_msgBus);
+		virtual void handleMessage(Message* msg);
+	protected:
 		MessageBus* msgBus;
 	};
 }

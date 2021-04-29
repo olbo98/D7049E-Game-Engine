@@ -5,9 +5,12 @@
 
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
-#include <iostream>
-#include "Utils/SimpleList.h"
-#include <cstdio>
+#include "EventSystem/MessageBus.h"
+#include "EventSystem/System.h"
+#include "EventSystem/SystemA.h"
+#include "EventSystem/SystemB.h"
+
+using namespace MS;
 
 class MyTestApp : public OgreBites::ApplicationContext, public OgreBites::InputListener
 {

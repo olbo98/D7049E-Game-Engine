@@ -6,12 +6,12 @@ SimpleList<T>::SimpleList() {
 }
 
 template <typename T>
-void SimpleList<T>::add(T* value) {
+void SimpleList<T>::add(T value) {
 	if (currentIndex == maxLength) {
 		list = resize(maxLength + 5);
 	}
 	
-	list[currentIndex] = *value;
+	list[currentIndex] = value;
 	currentIndex++;
 }
 

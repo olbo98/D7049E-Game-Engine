@@ -1,5 +1,6 @@
 #pragma once
 enum class Message {
 	NULL_MESSAGE,
-	OPEN_MENU
+	OPEN_MENU, 
+	CLOSE_MENU
 };

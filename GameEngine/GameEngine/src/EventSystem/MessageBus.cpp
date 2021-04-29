@@ -1,5 +1,7 @@
 #include "MessageBus.h"
 #include <thread>
+#include "System.h"
+#include <iostream>
 
 using namespace std;
 
@@ -20,8 +22,8 @@ namespace MS {
 		for (int i = 0; i < queueLength; i++) {
 			Message msg = msgQueue.pop();
 			for (int j = 0; j < systems.getLength(); j++) {
-				System system = systems.get(j);
-				system.handleMessage(&msg);
+				System* system = systems.get(j);
+				system->handleMessage(&msg);
 			}
 		}
 	}

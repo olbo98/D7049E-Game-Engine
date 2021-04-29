@@ -1,10 +1,11 @@
 #pragma once
 #include "../Utils/Queue.h"
 #include "../Utils/SimpleList.h"
-#include "System.h"
 #include "Message.h"
 
 namespace MS {
+	class System;
+
 	class MessageBus
 	{
 	public:
@@ -17,7 +18,7 @@ namespace MS {
 
 	private:
 		Queue<Message> msgQueue;
-		SimpleList<System> systems;
+		SimpleList<System*> systems; //Pointers
 		//TODO: Add reference to systems
 	};
 }

@@ -6,7 +6,7 @@ class SimpleList
 public:
 	SimpleList();
 
-	void add(T* value);
+	void add(T value);
 	T get(int index);
 	int getLength();
 private:
