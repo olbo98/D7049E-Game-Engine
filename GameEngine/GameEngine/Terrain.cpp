@@ -2,7 +2,7 @@
 // It is subject to the license terms in the LICENSE file found in the top-level directory
 // of this distribution and at https://www.ogre3d.org/licensing.
 // SPDX-License-Identifier: MIT
-
+/*
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 
@@ -68,7 +68,6 @@ void Engine::setup(void)
     lightNode->attachObject(light);
 
 }
-
 int main(int argc, char* argv[])
 {
     Engine app;
@@ -76,4 +75,4 @@ int main(int argc, char* argv[])
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;
-}
+}*/

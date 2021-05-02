@@ -3,6 +3,8 @@
 // of this distribution and at https://www.ogre3d.org/licensing.
 // SPDX-License-Identifier: MIT
 
+#include "Renderer.h"
+/*
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 
@@ -111,13 +113,13 @@ void Engine::setup(void)
     lightNode3->attachObject(ptLight);
     lightNode3->setPosition(0, 150, 250);
 
-}
-/*
+}*/
+
 int main(int argc, char* argv[])
 {
-    Engine app;
+    Renderer app;
     app.initApp();
-    app.getRoot()->startRendering();
+    app.render();
     app.closeApp();
     return 0;
-}*/
+}
