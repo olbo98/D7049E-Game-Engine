@@ -14,8 +14,11 @@
 class EntityManager
 {
 public:
+	/**
+	* Default constructor
+	* Initialize the queue with all possible entity IDs
+	*/
 	EntityManager() {
-		// Initialize the queue with all possible entity IDs
 		for (Entity entity = 0; entity < MAX_ENTITIES; ++entity) {
 			m_availableEntities.push(entity);
 		}
@@ -38,6 +41,7 @@ public:
 
 	/**
 	* Function that destroy an entity an put its ID into the queue
+	* @param entity The entity to destroy
 	*/
 	void destroyEntity(Entity entity) {
 		// if the entity hasn't a valid id --> throw an error
@@ -53,6 +57,8 @@ public:
 
 	/**
 	* Function that takes an entity and change its signature
+	* @param entity The entity which will change its signature
+	* @param signature The new signature
 	*/
 	void setSignature(Entity entity, Signature signature) {
 		// if the entity hasn't a valid id --> throw an error
@@ -64,6 +70,7 @@ public:
 
 	/**
 	* Function that returns an entity signature
+	* @param entity The entity to which we want the signature
 	*/
 	Signature getSignature(Entity entity) {
 		// if the entity hasn't a valid id --> throw an error
