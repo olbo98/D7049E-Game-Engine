@@ -148,8 +148,6 @@
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
-    <ClCompile Include="src\EventSystem\SystemA.cpp" />
-    <ClCompile Include="src\EventSystem\SystemB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\SimpleList.h" />
@@ -157,8 +155,6 @@
     <ClInclude Include="src\EventSystem\Message.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
     <ClInclude Include="src\EventSystem\System.h" />
-    <ClInclude Include="src\EventSystem\SystemA.h" />
-    <ClInclude Include="src\EventSystem\SystemB.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

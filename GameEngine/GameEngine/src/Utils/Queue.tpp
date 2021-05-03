@@ -14,10 +14,10 @@ Queue<T>::Queue() {
 }
 
 template <typename T>
-void Queue<T>::add(T* value) {
+void Queue<T>::add(T* item) {
 	struct Node<T>* newNode = new Node<T>();
 	newNode->next = tail;
-	newNode->value = *value;
+	newNode->value = *item;
 
 	if(lengthOfQueue == 0){
 		head->next = newNode;
