@@ -13,13 +13,14 @@
 class ComponentManager
 {
 public:
-	template<typename T>
 
 	/**
-	*
+	* Function that add a new component and create its packed array
 	*/
+	template<typename T>
 	void registerComponent()
 	{
+		// We get the name of the component
 		const char* typeName = typeid(T).name();
 
 		assert(m_componentTypes.find(typeName) == m_componentTypes.end() && "Registering component type more than once.");
@@ -35,7 +36,7 @@ public:
 	}
 
 	/**
-	*
+	* Function that returns the id of the actual component
 	*/
 	template<typename T>
 	ComponentType getComponentType()
@@ -49,42 +50,45 @@ public:
 	}
 
 	/**
-	*
+	* Function that add a component to an entity
+	* @param entity The entity to which add the component
+	* @param component The component to add
 	*/
 	template<typename T>
 	void addComponent(Entity entity, T component)
 	{
 		// Add a component to the array for an entity
-		GetComponentArray<T>()->insertData(entity, component);
+		getComponentArray<T>()->insertData(entity, component);
 	}
 
 	/**
-	*
+	* Function that remove an entity (and then its linked components)
+	* @param entity The entity to delete
 	*/
 	template<typename T>
 	void removeComponent(Entity entity)
 	{
 		// Remove a component from the array for an entity
-		GetComponentArray<T>()->removeData(entity);
+		getComponentArray<T>()->removeData(entity);
 	}
 
 	/**
-	*
+	* Function that get a reference to a component from the array for an entity
+	* @param entity The entity from which we want the components
 	*/
 	template<typename T>
 	T& getComponent(Entity entity)
 	{
-		// Get a reference to a component from the array for an entity
-		return GetComponentArray<T>()->getData(entity);
+		return getComponentArray<T>()->getData(entity);
 	}
 
 	/**
-	*
+	* Function that notify each component array that an entity has been destroyed
+	* If it has this entity, it will remove it. 
+	* @param entity The entity destroyed
 	*/
 	void entityDestroyed(Entity entity)
 	{
-		// Notify each component array that an entity has been destroyed
-		// If it has a component for that entity, it will remove it
 		for (auto const& pair : m_componentArrays)
 		{
 			auto const& component = pair.second;
@@ -102,15 +106,20 @@ private:
 
 	// The component type to be assigned to the next registered component - starting at 0
 	ComponentType m_nextComponentType{};
-
-	// Convenience function to get the statically casted pointer to the ComponentArray of type T.
+	
+	/**
+	* Convenience function to get the statically casted pointer to the ComponentArray of type T
+	* @param T The type of component we want the array
+	*/
 	template<typename T>
-	std::shared_ptr<ComponentArray<T>> GetComponentArray()
+	std::shared_ptr<ComponentArray<T>> getComponentArray()
 	{
+		// Get the name of the component
 		const char* typeName = typeid(T).name();
 
 		assert(m_componentTypes.find(typeName) != m_componentTypes.end() && "Component not registered before use.");
 
+		// Return a static pointer of the array to the component
 		return std::static_pointer_cast<ComponentArray<T>>(m_componentArrays[typeName]);
 	}
 };
