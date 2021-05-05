@@ -4,12 +4,14 @@
 #include <string>
 
 using namespace Logging;
-using namespace UI;
 
 int main()
 {
-	GUI::initGUI();
-	GUI::Run();
+	GUI g;
+	//g.initGUI();
+	g.Run();
+	//GUI::initGUI();
+	//GUI::Run();
 
 
 	/*Log::Init();
