@@ -14,7 +14,7 @@ namespace Logging
 		//Creating the enginelogger and the applicationlogger
 		s_CoreLogger = spdlog::stdout_color_mt("ENGINE LOG");
 		
-		
+		/* Setting level for later use*/
 		//s_CoreLogger->set_level(spdlog::level::trace);
 		//s_CoreLogger->flush_on(spdlog::level::trace);
 
