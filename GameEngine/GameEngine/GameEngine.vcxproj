@@ -121,8 +121,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>User32.lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -148,7 +147,7 @@
   <ItemGroup>
     <ClCompile Include="InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="InputSystem\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
     <ClCompile Include="InputSystem\Testprogram.cpp" />
   </ItemGroup>

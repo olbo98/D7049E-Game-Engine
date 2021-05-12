@@ -1,5 +1,6 @@
 #include "InputSystem.h"
 #include <Windows.h>
+#include <iostream>
 
 InputSystem::InputSystem() 
 {
@@ -15,6 +16,8 @@ void InputSystem::addListeners(InputListener* listener)
 {
     map_listeners.insert(std::make_pair<InputListener*, InputListener*>
         (std::forward<InputListener*>(listener), std::forward<InputListener*>(listener)));
+    //m_set_listeners.insert(listener);
+    
 }
 
 void InputSystem::removeListeners(InputListener* listener)
@@ -25,44 +28,49 @@ void InputSystem::removeListeners(InputListener* listener)
     {
         map_listeners.erase(i);
     }
+    //m_set_listeners.insert(listener);
 }
 
 /* Notifies state changes to the listeners */
 void InputSystem::update()
 {
-    if (::GetKeyboardState(key_states)) //"GetKeyboardState" retrieves the states of each key in the keyboard
+ 
+    for (int i = 0; i < 256; i++)
     {
-        for (unsigned int i = 0; i < 256; i++)
+        key_states[i] = GetAsyncKeyState(i);
+            
+        //KEY is down
+        if (key_states[i] > 0) //bitmasks the lower order of the value and will be evaluated 
         {
-            //KEY is down
-            if (key_states[i] & 0x80) //bitmasks the higher order of the value and will be evaluated 
+             
+            std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
+            while (it != map_listeners.end())
+            {
+                it->first->onKeyDown(i);
+                ++it;
+            }
+               
+        }
+        //KEY is up 
+        else if(key_states[i] == 0)
+        {
+            //KEY release event
+            if (key_states[i] != old_key_states[i]) 
             {
                 std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
                 while (it != map_listeners.end())
                 {
-                    it->second->onKeyDown(i);
+                    it->first->onKeyUp(i);
                     ++it;
                 }
 
-            }
-            //KEY is up 
-            else
-            {
-                //KEY release event
-                if (key_states[i] != old_key_states[i]) 
-                {
-                    std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
-                    while (it != map_listeners.end())
-                    {
-                        it->second->onKeyUp(i);
-                        ++it;
-                    }
-                }
+                    
             }
         }
-        // store current keys state to old keys state buffer
-        ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
     }
+    // store current keys state to old keys state buffer
+    ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
+
 }
 
 /*
