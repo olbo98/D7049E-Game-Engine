@@ -14,9 +14,11 @@ InputSystem::~InputSystem()
 
 void InputSystem::addListeners(InputListener* listener)
 {
+    //insterting the listeners into the map_container
     map_listeners.insert(std::make_pair<InputListener*, InputListener*>
         (std::forward<InputListener*>(listener), std::forward<InputListener*>(listener)));
-    //m_set_listeners.insert(listener);
+
+    
     
 }
 
@@ -28,7 +30,7 @@ void InputSystem::removeListeners(InputListener* listener)
     {
         map_listeners.erase(i);
     }
-    //m_set_listeners.insert(listener);
+    
 }
 
 /* Notifies state changes to the listeners */
@@ -40,9 +42,9 @@ void InputSystem::update()
         key_states[i] = GetAsyncKeyState(i);
             
         //KEY is down
-        if (key_states[i] > 0) //bitmasks the lower order of the value and will be evaluated 
+        if (key_states[i] > 0)
         {
-             
+             //iterating through the container of listeners
             std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
             while (it != map_listeners.end())
             {
@@ -68,7 +70,7 @@ void InputSystem::update()
             }
         }
     }
-    // store current keys state to old keys state buffer
+    // store current key states to old key states buffer
     ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
 
 }
