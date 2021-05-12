@@ -116,13 +116,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\OgreMain\include;$(OGRE_HOME)\out\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,16 +146,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
+    <ClCompile Include="InputSystem\Testprogram.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InputSystem\InputListener.h" />
+    <ClInclude Include="InputSystem\InputSystem.h" />
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\Message.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
     <ClInclude Include="src\EventSystem\System.h" />
+    <ClInclude Include="InputSystem\Testprogram.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

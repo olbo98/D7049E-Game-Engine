@@ -24,6 +24,12 @@
     <ClCompile Include="src\EventSystem\System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputSystem\InputSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem\Testprogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EventSystem\MessageBus.h">
@@ -39,6 +45,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\SimpleList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem\InputSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem\InputListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem\Testprogram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
