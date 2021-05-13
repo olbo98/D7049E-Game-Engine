@@ -89,7 +89,5 @@ InputSystem* InputSystem::getInstance()
 
 void InputSystem::handleMessage(Message* msg)
 {
-    if (*msg == Message::CLOSE_MENU) {
-        std::cout << "Received close menu message" << std::endl;
-    }
+    
 }
