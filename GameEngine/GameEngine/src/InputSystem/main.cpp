@@ -1,4 +1,4 @@
-#include "Testprogram.h"
+/*#include "Testprogram.h"
 #include "InputSystem.h"
 #include "../EventSystem/MessageBus.h"
 #include <Windows.h>
@@ -21,4 +21,4 @@ int main()
 		Sleep(150);
 
 	}
-}
+}*/
