@@ -3,7 +3,7 @@
 // of this distribution and at https://www.ogre3d.org/licensing.
 // SPDX-License-Identifier: MIT
 
-#include "Ogre.h"
+/*#include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include "EventSystem/MessageBus.h"
 #include "EventSystem/System.h"
@@ -104,9 +104,11 @@ bool MyTestApp::frameRenderingQueued(const Ogre::FrameEvent& fe) {
     }
     
     return true;
-}
+}*/
 
 //! [setup]
+#include "EventSystem/MessageBus.h"
+#include "AnimationSystem/AnimationSystem.h"
 
 //! [main]
 int main(int argc, char* argv[])
@@ -116,9 +118,12 @@ int main(int argc, char* argv[])
     app.getRoot()->startRendering();
     app.closeApp();
     return 0;*/
-    MessageBus msgBus;
-    AnimationSystem* animSys = new AnimationSystem(&msgBus);
-    Message msg = Message::OPEN_MENU;
-    animSys->handleMessage(&msg);
+    MessageBus* msgBus = new MessageBus();
+    //-AnimationSystem* animSys = new AnimationSystem(msgBus);
+    //msgBus->addReciever(animSys);
+    //int num = 10;
+    //TestMessage* testMsg = new TestMessage(&num);
+    //msgBus->postMessage(testMsg);
+    //msgBus->notify();
 }
 //! [main]

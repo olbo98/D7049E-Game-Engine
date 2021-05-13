@@ -1,5 +1,5 @@
 #pragma once
-enum class Id {
+enum class MessageId : char {
 	NULL_MESSAGE,
 	OPEN_MENU,
 	CLOSE_MENU,
@@ -11,7 +11,7 @@ enum class Id {
 */
 class Message {
 protected:
-	Id id;
+	MessageId id;
 public:
-	bool checkId(Id* idToCheck);
+	bool checkId(MessageId* idToCheck);
 };

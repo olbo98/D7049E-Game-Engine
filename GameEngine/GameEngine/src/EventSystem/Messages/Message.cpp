@@ -1,6 +1,6 @@
 #include "Message.h"
 
-bool Message::checkId(Id* idToCheck) {
+bool Message::checkId(MessageId* idToCheck) {
 	if (*idToCheck == id) {
 		return true;
 	}

@@ -6,12 +6,8 @@ AnimationSystem::AnimationSystem(MessageBus* a_msgBus) {
 }
 
 void AnimationSystem::handleMessage(Message* msg){
-	switch (*msg)
-	{
-	case Message::INPUT:
+	if(msg->checkId(MessageId::INPUT)){
 		std::cout << "Recieved input message" << std::endl;
-	default:
-		break;
 	}
 	//TODO: Check if the message is a state change
 	//			Get the entity to change state for
