@@ -109,6 +109,7 @@ bool MyTestApp::frameRenderingQueued(const Ogre::FrameEvent& fe) {
 //! [setup]
 #include "EventSystem/MessageBus.h"
 #include "AnimationSystem/AnimationSystem.h"
+#include "EventSystem/Messages/TestMessage.h"
 
 //! [main]
 int main(int argc, char* argv[])
@@ -119,11 +120,11 @@ int main(int argc, char* argv[])
     app.closeApp();
     return 0;*/
     MessageBus* msgBus = new MessageBus();
-    //-AnimationSystem* animSys = new AnimationSystem(msgBus);
-    //msgBus->addReciever(animSys);
-    //int num = 10;
-    //TestMessage* testMsg = new TestMessage(&num);
-    //msgBus->postMessage(testMsg);
-    //msgBus->notify();
+    AnimationSystem* animSys = new AnimationSystem(msgBus);
+    msgBus->addReciever(animSys);
+    int num = 10;
+    TestMessage* testMsg = new TestMessage(&num);
+    msgBus->postMessage(testMsg);
+    msgBus->notify();
 }
 //! [main]
