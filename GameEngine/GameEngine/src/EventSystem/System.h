@@ -10,7 +10,6 @@
 class System
 {
 public:
-	
 	virtual void handleMessage(Message* msg) = 0;
 protected:
 	MessageBus* msgBus;
