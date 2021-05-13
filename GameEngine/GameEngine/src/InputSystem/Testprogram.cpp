@@ -2,12 +2,19 @@
 #include "InputSystem.h"
 #include <iostream>
 
-void Testprogram::onKeyDown(int keyPress)
+
+Testprogram::Testprogram()
+{
+}
+void Testprogram::onKeyDown(int keyPress, MessageBus* mb)
 {
 	
 	if (keyPress == 'W')
 	{
+		Message m = Message::CLOSE_MENU;
+		mb->postMessage(&m);
 		std::cout << "W is pressed!" << std::endl;
+
 		
 	}
 	else if (keyPress == 'A')
@@ -15,9 +22,11 @@ void Testprogram::onKeyDown(int keyPress)
 		std::cout << "A is pressed!" << std::endl;
 
 	}
+
+
 }
 
-void Testprogram::onKeyUp(int keyPress)
+void Testprogram::onKeyUp(int keyPress, MessageBus* mb)
 {
 	std::cout << "Key is up" << std::endl;
 }

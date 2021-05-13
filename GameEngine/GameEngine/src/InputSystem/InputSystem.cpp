@@ -33,10 +33,15 @@ void InputSystem::removeListeners(InputListener* listener)
     
 }
 
+void InputSystem::setMsgBus(MessageBus* mb)
+{
+    msgBus = mb;
+}
+
 /* Notifies state changes to the listeners */
 void InputSystem::update()
 {
- 
+    
     for (int i = 0; i < 256; i++)
     {
         key_states[i] = GetAsyncKeyState(i);
@@ -48,7 +53,7 @@ void InputSystem::update()
             std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
             while (it != map_listeners.end())
             {
-                it->first->onKeyDown(i);
+                it->first->onKeyDown(i, msgBus);
                 ++it;
             }
                
@@ -62,7 +67,7 @@ void InputSystem::update()
                 std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
                 while (it != map_listeners.end())
                 {
-                    it->first->onKeyUp(i);
+                    it->first->onKeyUp(i, msgBus);
                     ++it;
                 }
 
@@ -75,18 +80,16 @@ void InputSystem::update()
 
 }
 
-/*
-InputSystem* InputSystem::getInstance()
-{
-    if(inputSystem == nullptr)
-    {
-        inputSystem = new InputSystem();
-    }
-    return inputSystem;
-}*/
 
 InputSystem* InputSystem::getInstance()
 {
     static InputSystem system;
     return &system;
+}
+
+void InputSystem::handleMessage(Message* msg)
+{
+    if (*msg == Message::CLOSE_MENU) {
+        std::cout << "Received close menu message" << std::endl;
+    }
 }

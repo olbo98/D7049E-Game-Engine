@@ -10,9 +10,8 @@
 class System
 {
 public:
-	System();
-	System(MessageBus* a_msgBus);
-	virtual void handleMessage(Message* msg);
+	
+	virtual void handleMessage(Message* msg) = 0;
 protected:
 	MessageBus* msgBus;
 };

@@ -21,13 +21,13 @@
     <ClCompile Include="src\EventSystem\System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputSystem\InputSystem.cpp">
+    <ClCompile Include="src\InputSystem\InputSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputSystem\Testprogram.cpp">
+    <ClCompile Include="src\InputSystem\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputSystem\main.cpp">
+    <ClCompile Include="src\InputSystem\Testprogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,13 +47,13 @@
     <ClInclude Include="src\Utils\SimpleList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputSystem\InputSystem.h">
+    <ClInclude Include="src\InputSystem\InputListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputSystem\InputListener.h">
+    <ClInclude Include="src\InputSystem\InputSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputSystem\Testprogram.h">
+    <ClInclude Include="src\InputSystem\Testprogram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,12 +1,13 @@
 #pragma once
 #include "InputListener.h"
-#include <unordered_set>
+#include "../EventSystem/System.h"
 #include <map>
 
 /* Publisher class (also a Singleton) that notifies all subscribers/listeners when any state changes */
 
-class InputSystem
+class InputSystem: public System
 {
+
 public:
 	InputSystem();
 	~InputSystem();
@@ -14,14 +15,11 @@ public:
 	void update();
 	void addListeners(InputListener* listener);
 	void removeListeners(InputListener* listener);
+
+	void setMsgBus(MessageBus* mb);
 	
 
-protected:
-	//Singleton Object for other classes to fetch
-	//static InputSystem* inputSystem;
 private:
-
-	
 
 	//containers for the listeners
 	std::map<InputListener*, InputListener*> map_listeners;
@@ -34,5 +32,8 @@ private:
 
 public:
 	static InputSystem* getInstance();
+
+	// Inherited via System
+	virtual void handleMessage(Message* msg) override;
 };
 
