@@ -116,13 +116,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\OgreMain\include;$(OGRE_HOME)\out\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,11 +145,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
+    <ClInclude Include="src\EventSystem\Messages\Message.h" />
+    <ClInclude Include="src\EventSystem\Messages\TestMessage.h" />
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\Message.h" />

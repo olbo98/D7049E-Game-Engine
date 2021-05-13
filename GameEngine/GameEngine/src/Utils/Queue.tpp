@@ -6,10 +6,10 @@ Queue<T>::Queue() {
 	head = new Node<T>();
 	tail = new Node<T>();
 
-	head->value = (T)NULL;
+	//head->value;
 	head->next = tail;
 
-	tail->value = (T)NULL;
+	//tail->value;
 	tail->next = head;
 }
 

@@ -1,7 +1,5 @@
 #include "MessageBus.h"
-#include <thread>
 #include "System.h"
-#include <iostream>
 
 MessageBus::MessageBus() {}
 MessageBus::~MessageBus() {}
