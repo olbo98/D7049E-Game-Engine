@@ -6,7 +6,8 @@ AnimationSystem::AnimationSystem(MessageBus* a_msgBus) {
 }
 
 void AnimationSystem::handleMessage(Message* msg){
-	if(msg->checkId(MessageId::INPUT)){
+	MessageId idToCheck = MessageId::INPUT;
+	if(msg->checkId(&idToCheck)){
 		std::cout << "Recieved input message" << std::endl;
 	}
 	//TODO: Check if the message is a state change

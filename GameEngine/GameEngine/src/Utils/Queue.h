@@ -41,8 +41,8 @@ public:
     int getLength();
 private:
     int lengthOfQueue;
-    struct Node<T>* head;
-    struct Node<T>* tail;
+    Node<T>* head;
+    Node<T>* tail;
 };
 
 #include "Queue.tpp"
