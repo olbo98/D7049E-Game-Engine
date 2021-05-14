@@ -88,10 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -102,12 +105,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,13 +122,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>User32.lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\OgreMain\include;$(OGRE_HOME)\out\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,6 +181,28 @@
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />
     <None Include="src\Utils\Queue.tpp" />
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComponentArray.h" />
+    <ClInclude Include="ComponentManager.h" />
+    <ClInclude Include="Coordinator.h" />
+    <ClInclude Include="EntityComponentDef.h" />
+    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="MeshRenderable.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderSystem.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
