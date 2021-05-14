@@ -24,9 +24,6 @@
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EventSystem\Message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\EventSystem\Messages\Message.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,10 +36,16 @@
     <ClCompile Include="src\InputSystem\InputSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\InputSystem\main.cpp">
+    <ClCompile Include="src\InputSystem\Testprogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\InputSystem\Testprogram.cpp">
+    <ClCompile Include="src\AudioSystem\SoundDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AudioSystem\SoundSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,9 +60,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EventSystem\Message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\EventSystem\Messages\Message.h">
@@ -78,6 +78,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\InputSystem\Testprogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AudioSystem\SoundDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AudioSystem\SoundBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AudioSystem\SoundSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
