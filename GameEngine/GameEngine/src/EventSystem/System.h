@@ -1,5 +1,5 @@
 #pragma once
-#include "Messages/Message.h"
+#include "Message.h"
 #include "MessageBus.h"
 
 /*!

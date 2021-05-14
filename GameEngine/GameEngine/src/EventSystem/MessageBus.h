@@ -1,7 +1,7 @@
 #pragma once
 #include "../Utils/Queue.h"
 #include "../Utils/SimpleList.h"
-#include "Messages/Message.h"
+#include "Message.h"
 
 class System;
 
