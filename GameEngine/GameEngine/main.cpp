@@ -8,7 +8,7 @@ Coordinator gCoordinator;
 
 int main(int argc, char* argv[])
 {
-    gCoordinator.init();
+    /*gCoordinator.init();
 
     gCoordinator.registerComponent<MeshRenderable>();
     gCoordinator.registerComponent<Transform>();
@@ -27,10 +27,10 @@ int main(int argc, char* argv[])
 	{
 		entity = gCoordinator.createEntity();
         //MeshRenderable entityRenderable;
-        //entityRenderable.mesh 
+        //entityRenderable.mesh */
 		/*gCoordinator.addComponent(
 			entity,
 			MeshRenderable);*/
-	}
+	//}
     return 0;
 }

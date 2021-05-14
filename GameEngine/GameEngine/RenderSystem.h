@@ -6,10 +6,10 @@
  * A struct containing all the needed elements for
  * a camera
  */
-struct Camera {
+/*struct Camera {
 	Ogre::SceneNode* cameraNode;
 	Ogre::Camera* camera;
-};
+};*/
 
 class RenderSystem : public System {
 public:

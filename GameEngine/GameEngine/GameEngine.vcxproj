@@ -88,12 +88,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -105,14 +105,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -139,14 +139,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\Bites\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\Components\RTShaderSystem\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\include;C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\OgreMain\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\alexc\Documents\Documents\C++\D7049E\ogre\out\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

@@ -1,5 +1,7 @@
 #pragma once
 #include "EntityComponentDef.h"
+#include <unordered_map>
+#include <assert.h>
 
 // An interface is needed so that the ComponentManager
 // can tell a generic ComponentArray that an entity has been destroyed
@@ -49,12 +51,12 @@ public:
 		assert(m_entityToIndexMap.find(entity) != m_entityToIndexMap.end() && "Removing non-existent component.");
 
 		// Copy element at end into deleted element's place to maintain density
-		size_t indexOfRemovedEntity = mEntityToIndexMap[entity];
+		size_t indexOfRemovedEntity = m_entityToIndexMap[entity];
 		size_t indexOfLastElement = m_size - 1;
-		m_componentArray[indexOfRemovedEntity] = mComponentArray[indexOfLastElement];
+		m_componentArray[indexOfRemovedEntity] = m_componentArray[indexOfLastElement];
 
 		// Update map to point to moved spot
-		Entity entityOfLastElement = mIndexToEntityMap[indexOfLastElement];
+		Entity entityOfLastElement = m_indexToEntityMap[indexOfLastElement];
 		m_entityToIndexMap[entityOfLastElement] = indexOfRemovedEntity;
 		m_indexToEntityMap[indexOfRemovedEntity] = entityOfLastElement;
 
