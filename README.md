@@ -1,7 +1,7 @@
 # D7049E-Game-Engine
 A game engine created for the course Virtual Interactive Environments D7049E
 
-##For the audio system
+## For the audio system
 To be able to listen to the soundeffects you will need to download 2 libraries. The first one is openAL which is a 3D audio API and the second one is libsndfile which ables openAL to basically load the data into the sound file. The easiest way to do this is via a package manager vckpg. 
 
 Step 1: Clone the repository in the desired directory
