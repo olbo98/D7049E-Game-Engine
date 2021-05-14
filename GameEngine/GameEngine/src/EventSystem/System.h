@@ -1,15 +1,20 @@
 #pragma once
 #include "Messages/Message.h"
 #include "MessageBus.h"
+#include "EntityComponentDef.h"
+#include<set>
 
 /*!
 * A virtual system class. Every class that has the role of a system needs 
 * to inherit this class to be able to send and recieve messages from other systems. The handleMessage function needs to be overrided and should
 * contain logic for how to handle different messages.
+* A System contains any functionality that iterates upon a list of entities
+* with a certain signature of components.
 */
 class System
 {
 public:
+	std::set<Entity> m_entities;
 	virtual void handleMessage(Message* msg) = 0;
 protected:
 	MessageBus* msgBus;

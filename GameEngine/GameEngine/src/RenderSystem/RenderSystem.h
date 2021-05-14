@@ -1,5 +1,5 @@
 #pragma once
-#include "System.h"
+#include "../EventSystem/System.h"
 #include "Renderer.h"
 
 /**
@@ -16,6 +16,8 @@ public:
 	void Init();
 
 	void Update(float dt);
+
+	void handleMessage(Message* msg);
 
 private:
 	Renderer m_renderer;

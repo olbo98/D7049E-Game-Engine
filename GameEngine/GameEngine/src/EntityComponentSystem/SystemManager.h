@@ -1,6 +1,6 @@
 #pragma once
 #include "ComponentArray.h"
-#include "System.h"
+#include "../EventSystem/System.h"
 #include <unordered_map>
 #include <memory>
 

@@ -1,7 +1,7 @@
 #include "RenderSystem.h"
-#include "Coordinator.h"
-#include "Transform.h"
-#include "MeshRenderable.h"
+#include "../EntityComponentSystem/Coordinator.h"
+#include "../EntityComponentSystem/Components/Transform.h"
+#include "../EntityComponentSystem/Components/MeshRenderable.h"
 
 
 // Moving entities --> use scene node, update positions
@@ -25,3 +25,5 @@ void RenderSystem::Update(float dt) {
 
 	m_renderer.update();
 }
+
+void handleMessage(Message* msg){}
