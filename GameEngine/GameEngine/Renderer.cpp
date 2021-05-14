@@ -118,7 +118,9 @@ void Renderer::update() {
 * A function that permit to add a new entity in the renderer
 */
 void Renderer::addEntity(Ogre::Entity* entity) {
-    entity->setCastShadows(true);
-    m_sceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(entity);
-    m_entities.push_back(entity);
+    if (!m_sceneManager->getEntity(entity->getName())) {
+        entity->setCastShadows(true);
+        m_sceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(entity);
+        m_entities.push_back(entity);
+    }
 }
