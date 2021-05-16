@@ -1,128 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\InputSystem\InputSystem.cpp" />
+    <ClCompile Include="src\EventSystem\MessageBus.cpp" />
+    <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\EventSystem\System.cpp" />
+    <ClCompile Include="src\InputSystem\Testprogram.cpp" />
+    <ClCompile Include="src\RenderSystem\Renderer.cpp" />
+    <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventSystem\System.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventSystem\Message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventSystem\Messages\Message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventSystem\MessageBus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\InputSystem\InputSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\InputSystem\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\InputSystem\Testprogram.cpp">
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\InputSystem\InputListener.h" />
+    <ClInclude Include="src\InputSystem\InputSystem.h" />
+    <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
+    <ClInclude Include="src\EventSystem\Messages\Message.h" />
+    <ClInclude Include="src\EventSystem\Messages\TestMessage.h" />
+    <ClInclude Include="src\Utils\SimpleList.h" />
+    <ClInclude Include="src\Utils\Queue.h" />
+    <ClInclude Include="src\EventSystem\MessageBus.h" />
+    <ClInclude Include="src\EventSystem\System.h" />
+    <ClInclude Include="src\InputSystem\Testprogram.h" />
+    <ClInclude Include="src\EntityComponentSystem\ComponentArray.h" />
+    <ClInclude Include="src\EntityComponentSystem\ComponentManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Coordinator.h" />
+    <ClInclude Include="src\EntityComponentSystem\EntityComponentDef.h" />
+    <ClInclude Include="src\EntityComponentSystem\EntityManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\MeshRenderable.h" />
+    <ClInclude Include="src\RenderSystem\Renderer.h" />
+    <ClInclude Include="src\RenderSystem\RenderSystem.h" />
+    <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
+    <ClInclude Include="src\Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\EventSystem\System.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\Queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\SimpleList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\AnimationSystem\AnimationSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EventSystem\Message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EventSystem\Messages\Message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EventSystem\MessageBus.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EventSystem\Messages\TestMessage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\InputSystem\InputListener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\InputSystem\InputSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\InputSystem\Testprogram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Utils\Queue.tpp" />
     <None Include="src\Utils\SimpleList.tpp" />
-    <ClInclude Include="Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityComponentDef.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="System.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coordinator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshRenderable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="src\Utils\Queue.tpp" />
   </ItemGroup>
 </Project>

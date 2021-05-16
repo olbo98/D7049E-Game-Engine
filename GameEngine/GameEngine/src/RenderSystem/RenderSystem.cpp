@@ -7,7 +7,7 @@
 // Moving entities --> use scene node, update positions
 // Handle adding Ogre Entities into the scene
 
-extern Coordinator gCoordinator;
+Coordinator gCoordinator;
 
 void RenderSystem::Init() {
 	m_renderer.initApp();

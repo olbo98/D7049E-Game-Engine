@@ -153,56 +153,41 @@
   <ItemGroup>
     <ClCompile Include="src\InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
-    <ClCompile Include="src\InputSystem\main.cpp" />
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
-    <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
     <ClCompile Include="src\InputSystem\Testprogram.cpp" />
+    <ClCompile Include="src\RenderSystem\Renderer.cpp" />
+    <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
-
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
     <ClInclude Include="src\EventSystem\Messages\Message.h" />
     <ClInclude Include="src\EventSystem\Messages\TestMessage.h" />
-
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
-    <ClInclude Include="src\EventSystem\Message.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
     <ClInclude Include="src\EventSystem\System.h" />
     <ClInclude Include="src\InputSystem\Testprogram.h" />
+    <ClInclude Include="src\EntityComponentSystem\ComponentArray.h" />
+    <ClInclude Include="src\EntityComponentSystem\ComponentManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Coordinator.h" />
+    <ClInclude Include="src\EntityComponentSystem\EntityComponentDef.h" />
+    <ClInclude Include="src\EntityComponentSystem\EntityManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\MeshRenderable.h" />
+    <ClInclude Include="src\RenderSystem\Renderer.h" />
+    <ClInclude Include="src\RenderSystem\RenderSystem.h" />
+    <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
+    <ClInclude Include="src\Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />
     <None Include="src\Utils\Queue.tpp" />
-      <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ComponentArray.h" />
-    <ClInclude Include="ComponentManager.h" />
-    <ClInclude Include="Coordinator.h" />
-    <ClInclude Include="EntityComponentDef.h" />
-    <ClInclude Include="EntityManager.h" />
-    <ClInclude Include="MeshRenderable.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RenderSystem.h" />
-    <ClInclude Include="System.h" />
-    <ClInclude Include="SystemManager.h" />
-    <ClInclude Include="Transform.h" />
-    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

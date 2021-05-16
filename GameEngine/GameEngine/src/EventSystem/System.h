@@ -1,7 +1,7 @@
 #pragma once
 #include "Messages/Message.h"
 #include "MessageBus.h"
-#include "EntityComponentDef.h"
+#include "../EntityComponentSystem/EntityComponentDef.h"
 #include<set>
 
 /*!
