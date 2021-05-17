@@ -11,8 +11,9 @@ void Testprogram::onKeyDown(int keyPress, MessageBus* mb)
 	
 	if (keyPress == 'W')
 	{
+
 		//MessageId m = MessageId::CLOSE_MENU;
-		
+		//Message m = Message::CLOSE_MENU; TODO: fix the problem with this
 		//mb->postMessage(&m);
 		std::cout << "W is pressed!" << std::endl;
 
