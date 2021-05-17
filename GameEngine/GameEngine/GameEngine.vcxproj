@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
     <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
     <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
     <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="src\InputSystem\Testprogram.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
     <ClInclude Include="src\AudioSystem\SoundSource.h" />
     <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
     <ClInclude Include="src\AudioSystem\SoundDevice.h" />

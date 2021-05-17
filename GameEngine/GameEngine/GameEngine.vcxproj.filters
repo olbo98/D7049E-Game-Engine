@@ -48,6 +48,9 @@
     <ClCompile Include="src\AudioSystem\SoundSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EventSystem\System.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AudioSystem\SoundSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AudioSystem\MusicBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
