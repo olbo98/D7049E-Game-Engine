@@ -1,11 +1,7 @@
 #pragma once
 #include "../Utils/Queue.h"
 #include "../Utils/SimpleList.h"
-<<<<<<< HEAD
-#include "./Messages/Message.h"
-=======
 #include "Messages/Message.h"
->>>>>>> Preparing for rebase
 
 class System;
 

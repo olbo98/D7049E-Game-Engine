@@ -6,5 +6,6 @@ class AnimationSystem : public System
 public:
 	AnimationSystem(MessageBus* a_msgBus);
 	void handleMessage(Message* msg);
+	void update(const Ogre::FrameEvent& fe);
 };
 
