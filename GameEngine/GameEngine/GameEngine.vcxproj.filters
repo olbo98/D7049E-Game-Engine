@@ -5,19 +5,18 @@
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
-    <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
     <ClCompile Include="src\InputSystem\Testprogram.cpp" />
     <ClCompile Include="src\RenderSystem\Renderer.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
     <ClInclude Include="src\EventSystem\Messages\Message.h" />
-    <ClInclude Include="src\EventSystem\Messages\TestMessage.h" />
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
@@ -35,6 +34,7 @@
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
     <ClInclude Include="src\Utils\Utils.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
+    <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

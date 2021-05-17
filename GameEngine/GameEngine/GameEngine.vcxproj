@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
