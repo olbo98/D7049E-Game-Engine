@@ -1,29 +1,31 @@
 #include "AnimationSystem.h"
 #include <iostream>
-#include "../EntityComponentSystem/Coordinator.h"
 #include "../EntityComponentSystem/Components/Animation.h"
+#include "../EntityComponentSystem/Components/MeshRenderable.h"
+#include "../EntityComponentSystem//Coordinator.h"
+#include "../EventSystem/Messages/ChangeAnimationMsg.h"
 
-extern Coordinator gCoordinator;
+Coordinator gCoordinator;
 
 AnimationSystem::AnimationSystem(MessageBus* a_msgBus) {
 	msgBus = a_msgBus;
 }
 
 void AnimationSystem::handleMessage(Message* msg){
-	MessageId idToCheck = MessageId::INPUT;
-	if(msg->checkId(&idToCheck)){
-		std::cout << "Recieved input message" << std::endl;
+	MessageId idToCheck = MessageId::CHANGE_ANIMATION;
+	if (msg->checkId(&idToCheck)) {
+		ChangeAnimationMsg* changeAnimMsg = (ChangeAnimationMsg*)msg;
+		auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(changeAnimMsg->entity); //Get MeshRenderable component
+		Ogre::AnimationState* currentAnimState = meshComponent.mesh->getAnimationState(changeAnimMsg->currentAnimationState); //Get the current animation state
+		currentAnimState->setEnabled(false);
+
+		Ogre::AnimationState* newAnimState = meshComponent.mesh->getAnimationState(changeAnimMsg->newAnimationState);
+		newAnimState->setEnabled(true);
 	}
-	//TODO: Check if the message is a state change
-	//			Get the entity to change state for
-	//			Get the animation component for that entity
-	//			Check if the state can be transitioned to from current state(Done via the animation component?)
-	//			Change state
-	//			Change animation
 }
 
-void update(const Ogre::FrameEvent& fe){
-	for (auto const& entity : mEntities){
+void AnimationSystem::update(const Ogre::FrameEvent& fe){
+	for (auto const& entity : m_entities) {
 		auto& animation = gCoordinator.getComponent<Animation>(entity);
 		animation.animationState->addTime(fe.timeSinceLastFrame);
 	}

@@ -34,6 +34,7 @@
     <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
     <ClInclude Include="src\Utils\Utils.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

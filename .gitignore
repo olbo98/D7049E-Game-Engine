@@ -1,7 +1,7 @@
 #Visual Studio Files
 *.dll
 *.cfg
-.editorconfig
+.editorconfig*
 .vscode/
 *.dSYM
 .DS_Store
