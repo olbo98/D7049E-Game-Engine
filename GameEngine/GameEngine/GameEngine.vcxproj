@@ -151,15 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
-    <ClCompile Include="src\EventSystem\Messages\TestMessage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
     <ClCompile Include="src\InputSystem\Testprogram.cpp" />
@@ -167,17 +163,12 @@
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-
-    <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
-    <ClInclude Include="src\AudioSystem\SoundSource.h" />
-    <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
-    <ClInclude Include="src\AudioSystem\SoundDevice.h" />
-
+    <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
     <ClInclude Include="src\EventSystem\Messages\Message.h" />
-    <ClInclude Include="src\EventSystem\Messages\TestMessage.h" />
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
