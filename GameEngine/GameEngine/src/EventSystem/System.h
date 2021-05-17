@@ -15,6 +15,11 @@ class System
 {
 public:
 	std::set<Entity> m_entities;
+	/*!
+	* Should be implemented by all classes that inherits the System class. Should contain functionality to handle incoming messages
+	* 
+	* \param msg the message that should be handled
+	*/
 	virtual void handleMessage(Message* msg) = 0;
 protected:
 	MessageBus* msgBus;
