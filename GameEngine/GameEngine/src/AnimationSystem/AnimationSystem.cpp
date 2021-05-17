@@ -17,18 +17,3 @@ void AnimationSystem::handleMessage(Message* msg){
 	//			Change state
 	//			Change animation
 }
-
-/*
-string activeState
-string states that can be reached from current state
-entity id
-Ogre Entity to update current animation?
-The update function would need the frame time
-
-struct AnimationComponent{
-	int entityId;
-	string activeState;
-	string[] allStates;
-	string stateTable;
-}
-*/
