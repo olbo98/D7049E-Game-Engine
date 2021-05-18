@@ -5,7 +5,7 @@
 #include "../EntityComponentSystem//Coordinator.h"
 #include "../EventSystem/Messages/ChangeAnimationMsg.h"
 
-Coordinator gCoordinator;
+extern Coordinator gCoordinator;
 
 AnimationSystem::AnimationSystem(MessageBus* a_msgBus) {
 	msgBus = a_msgBus;

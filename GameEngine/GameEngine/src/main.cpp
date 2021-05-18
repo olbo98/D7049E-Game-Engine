@@ -6,10 +6,10 @@
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
-#include "../src/AudioSystem/SoundDevice.h"
+/*#include "../src/AudioSystem/SoundDevice.h"
 #include "../src/AudioSystem/SoundBuffer.h"
 #include "../src/AudioSystem/SoundSource.h"
-#include "../src/AudioSystem/MusicBuffer.h"
+#include "../src/AudioSystem/MusicBuffer.h"*/
 #include <iostream>
 
 
@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
 	renderSystem->Init();
 	// Try to add a light to check
 	renderSystem->addPointLight(Vec3(0, 150, 250));
+	renderSystem->addDirectionLight(Vec3(300, 0, 0), Vec3(-1, 0, 0));
 	gWindManager.addRenderSystem(renderSystem.get());
 
 	// Create an entity to render
@@ -51,9 +52,24 @@ int main(int argc, char* argv[])
 
 	Transform trans;
 	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	trans.node->setPosition(10, 0, 0);
+	trans.node->setPosition(150, 0, 0);
 	trans.node->attachObject(meshRend.mesh);
 	gCoordinator.addComponent(entity, trans);
+
+
+	Entity entity2 = gCoordinator.createEntity();
+
+	MeshRenderable meshRend2;
+	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+	meshRend2.mesh->setCastShadows(true);
+	gCoordinator.addComponent(entity2, meshRend2);
+
+	Transform trans2;
+	trans2.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+	trans2.node->setPosition(0, 0, 0);
+	trans2.node->setOrientation(1, 0, 0.65, 0);
+	trans2.node->attachObject(meshRend2.mesh);
+	gCoordinator.addComponent(entity2, trans2);
 
 	gWindManager.render();
 
