@@ -1,24 +1,40 @@
 #pragma once
+#include "../Utils/Utils.h"
 #include "../EventSystem/System.h"
-#include "Renderer.h"
+#include "OgreApplicationContext.h"
 
-/**
- * A struct containing all the needed elements for
- * a camera
- */
-/*struct Camera {
-	Ogre::SceneNode* cameraNode;
-	Ogre::Camera* camera;
-};*/
-
-class RenderSystem : public System {
+class RenderSystem : public System{
 public:
 	void Init();
 
-	void Update(float dt);
+	void Update();
 
 	void handleMessage(Message* msg);
 
+	//TODO: permits to change light color ?
+	/**
+	* Function that permits to add a spot light in the scene
+	* @param position position of the light
+	* @param direction direction of the light
+	* @param name name of the light
+	*/
+	void addSpotLight(Vec3 position, Vec3 direction, std::string name = "SpotLight");
+
+	/**
+	* Function that permits to add a point light in the scene
+	* @param position position of the light
+	* @param name name of the light
+	*/
+	void addPointLight(Vec3 position, std::string name = "PointLight");
+
+	/**
+	* Function that permits to add a direction light in the scene
+	* @param position position of the light
+	* @param direction direction of the light
+	* @param name name of the light
+	*/
+	void addDirectionLight(Vec3 position, Vec3 direction, std::string name = "DirLight");
+
 private:
-	Renderer m_renderer;
+	Entity m_camera;
 };

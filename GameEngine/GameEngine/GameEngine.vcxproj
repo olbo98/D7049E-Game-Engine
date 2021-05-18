@@ -159,7 +159,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
     <ClCompile Include="src\InputSystem\Testprogram.cpp" />
-    <ClCompile Include="src\RenderSystem\Renderer.cpp" />
+    <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +179,7 @@
     <ClInclude Include="src\EntityComponentSystem\EntityComponentDef.h" />
     <ClInclude Include="src\EntityComponentSystem\EntityManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\MeshRenderable.h" />
-    <ClInclude Include="src\RenderSystem\Renderer.h" />
+    <ClInclude Include="src\RenderSystem\WindowManager.h" />
     <ClInclude Include="src\RenderSystem\RenderSystem.h" />
     <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
