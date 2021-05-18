@@ -3,6 +3,7 @@ enum class MessageId : char {
 	NULL_MESSAGE,
 	OPEN_MENU,
 	CLOSE_MENU,
+	CHANGE_ANIMATION,
 	INPUT
 };
 

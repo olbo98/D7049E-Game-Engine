@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "EntityComponentSystem/Coordinator.h"
 #include "EntityComponentSystem/Components/Camera.h"
 #include "EntityComponentSystem/Components/MeshRenderable.h"
@@ -6,6 +7,10 @@
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
+#include "../src/AudioSystem/SoundDevice.h"
+#include "../src/AudioSystem/SoundBuffer.h"
+#include "../src/AudioSystem/SoundSource.h"
+#include "../src/AudioSystem/MusicBuffer.h"
 #include <iostream>
 
 
