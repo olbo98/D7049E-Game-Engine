@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "EntityComponentSystem/Coordinator.h"
 #include "EntityComponentSystem/Components/Camera.h"
 #include "EntityComponentSystem/Components/MeshRenderable.h"
