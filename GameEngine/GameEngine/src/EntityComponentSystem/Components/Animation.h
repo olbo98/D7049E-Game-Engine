@@ -3,5 +3,5 @@
 
 //! A component that contains an animation state
 struct Animation {
-    Ogre::AnimationState* animationState;
+    Ogre::AnimationState* animation;
 };
