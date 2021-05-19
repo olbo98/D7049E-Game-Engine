@@ -151,6 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\FSM\Player1FSM.cpp" />
+    <ClCompile Include="src\FSM\FSM.cpp" />
+    <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\InputSystem\InputSystem.cpp" />
     <ClCompile Include="src\EventSystem\MessageBus.cpp" />
@@ -163,8 +166,13 @@
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\FSM\Player1FSM.h" />
+    <ClInclude Include="src\FSM\FSM.h" />
+    <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Controller.h" />
     <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
+    <ClInclude Include="src\FSM\States\State.h" />
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
