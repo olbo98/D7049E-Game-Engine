@@ -10,6 +10,7 @@
 * different ComponentArrays (one for each component type)
 * when a component need to be added or removed. 
 */
+
 class ComponentManager
 {
 public:

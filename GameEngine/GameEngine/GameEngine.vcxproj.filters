@@ -7,13 +7,12 @@
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EventSystem\System.cpp" />
-    <ClCompile Include="src\InputSystem\Testprogram.cpp" />
     <ClCompile Include="src\RenderSystem\Renderer.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
-    <ClCompile Include="src\FSM\FSM.cpp" />
-    <ClCompile Include="src\FSM\Player1FSM.cpp" />
+    <ClCompile Include="src\ControllerSystem\FSM\FSM.cpp" />
+    <ClCompile Include="src\ControllerSystem\FSM\PlayerFSM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\InputSystem\InputListener.h" />
@@ -24,7 +23,6 @@
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
     <ClInclude Include="src\EventSystem\System.h" />
-    <ClInclude Include="src\InputSystem\Testprogram.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentArray.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Coordinator.h" />
@@ -40,9 +38,10 @@
     <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Controller.h" />
     <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
-    <ClInclude Include="src\FSM\FSM.h" />
-    <ClInclude Include="src\FSM\Player1FSM.h" />
-    <ClInclude Include="src\FSM\States\State.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\FSM.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\PlayerId.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

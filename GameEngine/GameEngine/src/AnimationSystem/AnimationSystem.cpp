@@ -5,10 +5,11 @@
 #include "../EntityComponentSystem//Coordinator.h"
 #include "../EventSystem/Messages/ChangeAnimationMsg.h"
 
-Coordinator gCoordinator;
+extern Coordinator gCoordinator;
+extern MessageBus msgBus;
 
-AnimationSystem::AnimationSystem(MessageBus* a_msgBus) {
-	msgBus = a_msgBus;
+AnimationSystem::AnimationSystem() {
+	
 }
 
 void AnimationSystem::handleMessage(Message* msg){
@@ -18,7 +19,6 @@ void AnimationSystem::handleMessage(Message* msg){
 		auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(changeAnimMsg->entity); //Get MeshRenderable component
 		Ogre::AnimationState* currentAnimState = meshComponent.mesh->getAnimationState(changeAnimMsg->currentAnimationState); //Get the current animation state
 		currentAnimState->setEnabled(false);
-
 		Ogre::AnimationState* newAnimState = meshComponent.mesh->getAnimationState(changeAnimMsg->newAnimationState);
 		newAnimState->setEnabled(true);
 	}

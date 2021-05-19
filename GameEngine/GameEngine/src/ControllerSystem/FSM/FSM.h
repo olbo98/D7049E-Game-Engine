@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "../EventSystem/System.h"
 #include "States/State.h"
 
 using namespace std;

@@ -21,7 +21,5 @@ public:
 	* \param msg the message that should be handled
 	*/
 	virtual void handleMessage(Message* msg) = 0;
-protected:
-	MessageBus* msgBus;
 };
 

@@ -16,9 +16,6 @@ public:
 	void addListeners(InputListener* listener);
 	void removeListeners(InputListener* listener);
 
-	void setMsgBus(MessageBus* mb);
-	
-
 private:
 
 	//containers for the listeners

@@ -6,7 +6,7 @@
 class AnimationSystem : public System
 {
 public:
-	AnimationSystem(MessageBus* a_msgBus);
+	AnimationSystem();
 	//! Checks for messages that are of the type CHANGE_ANIMATION and changes the animation state for the specified entity
 	void handleMessage(Message* msg);
 	//! Updates all animations for all entities with an animation component
