@@ -4,6 +4,7 @@ enum class MessageId : char {
 	OPEN_MENU,
 	CLOSE_MENU,
 	CHANGE_ANIMATION,
+	COLLISION_DETECTION,
 	INPUT
 };
 

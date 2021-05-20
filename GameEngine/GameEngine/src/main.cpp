@@ -3,18 +3,21 @@
 #include "EntityComponentSystem/Components/MeshRenderable.h"
 #include "EntityComponentSystem/Components/Transform.h"
 #include "EntityComponentSystem/Components/Light.h"
+#include "EntityComponentSystem/Components/BoxCollider.h"
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
-/*#include "../src/AudioSystem/SoundDevice.h"
+#include "CollisionSystem/CollisionSystem.h"
+#include "../src/AudioSystem/SoundDevice.h"
 #include "../src/AudioSystem/SoundBuffer.h"
 #include "../src/AudioSystem/SoundSource.h"
-#include "../src/AudioSystem/MusicBuffer.h"*/
+#include "../src/AudioSystem/MusicBuffer.h"
 #include <iostream>
 
 
 WindowManager gWindManager;
 Coordinator gCoordinator;
+MessageBus gMessageBus;
 
 int main(int argc, char* argv[])
 {
@@ -26,6 +29,7 @@ int main(int argc, char* argv[])
 	gCoordinator.registerComponent<MeshRenderable>();
 	gCoordinator.registerComponent<Transform>();
 	gCoordinator.registerComponent<Light>();
+	gCoordinator.registerComponent<BoxCollider>();
 
 	// Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
@@ -42,6 +46,17 @@ int main(int argc, char* argv[])
 	renderSystem->addDirectionLight(Vec3(300, 0, 0), Vec3(-1, 0, 0));
 	gWindManager.addRenderSystem(renderSystem.get());
 
+	// Register physic system
+	auto collideSystem = gCoordinator.registerSystem<CollisionSystem>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<Transform>());
+		signature.set(gCoordinator.getComponentType<BoxCollider>());
+		gCoordinator.setSystemSignature<CollisionSystem>(signature);
+	}
+	collideSystem->Init();
+	gWindManager.addCollisionSystem(collideSystem.get());
+
 	// Create an entity to render
 	Entity entity = gCoordinator.createEntity();
 
@@ -56,6 +71,11 @@ int main(int argc, char* argv[])
 	trans.node->attachObject(meshRend.mesh);
 	gCoordinator.addComponent(entity, trans);
 
+	BoxCollider collider;
+	collider.relativePosition = Vec3(0, 0, 0);
+	collider.boxSize = Vec3(300, 100, 100);
+	gCoordinator.addComponent(entity, collider);
+
 
 	Entity entity2 = gCoordinator.createEntity();
 
@@ -67,9 +87,13 @@ int main(int argc, char* argv[])
 	Transform trans2;
 	trans2.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
 	trans2.node->setPosition(0, 0, 0);
-	trans2.node->setOrientation(1, 0, 0.65, 0);
 	trans2.node->attachObject(meshRend2.mesh);
 	gCoordinator.addComponent(entity2, trans2);
+
+	BoxCollider collider2;
+	collider2.relativePosition = Vec3(0, 0, 0);
+	collider2.boxSize = Vec3(100, 100, 100);
+	gCoordinator.addComponent(entity2, collider2);
 
 	gWindManager.render();
 

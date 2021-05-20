@@ -2,6 +2,7 @@
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include "RenderSystem.h"
+#include "./../CollisionSystem/CollisionSystem.h"
 #include <iostream>
 
 class WindowManager : public OgreBites::ApplicationContext, public OgreBites::InputListener
@@ -31,11 +32,15 @@ public:
 	*/
 	virtual bool frameEnded(const Ogre::FrameEvent& evt);
 
+	// TODO: add an array of system that go through each system to update, also add an "Update" and "Init" function to 
+	// each system
 	void addRenderSystem(RenderSystem* renderSystem);
+	void addCollisionSystem(CollisionSystem* collisionSystem);
 
 	Ogre::Root* m_root;
 	Ogre::SceneManager* m_sceneManager;
 	Ogre::RTShader::ShaderGenerator* m_shaderGen;
 	Ogre::Viewport* m_viewport;
 	RenderSystem* m_renderSystem;
+	CollisionSystem* m_collisionSystem;
 };

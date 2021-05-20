@@ -9,7 +9,7 @@ public:
 
 	void Update();
 
-	void handleMessage(Message* msg);
+	virtual void handleMessage(Message* msg);
 
 	//TODO: permits to change light color ?
 	/**
