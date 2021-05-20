@@ -1,6 +1,6 @@
 #pragma once
 #include "InputListener.h"
-#include "../EventSystem/System.h"
+#include "../EntityComponentSystem/System.h"
 #include <map>
 
 /* Publisher class (also a Singleton) that notifies all subscribers/listeners when any state changes */

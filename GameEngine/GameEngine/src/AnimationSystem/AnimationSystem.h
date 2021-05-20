@@ -1,5 +1,5 @@
 #pragma once
-#include "../EventSystem/System.h"
+#include "../EntityComponentSystem/System.h"
 #include "Ogre.h"
 
 //! System that handles all animations that should be rendered

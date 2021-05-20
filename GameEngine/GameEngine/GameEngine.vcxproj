@@ -163,7 +163,7 @@
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\EventSystem\System.cpp" />
+    <ClCompile Include="src\EntityComponentSystem\System.cpp" />
     <ClCompile Include="src\RenderSystem\Renderer.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
@@ -187,7 +187,7 @@
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
-    <ClInclude Include="src\EventSystem\System.h" />
+    <ClInclude Include="src\EntityComponentSystem\System.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentArray.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Coordinator.h" />

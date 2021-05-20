@@ -1,5 +1,5 @@
 #pragma once
-#include "../EventSystem/System.h"
+#include "../EntityComponentSystem/System.h"
 #include "Renderer.h"
 
 /**

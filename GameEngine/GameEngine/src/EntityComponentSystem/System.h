@@ -1,6 +1,6 @@
 #pragma once
-#include "Messages/Message.h"
-#include "MessageBus.h"
+#include "../EventSystem/Messages/Message.h"
+#include "../EventSystem/MessageBus.h"
 #include "../EntityComponentSystem/EntityComponentDef.h"
 #include<set>
 
