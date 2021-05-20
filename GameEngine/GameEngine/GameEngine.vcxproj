@@ -151,6 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
+    <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
     <ClCompile Include="src\ControllerSystem\FSM\PlayerFSM.cpp" />
     <ClCompile Include="src\ControllerSystem\FSM\FSM.cpp" />
     <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
@@ -165,6 +168,10 @@
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\RigidBody.h" />
+    <ClInclude Include="src\EventSystem\Messages\ChangeStateMsg.h" />
+    <ClInclude Include="src\PhysicsSystem\PhysicsSystem.h" />
     <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
     <ClInclude Include="src\ControllerSystem\FSM\FSM.h" />
     <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
