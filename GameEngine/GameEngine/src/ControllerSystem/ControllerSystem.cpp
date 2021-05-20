@@ -10,11 +10,12 @@ using namespace std;
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
 
-void ControllerSystem::onKeyDown(int keyPress)
-{
-	Entity firstPlayerEnt;
-	Entity secondPlayerEnt;
+ControllerSystem::ControllerSystem() {
+	velocity = 10;
+	setPlayerEntityIds();
+}
 
+void ControllerSystem::setPlayerEntityIds() {
 	for (auto const& entity : m_entities) {
 		auto& playerIdComponent = gCoordinator.getComponent<PlayerId>(entity);
 		if (playerIdComponent.playerId == 1) {
@@ -25,7 +26,32 @@ void ControllerSystem::onKeyDown(int keyPress)
 			secondPlayerEnt = entity;
 		}
 	}
+}
 
+void ControllerSystem::moveEntity(Entity entityToMove, Vec3 a_velocity) {
+	auto& transformComponent = gCoordinator.getComponent<Transform>(entityToMove);
+	transformComponent.position += a_velocity;
+}
+
+void ControllerSystem::notifyAnimationSystem(string newState, string currentState, Entity a_entity) {
+	ChangeAnimationMsg changeAnimMsg = ChangeAnimationMsg(newState, currentState, a_entity);
+	msgBus.postMessage(&changeAnimMsg);
+}
+
+void ControllerSystem::handleHorizontalMove(State stateToChangeTo, PlayerFSM stateMachine, Entity playerToMove, float xDirection) {
+	State currentState = stateMachine.getCurrentState();
+	string stateAsString = stateMachine.getStateAsString(stateToChangeTo);
+	string currentStateAsString = stateMachine.getStateAsString(currentState);
+
+	if (stateMachine.changeState(stateToChangeTo)) {
+		Vec3 directionVector = Vec3(xDirection, 0, 0);
+		moveEntity(playerToMove, directionVector * velocity);
+		notifyAnimationSystem(stateAsString, currentStateAsString, playerToMove);
+	}
+}
+
+void ControllerSystem::onKeyDown(int keyPress)
+{
 	switch (keyPress)
 	{
 	case 87://W
@@ -36,23 +62,13 @@ void ControllerSystem::onKeyDown(int keyPress)
 	case 65://A
 	{
 		State stateToChangeTo = State::WALKING_BCK;
-		State currentState = player1Fsm.getCurrentState();
-		string stateAsString = player1Fsm.getStateAsString(stateToChangeTo);
-		string currentStateAsString = player1Fsm.getStateAsString(currentState);
-
-		if (player1Fsm.changeState(stateToChangeTo)) {
-			auto& transformComponent = gCoordinator.getComponent<Transform>(firstPlayerEnt);
-			Vec3 velocity = Vec3(-1.0, 0.0, 0.0);
-			transformComponent.position += velocity;
-			ChangeAnimationMsg changeAnimMsg = ChangeAnimationMsg(stateAsString, currentStateAsString, firstPlayerEnt);
-			msgBus.postMessage(&changeAnimMsg);
-		}
-		//create message and send to animation to start walking back anim
-		//move transform to the left
+		handleHorizontalMove(stateToChangeTo, player1Fsm, firstPlayerEnt, -1);
 	}
 	case 68://D
-		//create message and send to animation to start walking forward anim
-		//move transform to the right
+	{
+		State stateToChangeTo = State::WALKING_FWD;
+		handleHorizontalMove(stateToChangeTo, player1Fsm, firstPlayerEnt, 1);
+	}
 	case 32://Space
 		//Create message and send to animation to start jumping animation
 		//Move transform up?
