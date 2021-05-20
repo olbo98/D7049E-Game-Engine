@@ -8,6 +8,7 @@ enum class MessageId : char {
 	CLOSE_MENU,
 	CHANGE_ANIMATION,
 	CHANGE_STATE,
+	APPLY_VELOCITY,
 	INPUT
 };
 
