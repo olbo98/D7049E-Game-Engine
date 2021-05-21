@@ -151,6 +151,9 @@ public:
 		return *this;
 	}
 
+	Ogre::Vector3 toOgre() {
+		return Ogre::Vector3(x, y, z);
+	}
 
 	float x, y, z;
 };

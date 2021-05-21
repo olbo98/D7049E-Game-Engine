@@ -3,6 +3,7 @@
 #include "../EntityComponentSystem/Components/RigidBody.h"
 #include "../EntityComponentSystem/Components/Transform.h"
 #include "../EventSystem/Messages/ApplyVelocityMsg.h"
+#include "../Utils/Utils.h"
 
 
 extern Coordinator gCoordinator;
@@ -24,12 +25,13 @@ void PhysicsSystem::update(const Ogre::FrameEvent& fe) {
 		auto& transformComponent = gCoordinator.getComponent<Transform>(entity);
 
 		float currentYVelocity = rigidBodyComponent.upwardsVelocity;
-		Vec3 currentPosition = transformComponent.position;
+		Vec3 currentPosition = transformComponent.node->getPosition();
 		float gravity = rigidBodyComponent.gravity;
 
 		Vec3 distToMove = Vec3(0, 1, 0) * currentYVelocity;
 		
-		transformComponent.position += distToMove;
+		Vec3 newPos = currentPosition + distToMove;
+		transformComponent.node->setPosition(newPos.toOgre());
 
 		float newVelocity = currentYVelocity - gravity;
 		if (newVelocity > MAXIMUM_VELOCITY) {

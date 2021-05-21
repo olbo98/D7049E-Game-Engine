@@ -30,7 +30,9 @@ void ControllerSystem::setPlayerEntityIds() {
 
 void ControllerSystem::moveEntity(Entity entityToMove, Vec3 a_velocity) {
 	auto& transformComponent = gCoordinator.getComponent<Transform>(entityToMove);
-	transformComponent.position += a_velocity;
+	Vec3 position = transformComponent.node->getPosition();
+	position += a_velocity;
+	transformComponent.node->setPosition(position.toOgre());
 }
 
 void ControllerSystem::notifyAnimationSystem(string newState, string currentState, Entity a_entity) {

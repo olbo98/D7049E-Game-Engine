@@ -1,7 +1,6 @@
 #pragma once
 #include "../EntityComponentSystem/System.h"
 #include "../Utils/Utils.h"
-#include "../EventSystem/System.h"
 #include "OgreApplicationContext.h"
 
 class RenderSystem : public System{

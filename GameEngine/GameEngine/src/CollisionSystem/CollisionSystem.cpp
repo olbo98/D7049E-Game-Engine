@@ -8,7 +8,7 @@
 
 
 extern Coordinator gCoordinator;
-extern MessageBus gMessageBus;
+extern MessageBus msgBus;
 
 void CollisionSystem::Init() {
 
@@ -26,9 +26,8 @@ void CollisionSystem::Update() {
 				Vec3 pos1 = getColliderPos(transform.node->getPosition(), collider.relativePosition);
 				Vec3 pos2 = getColliderPos(secondTransform.node->getPosition(), secondCollider.relativePosition);
 				if (doCollide(pos1, pos2, collider.boxSize, secondCollider.boxSize)) {
-					std::cout << "COLLISION !" << std::endl;
 					CollisionDetectionMsg* collisionMsg = new CollisionDetectionMsg(entity, collideEntity);
-					gMessageBus.postMessage(collisionMsg);
+					msgBus.postMessage(collisionMsg);
 				}
 
 			}

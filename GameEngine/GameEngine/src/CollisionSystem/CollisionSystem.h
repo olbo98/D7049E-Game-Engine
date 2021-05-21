@@ -1,6 +1,6 @@
 #pragma once
 #include "../Utils/Utils.h"
-#include "../EventSystem/System.h"
+#include "../EntityComponentSystem/System.h"
 #include "OgreApplicationContext.h"
 
 class CollisionSystem : public System {

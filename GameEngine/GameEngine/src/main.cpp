@@ -22,10 +22,7 @@
 
 MessageBus msgBus;
 Coordinator gCoordinator;
-
 WindowManager gWindManager;
-Coordinator gCoordinator;
-MessageBus gMessageBus;
 
 int main(int argc, char* argv[])
 {

@@ -1,5 +1,5 @@
 #include "MessageBus.h"
-#include "System.h"
+#include "../EntityComponentSystem/System.h"
 
 MessageBus::MessageBus() {}
 MessageBus::~MessageBus() {}
