@@ -1,5 +1,4 @@
 #pragma once
-#include "ChangeAnimationMsg.h"
 #include "Message.h"
 #include "../../EntityComponentSystem/EntityComponentDef.h"
 #include <string>

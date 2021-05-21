@@ -1,4 +1,5 @@
 #pragma once
+#include "Ogre.h"
 
 /**
 UTIL MATHEMATICAL CLASSES
@@ -13,6 +14,10 @@ public:
 
 	Vec2(float x, float y)
 		: x(x), y(y)
+	{}
+
+	Vec2(Ogre::Vector2 vec)
+		: x(vec.x), y(vec.y)
 	{}
 
 	Vec2 operator+(Vec2 const& v)
@@ -45,6 +50,12 @@ public:
 		return *this;
 	}
 
+	Vec2 operator=(Ogre::Vector2 vec) {
+		x = vec.x;
+		y = vec.y;
+		return *this;
+	}
+
 
 	float x, y;
 };
@@ -58,6 +69,10 @@ public:
 
 	Vec3(float x, float y, float z)
 		: x(x), y(y), z(z)
+	{}
+
+	Vec3(Ogre::Vector3 vec)
+		: x(vec.x), y(vec.y), z(vec.z)
 	{}
 
 	Vec3 operator+(Vec3 const& rhs) const
@@ -128,6 +143,14 @@ public:
 		return *this;
 	}
 
+	Vec3 operator=(Ogre::Vector3 vec) {
+		x = vec.x;
+		y = vec.y;
+		z = vec.z;
+
+		return *this;
+	}
+
 
 	float x, y, z;
 };
@@ -145,6 +168,10 @@ public:
 
 	Vec4(float x, float y, float z, float w)
 		: x(x), y(y), z(z), w(w)
+	{}
+
+	Vec4(Ogre::Vector4 vec)
+		: x(vec.x), y(vec.y), z(vec.z), w(vec.w)
 	{}
 
 	Vec4 operator+(Vec4 const& v) const
@@ -182,6 +209,14 @@ public:
 		z -= v.z;
 		w -= v.w;
 
+		return *this;
+	}
+
+	Vec4 operator=(Ogre::Vector4 vec) {
+		x = vec.x;
+		y = vec.y;
+		z = vec.z;
+		w = vec.w;
 		return *this;
 	}
 
@@ -238,5 +273,4 @@ public:
 
 	float m[4][4];
 };
-
 

@@ -9,6 +9,7 @@ enum class MessageId : char {
 	CHANGE_ANIMATION,
 	CHANGE_STATE,
 	APPLY_VELOCITY,
+	COLLISION_DETECTION,
 	INPUT
 };
 
