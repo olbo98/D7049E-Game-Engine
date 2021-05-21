@@ -1,6 +1,6 @@
 #pragma once
-#include "Messages/Message.h"
-#include "MessageBus.h"
+#include "../EventSystem/Messages/Message.h"
+#include "../EventSystem/MessageBus.h"
 #include "../EntityComponentSystem/EntityComponentDef.h"
 #include<set>
 
@@ -21,7 +21,5 @@ public:
 	* \param msg the message that should be handled
 	*/
 	virtual void handleMessage(Message* msg) = 0;
-protected:
-	MessageBus* msgBus;
 };
 

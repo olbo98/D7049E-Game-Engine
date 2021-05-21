@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <iostream>
 
+extern MessageBus msgBus;
+
 InputSystem::InputSystem() 
 {
    
@@ -33,11 +35,6 @@ void InputSystem::removeListeners(InputListener* listener)
     
 }
 
-void InputSystem::setMsgBus(MessageBus* mb)
-{
-    msgBus = mb;
-}
-
 /* Notifies state changes to the listeners */
 void InputSystem::update()
 {
@@ -53,7 +50,7 @@ void InputSystem::update()
             std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
             while (it != map_listeners.end())
             {
-                it->first->onKeyDown(i, msgBus);
+                it->first->onKeyDown(i);
                 ++it;
             }
                
@@ -67,7 +64,7 @@ void InputSystem::update()
                 std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
                 while (it != map_listeners.end())
                 {
-                    it->first->onKeyUp(i, msgBus);
+                    it->first->onKeyUp(i);
                     ++it;
                 }
 

@@ -128,7 +128,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib</AdditionalDependencies>
+      <AdditionalDependencies>OgreBites.lib;OgreRTShaderSystem.lib;OgreMain.lib;user32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,6 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
+    <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
+    <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
+    <ClCompile Include="src\ControllerSystem\FSM\PlayerFSM.cpp" />
+    <ClCompile Include="src\ControllerSystem\FSM\FSM.cpp" />
+    <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\CollisionDetectionMsg.cpp" />
     <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
     <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
@@ -164,12 +170,25 @@
     <ClCompile Include="src\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\EventSystem\System.cpp" />
-    <ClCompile Include="src\InputSystem\Testprogram.cpp" />
-    <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
+    <ClCompile Include="src\EntityComponentSystem\System.cpp" />
+    <ClCompile Include="src\RenderSystem\Renderer.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\RigidBody.h" />
+    <ClInclude Include="src\EventSystem\Messages\ChangeStateMsg.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\FSM.h" />
+    <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Controller.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\PlayerId.h" />
+    <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
+    <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
+    <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />
+    <ClCompile Include="src\InputSystem\Testprogram.cpp" />
+    <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
+    <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClInclude Include="src\EventSystem\Messages\CollisionDetectionMsg.h" />
     <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
     <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
@@ -189,8 +208,7 @@
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
-    <ClInclude Include="src\EventSystem\System.h" />
-    <ClInclude Include="src\InputSystem\Testprogram.h" />
+    <ClInclude Include="src\EntityComponentSystem\System.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentArray.h" />
     <ClInclude Include="src\EntityComponentSystem\ComponentManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Coordinator.h" />

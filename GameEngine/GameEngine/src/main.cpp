@@ -14,6 +14,14 @@
 #include "../src/AudioSystem/MusicBuffer.h"
 #include <iostream>
 
+#include "EventSystem/MessageBus.h"
+#include "ControllerSystem/ControllerSystem.h"
+#include "EntityComponentSystem/Coordinator.h"
+#include "AnimationSystem/AnimationSystem.h"
+#include "InputSystem/InputSystem.h"
+
+MessageBus msgBus;
+Coordinator gCoordinator;
 
 WindowManager gWindManager;
 Coordinator gCoordinator;
@@ -21,6 +29,11 @@ MessageBus gMessageBus;
 
 int main(int argc, char* argv[])
 {
+	InputSystem* iSys = InputSystem::getInstance();
+	ControllerSystem* cSys = new ControllerSystem();
+	AnimationSystem* aSys = new AnimationSystem();
+	msgBus.addReciever(cSys);
+	msgBus.addReciever(aSys);
 	gWindManager.initApp();
 	gCoordinator.init();
 
