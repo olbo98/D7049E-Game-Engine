@@ -76,7 +76,6 @@ int main(int argc, char* argv[])
 	collider.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity, collider);
 
-
 	Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
@@ -92,7 +91,7 @@ int main(int argc, char* argv[])
 
 	BoxCollider collider2;
 	collider2.relativePosition = Vec3(0, 0, 0);
-	collider2.boxSize = Vec3(300, 100, 100);
+	collider2.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity2, collider2);
 
 	gWindManager.render();
