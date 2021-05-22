@@ -7,7 +7,6 @@
     <ClCompile Include="src\EventSystem\Messages\Message.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\EntityComponentSystem\System.cpp" />
-    <ClCompile Include="src\RenderSystem\Renderer.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
@@ -16,7 +15,6 @@
     <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
-    <ClCompile Include="src\InputSystem\Testprogram.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
@@ -25,7 +23,6 @@
     <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
     <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
     <ClCompile Include="src\CollisionSystem\CollisionSystem.cpp" />
-    <ClCompile Include="src\EventSystem\TestMessage.cpp" />
     <ClCompile Include="src\EventSystem\Messages\CollisionDetectionMsg.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -56,7 +53,6 @@
     <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
     <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\PlayerId.h" />
-    <ClInclude Include="src\PhysicsSystem\PhysicsSystem.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\RigidBody.h" />
     <ClInclude Include="src\EventSystem\Messages\ChangeStateMsg.h" />
     <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
@@ -70,6 +66,7 @@
     <ClInclude Include="src\EntityComponentSystem\Components\Camera.h" />
     <ClInclude Include="src\EventSystem\TestMessage.h" />
     <ClInclude Include="src\EventSystem\Messages\CollisionDetectionMsg.h" />
+    <ClInclude Include="src\PhysicsSystem\PhysicsSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

@@ -199,6 +199,7 @@
     <ClInclude Include="src\InputSystem\InputSystem.h" />
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
     <ClInclude Include="src\EventSystem\Messages\Message.h" />
+    <ClInclude Include="src\PhysicsSystem\PhysicsSystem.h" />
     <ClInclude Include="src\Utils\SimpleList.h" />
     <ClInclude Include="src\Utils\Queue.h" />
     <ClInclude Include="src\EventSystem\MessageBus.h" />
