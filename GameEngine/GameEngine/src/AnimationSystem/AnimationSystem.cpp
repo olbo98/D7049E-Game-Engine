@@ -5,6 +5,7 @@
 #include "../EntityComponentSystem//Coordinator.h"
 #include "../EventSystem/Messages/ChangeAnimationMsg.h"
 #include "../EventSystem/Messages/ChangeStateMsg.h"
+#include <iostream>
 
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;

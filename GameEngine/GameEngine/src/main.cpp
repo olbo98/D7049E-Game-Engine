@@ -75,6 +75,7 @@ int main(int argc, char* argv[])
 	{
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<Animation>());
+		gCoordinator.setSystemSignature<AnimationSystem>(signature);
 	}
 	animSystem->Init();
 	gWindManager.addAnimationSystem(animSystem.get());
@@ -84,6 +85,7 @@ int main(int argc, char* argv[])
 	{
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<PlayerId>());
+		gCoordinator.setSystemSignature<ControllerSystem>(signature);
 	}
 	controllerSystem->Init();
 	gWindManager.addControllerSystem(controllerSystem.get());
@@ -112,7 +114,7 @@ int main(int argc, char* argv[])
 	Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
-	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
+	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
 	meshRend2.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity2, meshRend2);
 
