@@ -9,8 +9,8 @@
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
 
-AnimationSystem::AnimationSystem() {
-	
+void AnimationSystem::Init() {
+
 }
 
 void AnimationSystem::handleMessage(Message* msg){
@@ -30,7 +30,7 @@ void AnimationSystem::handleMessage(Message* msg){
 	}
 }
 
-void AnimationSystem::update(const Ogre::FrameEvent& fe){
+void AnimationSystem::Update(const Ogre::FrameEvent& fe){
 	for (auto const& entity : m_entities) {
 		auto& animationComponent = gCoordinator.getComponent<Animation>(entity);
 		animationComponent.animation->addTime(fe.timeSinceLastFrame);

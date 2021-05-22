@@ -4,6 +4,9 @@
 #include "EntityComponentSystem/Components/Transform.h"
 #include "EntityComponentSystem/Components/Light.h"
 #include "EntityComponentSystem/Components/BoxCollider.h"
+#include "EntityComponentSystem/Components/Animation.h"
+#include "EntityComponentSystem/Components/Controller.h"
+#include "EntityComponentSystem/Components/PlayerId.h"
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
@@ -40,6 +43,7 @@ int main(int argc, char* argv[])
 	gCoordinator.registerComponent<Transform>();
 	gCoordinator.registerComponent<Light>();
 	gCoordinator.registerComponent<BoxCollider>();
+	gCoordinator.registerComponent<Animation>();
 
 	// Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
@@ -66,6 +70,27 @@ int main(int argc, char* argv[])
 	}
 	collideSystem->Init();
 	gWindManager.addCollisionSystem(collideSystem.get());
+
+	// Register animation system
+	auto animSystem = gCoordinator.registerSystem<AnimationSystem>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<Animation>());
+	}
+	animSystem->Init();
+	gWindManager.addAnimationSystem(animSystem.get());
+
+	// Register controller system
+	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<Controller>());
+		signature.set(gCoordinator.getComponentType<PlayerId>());
+	}
+	controllerSystem->Init();
+	gWindManager.addControllerSystem(controllerSystem.get());
+
+	gWindManager.addMessageBus(&msgBus);
 
 	// Create an entity to render
 	Entity entity = gCoordinator.createEntity();

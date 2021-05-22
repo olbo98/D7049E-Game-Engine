@@ -14,7 +14,8 @@ public:
 	// Inherited via System
 	virtual void handleMessage(Message* msg) override;
 
-	ControllerSystem();
+	void Init();
+	void Update();
 
 private:
 	PlayerFSM player1Fsm;

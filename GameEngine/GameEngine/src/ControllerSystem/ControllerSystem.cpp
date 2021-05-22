@@ -12,9 +12,12 @@ using namespace std;
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
 
-ControllerSystem::ControllerSystem() {
+void ControllerSystem::Init() {
 	velocity = 10;
-	setPlayerEntityIds();
+}
+
+void ControllerSystem::Update() {
+
 }
 
 void ControllerSystem::setPlayerEntityIds() {
@@ -97,6 +100,7 @@ void ControllerSystem::startFightAction(State a_move, PlayerFSM stateMachine) {
 
 void ControllerSystem::onKeyDown(int keyPress)
 {
+	setPlayerEntityIds();
 	switch (keyPress)
 	{
 	//------------------------PLAYER 1 MOVEMENTS------------------------------

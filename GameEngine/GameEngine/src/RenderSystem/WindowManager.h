@@ -3,6 +3,8 @@
 #include "OgreApplicationContext.h"
 #include "RenderSystem.h"
 #include "./../CollisionSystem/CollisionSystem.h"
+#include "../AnimationSystem/AnimationSystem.h"
+#include "../ControllerSystem/ControllerSystem.h"
 #include <iostream>
 
 class WindowManager : public OgreBites::ApplicationContext, public OgreBites::InputListener
@@ -36,6 +38,9 @@ public:
 	// each system
 	void addRenderSystem(RenderSystem* renderSystem);
 	void addCollisionSystem(CollisionSystem* collisionSystem);
+	void addAnimationSystem(AnimationSystem* animSystem);
+	void addControllerSystem(ControllerSystem* controllerSystem);
+	void addMessageBus(MessageBus* msgBus);
 
 	Ogre::Root* m_root;
 	Ogre::SceneManager* m_sceneManager;
@@ -43,4 +48,7 @@ public:
 	Ogre::Viewport* m_viewport;
 	RenderSystem* m_renderSystem;
 	CollisionSystem* m_collisionSystem;
+	AnimationSystem* m_animSystem;
+	ControllerSystem* m_controllerSystem;
+	MessageBus* m_msgBus;
 };

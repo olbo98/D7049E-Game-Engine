@@ -45,11 +45,23 @@ void WindowManager::addRenderSystem(RenderSystem* renderSystem) {
 void WindowManager::addCollisionSystem(CollisionSystem* collisionSystem) {
     m_collisionSystem = collisionSystem;
 }
+void WindowManager::addAnimationSystem(AnimationSystem* animSystem) {
+    m_animSystem = animSystem;
+}
+void WindowManager::addControllerSystem(ControllerSystem* controllerSystem) {
+    m_controllerSystem = controllerSystem;
+}
+void WindowManager::addMessageBus(MessageBus* msgBus) {
+    m_msgBus = msgBus;
+}
 
 
 bool WindowManager::frameStarted(const Ogre::FrameEvent& evt) {
     m_renderSystem->Update();
     m_collisionSystem->Update();
+    m_animSystem->Update(evt);
+    m_controllerSystem->Update();
+    m_msgBus->notify();
     return true;
 }
 
