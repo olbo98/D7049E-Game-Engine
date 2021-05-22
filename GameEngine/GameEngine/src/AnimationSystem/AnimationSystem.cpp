@@ -35,7 +35,8 @@ void AnimationSystem::Update(const Ogre::FrameEvent& fe){
 		auto& animationComponent = gCoordinator.getComponent<Animation>(entity);
 		animationComponent.animation->addTime(fe.timeSinceLastFrame);
 		if (animationComponent.animation->hasEnded()) {
-			ChangeStateMsg changeAnimMsg = ChangeStateMsg(State::IDLE);
+			ChangeStateMsg changeStateMsg = ChangeStateMsg(State::IDLE, entity);
+			msgBus.postMessage(&changeStateMsg);
 		}
 	}
 }

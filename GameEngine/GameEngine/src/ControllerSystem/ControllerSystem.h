@@ -42,6 +42,8 @@ private:
 	*/
 	void notifyAnimationSystem(string newState, string currentState, Entity a_entity);
 
+	void notifyPhysicsSystem(Entity a_entity);
+
 	//! Initializes the Entity IDs for the players
 	void setPlayerEntityIds();
 
@@ -55,5 +57,17 @@ private:
 	* \param xDirection either -1 or 1. -1 equals left, 1 equals right
 	*/
 	void handleHorizontalMove(State stateToChangeTo, PlayerFSM stateMachine, Entity playerToMove, float xDirection);
+
+	void handleVerticalMove(Entity a_entity, PlayerFSM stateMachine);
+
+	void stopMovement(Entity playerEntity, PlayerFSM stateMachine);
+
+	void startFightAction(State a_move, PlayerFSM stateMachine);
+
+	//! Changes the state of an entity
+	/*!
+	* This should be used when you want to change state of the player but don't care if it's possible in the current state
+	*/
+	void changeState(Entity a_entity, State a_state);
 };
 

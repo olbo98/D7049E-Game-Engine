@@ -158,10 +158,6 @@
     <ClCompile Include="src\ControllerSystem\FSM\FSM.cpp" />
     <ClCompile Include="src\ControllerSystem\ControllerSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\CollisionDetectionMsg.cpp" />
-    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
     <ClCompile Include="src\CollisionSystem\CollisionSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeAnimationMsg.cpp" />
     <ClCompile Include="src\InputSystem\InputSystem.cpp" />
@@ -185,10 +181,6 @@
     <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />
     <ClInclude Include="src\EventSystem\Messages\CollisionDetectionMsg.h" />
-    <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
-    <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
-    <ClInclude Include="src\AudioSystem\SoundDevice.h" />
-    <ClInclude Include="src\AudioSystem\SoundSource.h" />
     <ClInclude Include="src\CollisionSystem\CollisionSystem.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Camera.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\BoxCollider.h" />
