@@ -176,7 +176,6 @@
     <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
     <ClInclude Include="src\ControllerSystem\FSM\FSM.h" />
     <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
-    <ClInclude Include="src\EntityComponentSystem\Components\Controller.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\PlayerId.h" />
     <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />

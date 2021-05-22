@@ -5,7 +5,6 @@
 #include "EntityComponentSystem/Components/Light.h"
 #include "EntityComponentSystem/Components/BoxCollider.h"
 #include "EntityComponentSystem/Components/Animation.h"
-#include "EntityComponentSystem/Components/Controller.h"
 #include "EntityComponentSystem/Components/PlayerId.h"
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "RenderSystem/RenderSystem.h"
@@ -84,7 +83,6 @@ int main(int argc, char* argv[])
 	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
 	{
 		Signature signature;
-		signature.set(gCoordinator.getComponentType<Controller>());
 		signature.set(gCoordinator.getComponentType<PlayerId>());
 	}
 	controllerSystem->Init();
@@ -114,7 +112,7 @@ int main(int argc, char* argv[])
 	Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
-	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
 	meshRend2.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity2, meshRend2);
 
