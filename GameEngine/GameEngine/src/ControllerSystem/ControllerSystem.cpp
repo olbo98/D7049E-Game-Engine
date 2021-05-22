@@ -86,3 +86,7 @@ void ControllerSystem::onKeyUp(int keyPress)
 void ControllerSystem::handleMessage(Message* msg)
 {
 }
+
+void ControllerSystem::Update(const Ogre::FrameEvent& fe) {
+
+}

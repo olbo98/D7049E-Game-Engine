@@ -21,8 +21,8 @@ void RenderSystem::Init() {
 
 	Transform cameraTrans;
 	cameraTrans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	cameraTrans.node->setPosition(200, 300, 400);
-	cameraTrans.node->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
+	cameraTrans.node->setPosition(-500, 150, 0);
+	cameraTrans.node->lookAt(Ogre::Vector3(0, 150, 0), Ogre::Node::TransformSpace::TS_WORLD);
 	cameraTrans.node->attachObject(cameraComp.camera);
 	gCoordinator.addComponent(
 		m_camera, 
@@ -35,7 +35,7 @@ void RenderSystem::Init() {
 
 }
 
-void RenderSystem::Update() {
+void RenderSystem::Update(const Ogre::FrameEvent& fe) {
 	// For each entity
 	for (auto const& entity : m_entities) {
 		auto const& renderable = gCoordinator.getComponent<MeshRenderable>(entity);

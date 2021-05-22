@@ -4,7 +4,9 @@
 #include "EntityComponentSystem/Components/Transform.h"
 #include "EntityComponentSystem/Components/Light.h"
 #include "EntityComponentSystem/Components/BoxCollider.h"
+#include "EntityComponentSystem/Components/RigidBody.h"
 #include "EntityComponentSystem/EntityComponentDef.h"
+#include "PhysicsSystem/PhysicsSystem.h"
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
 #include "CollisionSystem/CollisionSystem.h"
@@ -40,6 +42,7 @@ int main(int argc, char* argv[])
 	gCoordinator.registerComponent<Transform>();
 	gCoordinator.registerComponent<Light>();
 	gCoordinator.registerComponent<BoxCollider>();
+	gCoordinator.registerComponent<RigidBody>();
 
 	// Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
@@ -52,9 +55,10 @@ int main(int argc, char* argv[])
 	}
 	renderSystem->Init();
 	// Try to add a light to check
-	renderSystem->addPointLight(Vec3(0, 150, 250));
+	renderSystem->addPointLight(Vec3(0, 150, -250), "PointLight1");
+	renderSystem->addPointLight(Vec3(0, 150, 250), "PointLight2");
 	renderSystem->addDirectionLight(Vec3(300, 0, 0), Vec3(-1, 0, 0));
-	gWindManager.addRenderSystem(renderSystem.get());
+	gWindManager.addSystem(renderSystem.get());
 
 	// Register physic system
 	auto collideSystem = gCoordinator.registerSystem<CollisionSystem>();
@@ -64,11 +68,46 @@ int main(int argc, char* argv[])
 		signature.set(gCoordinator.getComponentType<BoxCollider>());
 		gCoordinator.setSystemSignature<CollisionSystem>(signature);
 	}
-	collideSystem->Init();
-	gWindManager.addCollisionSystem(collideSystem.get());
+	gWindManager.addSystem(collideSystem.get());
+
+	auto physicSystem = gCoordinator.registerSystem<PhysicsSystem>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<Transform>());
+		signature.set(gCoordinator.getComponentType<RigidBody>());
+		gCoordinator.setSystemSignature<PhysicsSystem>(signature);
+	}
+	gWindManager.addSystem(physicSystem.get());
+
+	// TRY TO APPLY GRAVITY TO A HUNDRED ENTITIES
+	for (int i = 0; i < 100; i++) {
+		Entity entity = gCoordinator.createEntity();
+
+		MeshRenderable meshRend;
+		meshRend.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+		meshRend.mesh->setCastShadows(true);
+		gCoordinator.addComponent(entity, meshRend);
+
+		Transform trans;
+		trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+		trans.node->setPosition(i*40, 0, 0);
+		trans.node->attachObject(meshRend.mesh);
+		gCoordinator.addComponent(entity, trans);
+
+		BoxCollider collider;
+		collider.relativePosition = Vec3(0, 0, 0);
+		collider.boxSize = Vec3(100, 100, 100);
+		gCoordinator.addComponent(entity, collider);
+
+		RigidBody rigidbody;
+		rigidbody.gravity = i*0.005;
+		rigidbody.upwardsVelocity = 0;
+		gCoordinator.addComponent(entity, rigidbody);
+
+	}
 
 	// Create an entity to render
-	Entity entity = gCoordinator.createEntity();
+	/*Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
 	meshRend.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
@@ -103,6 +142,11 @@ int main(int argc, char* argv[])
 	collider2.relativePosition = Vec3(0, 0, 0);
 	collider2.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity2, collider2);
+
+	RigidBody rigidbody;
+	rigidbody.gravity = 0.9;
+	rigidbody.upwardsVelocity = 1;
+	gCoordinator.addComponent(entity2, rigidbody);*/
 
 	gWindManager.render();
 

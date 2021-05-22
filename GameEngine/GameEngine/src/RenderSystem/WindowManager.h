@@ -34,13 +34,11 @@ public:
 
 	// TODO: add an array of system that go through each system to update, also add an "Update" and "Init" function to 
 	// each system
-	void addRenderSystem(RenderSystem* renderSystem);
-	void addCollisionSystem(CollisionSystem* collisionSystem);
+	void addSystem(System* system);
 
 	Ogre::Root* m_root;
 	Ogre::SceneManager* m_sceneManager;
 	Ogre::RTShader::ShaderGenerator* m_shaderGen;
 	Ogre::Viewport* m_viewport;
-	RenderSystem* m_renderSystem;
-	CollisionSystem* m_collisionSystem;
+	std::vector<System*> m_systems;
 };

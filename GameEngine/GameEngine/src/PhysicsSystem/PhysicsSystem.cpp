@@ -19,7 +19,7 @@ void PhysicsSystem::handleMessage(Message* msg)
 	}
 }
 
-void PhysicsSystem::update(const Ogre::FrameEvent& fe) {
+void PhysicsSystem::Update(const Ogre::FrameEvent& fe) {
 	for (auto const& entity : m_entities) {
 		auto& rigidBodyComponent = gCoordinator.getComponent<RigidBody>(entity);
 		auto& transformComponent = gCoordinator.getComponent<Transform>(entity);

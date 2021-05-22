@@ -19,8 +19,6 @@ void InputSystem::addListeners(InputListener* listener)
     //insterting the listeners into the map_container
     map_listeners.insert(std::make_pair<InputListener*, InputListener*>
         (std::forward<InputListener*>(listener), std::forward<InputListener*>(listener)));
-
-    
     
 }
 
@@ -36,7 +34,7 @@ void InputSystem::removeListeners(InputListener* listener)
 }
 
 /* Notifies state changes to the listeners */
-void InputSystem::update()
+void InputSystem::Update(const Ogre::FrameEvent& fe)
 {
     
     for (int i = 0; i < 256; i++)

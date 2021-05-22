@@ -39,17 +39,15 @@ void WindowManager::render() const {
 }
 
 
-void WindowManager::addRenderSystem(RenderSystem* renderSystem) {
-    m_renderSystem = renderSystem;
-}
-void WindowManager::addCollisionSystem(CollisionSystem* collisionSystem) {
-    m_collisionSystem = collisionSystem;
+void WindowManager::addSystem(System* system) {
+    m_systems.push_back(system);
 }
 
 
 bool WindowManager::frameStarted(const Ogre::FrameEvent& evt) {
-    m_renderSystem->Update();
-    m_collisionSystem->Update();
+    for (auto system : m_systems) {
+        system->Update(evt);
+    }
     return true;
 }
 

@@ -14,6 +14,8 @@ public:
 	// Inherited via System
 	virtual void handleMessage(Message* msg) override;
 
+	virtual void Update(const Ogre::FrameEvent& fe) override;
+
 	ControllerSystem();
 
 private:
