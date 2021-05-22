@@ -1,5 +1,9 @@
 #include "PlayerFSM.h"
 
+string PlayerFSM::getCurrentStateAsString() {
+    return states[(char)getCurrentState()];
+}
+
 string PlayerFSM::getStateAsString(State state) {
     return states[(char)state];
 }

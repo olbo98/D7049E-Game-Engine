@@ -5,7 +5,7 @@
 class ApplyVelocityMsg : public Message
 {
 public:
-	ApplyVelocityMsg();
+	ApplyVelocityMsg(Entity a_entity);
 
 	//! Entity to apply velocity to
 	Entity entity;

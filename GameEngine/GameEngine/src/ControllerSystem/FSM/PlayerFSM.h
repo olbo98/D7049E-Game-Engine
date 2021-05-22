@@ -24,5 +24,6 @@ public:
 	// Inherited via FSM
 	virtual bool changeState(State state) override;
     string getStateAsString(State state);
+    string getCurrentStateAsString();
 };
 
