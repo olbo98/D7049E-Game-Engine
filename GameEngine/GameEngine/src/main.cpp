@@ -22,6 +22,7 @@
 #include "AnimationSystem/AnimationSystem.h"
 #include "InputSystem/InputSystem.h"
 
+
 MessageBus msgBus;
 Coordinator gCoordinator;
 WindowManager gWindManager;
@@ -33,7 +34,6 @@ int main(int argc, char* argv[])
 	AnimationSystem* aSys = new AnimationSystem();
 	msgBus.addReciever(cSys);
 	msgBus.addReciever(aSys);
-	gWindManager.initApp();
 	gCoordinator.init();
 
 	// Register Components
@@ -43,6 +43,8 @@ int main(int argc, char* argv[])
 	gCoordinator.registerComponent<Light>();
 	gCoordinator.registerComponent<BoxCollider>();
 	gCoordinator.registerComponent<RigidBody>();
+
+	gWindManager.initApp();
 
 	// Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
@@ -80,7 +82,7 @@ int main(int argc, char* argv[])
 	gWindManager.addSystem(physicSystem.get());
 
 	// TRY TO APPLY GRAVITY TO A HUNDRED ENTITIES
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 10; i++) {
 		Entity entity = gCoordinator.createEntity();
 
 		MeshRenderable meshRend;
@@ -146,10 +148,9 @@ int main(int argc, char* argv[])
 	RigidBody rigidbody;
 	rigidbody.gravity = 0.9;
 	rigidbody.upwardsVelocity = 1;
-	gCoordinator.addComponent(entity2, rigidbody);*/
-
+	gCoordinator.addComponent(entity2, rigidbody);
+	*/
 	gWindManager.render();
-
 	gWindManager.closeApp();
 	return 0;
 }

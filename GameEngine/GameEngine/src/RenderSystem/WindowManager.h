@@ -9,7 +9,6 @@ class WindowManager : public OgreBites::ApplicationContext, public OgreBites::In
 {
 public:
 	WindowManager();
-	~WindowManager();
 	bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
 	/**
@@ -20,7 +19,7 @@ public:
 	/**
 	* A function that render the scene
 	*/
-	void render() const;
+	void render();
 
 	/**
 	* A function called before each frame
@@ -38,7 +37,6 @@ public:
 
 	Ogre::Root* m_root;
 	Ogre::SceneManager* m_sceneManager;
-	Ogre::RTShader::ShaderGenerator* m_shaderGen;
 	Ogre::Viewport* m_viewport;
 	std::vector<System*> m_systems;
 };

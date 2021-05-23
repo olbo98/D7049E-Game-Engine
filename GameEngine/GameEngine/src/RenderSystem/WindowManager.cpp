@@ -1,15 +1,15 @@
 #include "WindowManager.h"
+#include "../EntityComponentSystem/Components/Camera.h"
+#include "../EntityComponentSystem/Components/Transform.h"
+#include "../EntityComponentSystem/Coordinator.h"
 
 WindowManager::WindowManager() : OgreBites::ApplicationContext("FightEngine")
 {
 }
 
-WindowManager::~WindowManager() {
-    //TODO : destroy the pointers
-}
-
 bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
+    std::cout << "TEST" << std::endl;
     if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
     {
         getRoot()->queueEndRendering();
@@ -27,15 +27,15 @@ void WindowManager::setup(void)
 
     // Get a pointer to the already created root
     m_root = getRoot();
-    m_sceneManager = m_root->createSceneManager();
+    m_sceneManager = getRoot()->createSceneManager();
 
     // Register our scene with the RTSS
-    m_shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-    m_shaderGen->addSceneManager(m_sceneManager);
+    Ogre::RTShader::ShaderGenerator* shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+    shaderGen->addSceneManager(m_sceneManager);
 }
 
-void WindowManager::render() const {
-    this->getRoot()->startRendering();
+void WindowManager::render() {
+    getRoot()->startRendering();
 }
 
 

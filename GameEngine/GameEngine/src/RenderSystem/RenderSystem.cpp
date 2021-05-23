@@ -10,6 +10,7 @@ extern Coordinator gCoordinator;
 extern WindowManager gWindManager;
 
 void RenderSystem::Init() {
+
 	m_camera = gCoordinator.createEntity();
 
 	Camera cameraComp;

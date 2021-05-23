@@ -36,7 +36,6 @@ void InputSystem::removeListeners(InputListener* listener)
 /* Notifies state changes to the listeners */
 void InputSystem::Update(const Ogre::FrameEvent& fe)
 {
-    
     for (int i = 0; i < 256; i++)
     {
         key_states[i] = GetAsyncKeyState(i);
