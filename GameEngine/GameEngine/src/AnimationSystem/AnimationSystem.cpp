@@ -1,11 +1,5 @@
 #include "AnimationSystem.h"
-#include <iostream>
-#include "../EntityComponentSystem/Components/Animation.h"
-#include "../EntityComponentSystem/Components/MeshRenderable.h"
-#include "../EntityComponentSystem//Coordinator.h"
-#include "../EventSystem/Messages/ChangeAnimationMsg.h"
-#include "../EventSystem/Messages/ChangeStateMsg.h"
-#include <iostream>
+
 
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
@@ -19,21 +13,36 @@ void AnimationSystem::handleMessage(Message* msg){
 	if (msg->checkId(&idToCheck)) {
 		ChangeAnimationMsg* changeAnimMsg = (ChangeAnimationMsg*)msg;
 
-		Entity entity = changeAnimMsg->entity; //Get the entity id
-		auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(entity); //Get MeshRenderable component
-		Ogre::Entity* mesh = meshComponent.mesh; //Get the ogre mesh
-		string currentState = changeAnimMsg->currentAnimationState;
-		string newState = changeAnimMsg->newAnimationState;
-		
-		Ogre::AnimationState* currentAnimState = mesh->getAnimationState(currentState); //Get the current animation state
-		currentAnimState->setEnabled(false); //Diable current animation
-		Ogre::AnimationState* newAnimState = mesh->getAnimationState(newState); //Get the new animation
-		newAnimState->setEnabled(true); //Enable the new animation
+		//Entity entity = changeAnimMsg->entity; //Get the entity id
+		//auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(entity); //Get MeshRenderable component
+		//Ogre::Entity* mesh = meshComponent.mesh; //Get the ogre mesh
+		//string currentState = changeAnimMsg->currentAnimationState;
+		//string newState = changeAnimMsg->newAnimationState;
+		//
+		//Ogre::AnimationState* currentAnimState = mesh->getAnimationState(currentState); //Get the current animation state
+		//currentAnimState->setEnabled(false); //Diable current animation
+		//Ogre::AnimationState* newAnimState = mesh->getAnimationState(newState); //Get the new animation
+		//newAnimState->setEnabled(true); //Enable the new animation
 
-		//Set the new animation in the component
-		auto& animComp = gCoordinator.getComponent<Animation>(entity);
-		animComp.animation = newAnimState;
+		//auto& animComponent = gCoordinator.getComponent<Animation>(entity);
+		//animComponent.animation = newAnimState;
+
+		Entity entity = changeAnimMsg->entity; //Get the entity id
+		string newAniamtion = changeAnimMsg->newAnimationState;
+		changeAnim(entity, newAniamtion);
 	}
+}
+
+void AnimationSystem::changeAnim(Entity entity, string newAnimation) {
+	auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(entity);
+	auto& animComponent = gCoordinator.getComponent<Animation>(entity);
+	Ogre::Entity* mesh = meshComponent.mesh;
+	Ogre::AnimationState* anim = animComponent.animation;
+
+	anim->setEnabled(false);
+	Ogre::AnimationState* newAnimState = mesh->getAnimationState(newAnimation); //Get the new animation
+	newAnimState->setEnabled(true); //Enable the new animation
+	animComponent.animation = newAnimState;
 }
 
 void AnimationSystem::Update(const Ogre::FrameEvent& fe){
@@ -41,7 +50,10 @@ void AnimationSystem::Update(const Ogre::FrameEvent& fe){
 		auto& animationComponent = gCoordinator.getComponent<Animation>(entity);
 		animationComponent.animation->addTime(fe.timeSinceLastFrame);
 		if (animationComponent.animation->hasEnded()) {
+			animationComponent.animation->setTimePosition(0); // Reset animation time
 			ChangeStateMsg changeStateMsg = ChangeStateMsg(State::IDLE, entity);
+
+			changeAnim(entity, "Idle");
 			msgBus.postMessage(&changeStateMsg);
 		}
 	}

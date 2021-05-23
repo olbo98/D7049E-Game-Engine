@@ -15,6 +15,7 @@ public:
 	~WindowManager();
 	virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 	bool keyPressed(const OgreBites::KeyboardEvent& evt);
+	bool keyReleased(const OgreBites::KeyboardEvent& evt);
 
 	/**
 	* A function that initialise the renderer by default

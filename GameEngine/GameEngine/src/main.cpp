@@ -11,10 +11,10 @@
 #include "RenderSystem/WindowManager.h"
 #include "CollisionSystem/CollisionSystem.h"
 #include "InputSystem/InputSystem.h"
-//#include "../src/audiosystem/sounddevice.h"
-//#include "../src/audiosystem/soundbuffer.h"
-//#include "../src/audiosystem/soundsource.h"
-//#include "../src/audiosystem/musicbuffer.h"
+#include "../src/audiosystem/sounddevice.h"
+#include "../src/audiosystem/soundbuffer.h"
+#include "../src/audiosystem/soundsource.h"
+#include "../src/audiosystem/musicbuffer.h"
 #include <iostream>
 
 #include "EventSystem/MessageBus.h"
@@ -123,16 +123,26 @@ int main(int argc, char* argv[])
 	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
 	idleState->setEnabled(true);
 	idleState->setLoop(true);
+	Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
+	jmpState->setLoop(false);
+	Ogre::AnimationState* lPunchState = meshRend.mesh->getAnimationState("Light_punch");
+	lPunchState->setLoop(false);
+	Ogre::AnimationState* hPunchState = meshRend.mesh->getAnimationState("Heavy_punch");
+	hPunchState->setLoop(false);
+	Ogre::AnimationState* lKickState = meshRend.mesh->getAnimationState("Light_kick");
+	lKickState->setLoop(false);
+	Ogre::AnimationState* hKickState = meshRend.mesh->getAnimationState("Heavy_kick");
+	hKickState->setLoop(false);
 
 	//Create animation component
 	Animation animComp;
 	animComp.animation = idleState;
 	gCoordinator.addComponent(entity, animComp);
 
-	/*Entity entity2 = gCoordinator.createEntity();
+	Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
-	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
 	meshRend2.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity2, meshRend2);
 
@@ -145,7 +155,31 @@ int main(int argc, char* argv[])
 	BoxCollider collider2;
 	collider2.relativePosition = Vec3(0, 0, 0);
 	collider2.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(entity2, collider2);*/
+	gCoordinator.addComponent(entity2, collider2);
+
+	PlayerId player2Id;
+	player2Id.playerId = 2;
+	gCoordinator.addComponent(entity2, player2Id);
+
+	//Enable all aimations for entity
+	Ogre::AnimationState* idleState2 = meshRend2.mesh->getAnimationState("Idle");
+	idleState2->setEnabled(true);
+	idleState2->setLoop(true);
+	Ogre::AnimationState* jmpState2 = meshRend2.mesh->getAnimationState("Jumping");
+	jmpState2->setLoop(false);
+	Ogre::AnimationState* lPunchState2 = meshRend2.mesh->getAnimationState("Light_punch");
+	lPunchState2->setLoop(false);
+	Ogre::AnimationState* hPunchState2 = meshRend2.mesh->getAnimationState("Heavy_punch");
+	hPunchState2->setLoop(false);
+	Ogre::AnimationState* lKickState2 = meshRend2.mesh->getAnimationState("Light_kick");
+	lKickState2->setLoop(false);
+	Ogre::AnimationState* hKickState2 = meshRend2.mesh->getAnimationState("Heavy_kick");
+	hKickState2->setLoop(false);
+
+	//Create animation component
+	Animation animComp2;
+	animComp2.animation = idleState2;
+	gCoordinator.addComponent(entity2, animComp2);
 
 	gWindManager.render();
 
