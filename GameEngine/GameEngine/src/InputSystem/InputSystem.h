@@ -26,7 +26,6 @@ private:
 	unsigned char key_states[256] = {};
 	unsigned char old_key_states[256] = {};
 
-
 public:
 	static InputSystem* getInstance();
 

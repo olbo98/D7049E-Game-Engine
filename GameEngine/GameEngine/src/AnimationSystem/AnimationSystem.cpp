@@ -23,11 +23,16 @@ void AnimationSystem::handleMessage(Message* msg){
 		auto& meshComponent = gCoordinator.getComponent<MeshRenderable>(entity); //Get MeshRenderable component
 		Ogre::Entity* mesh = meshComponent.mesh; //Get the ogre mesh
 		string currentState = changeAnimMsg->currentAnimationState;
-
+		string newState = changeAnimMsg->newAnimationState;
+		
 		Ogre::AnimationState* currentAnimState = mesh->getAnimationState(currentState); //Get the current animation state
 		currentAnimState->setEnabled(false); //Diable current animation
-		Ogre::AnimationState* newAnimState = mesh->getAnimationState(changeAnimMsg->newAnimationState); //Get the new animation
+		Ogre::AnimationState* newAnimState = mesh->getAnimationState(newState); //Get the new animation
 		newAnimState->setEnabled(true); //Enable the new animation
+
+		//Set the new animation in the component
+		auto& animComp = gCoordinator.getComponent<Animation>(entity);
+		animComp.animation = newAnimState;
 	}
 }
 

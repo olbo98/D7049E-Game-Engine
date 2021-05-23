@@ -5,6 +5,7 @@
 #include "./../CollisionSystem/CollisionSystem.h"
 #include "../AnimationSystem/AnimationSystem.h"
 #include "../ControllerSystem/ControllerSystem.h"
+#include "../InputSystem/InputSystem.h"
 #include <iostream>
 
 class WindowManager : public OgreBites::ApplicationContext, public OgreBites::InputListener
@@ -12,6 +13,7 @@ class WindowManager : public OgreBites::ApplicationContext, public OgreBites::In
 public:
 	WindowManager();
 	~WindowManager();
+	virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 	bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
 	/**
@@ -27,7 +29,7 @@ public:
 	/**
 	* A function called before each frame
 	*/
-	virtual bool frameStarted(const Ogre::FrameEvent& evt);
+	//virtual bool frameStarted(const Ogre::FrameEvent& evt);
 
 	/**
 	* A function called after each frame
@@ -41,6 +43,7 @@ public:
 	void addAnimationSystem(AnimationSystem* animSystem);
 	void addControllerSystem(ControllerSystem* controllerSystem);
 	void addMessageBus(MessageBus* msgBus);
+	void addInputSystem(InputSystem* inputSystem);
 
 	Ogre::Root* m_root;
 	Ogre::SceneManager* m_sceneManager;
@@ -51,4 +54,5 @@ public:
 	AnimationSystem* m_animSystem;
 	ControllerSystem* m_controllerSystem;
 	MessageBus* m_msgBus;
+	InputSystem* m_inputSystem;
 };

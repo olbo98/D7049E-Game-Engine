@@ -168,6 +168,7 @@
     <ClCompile Include="src\EntityComponentSystem\System.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
+    <ClCompile Include="src\InputSystem\Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
     <ClInclude Include="src\Utils\Utils.h" />
+    <ClInclude Include="src\InputSystem\Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

@@ -38,44 +38,49 @@ void InputSystem::removeListeners(InputListener* listener)
 /* Notifies state changes to the listeners */
 void InputSystem::update()
 {
-    
-    for (int i = 0; i < 256; i++)
-    {
-        key_states[i] = GetAsyncKeyState(i);
-            
-        //KEY is down
-        if (key_states[i] > 0)
+    if (::GetKeyboardState(key_states)) {
+
+        for (unsigned int i = 0; i < 256; i++)
         {
-             //iterating through the container of listeners
-            std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
-            while (it != map_listeners.end())
+            key_states[i] = GetAsyncKeyState(i);
+
+            //KEY is down
+            if (key_states[i] > 0)
             {
-                it->first->onKeyDown(i);
-                ++it;
-            }
-               
-        }
-        //KEY is up 
-        else if(key_states[i] == 0)
-        {
-            //KEY release event
-            if (key_states[i] != old_key_states[i]) 
-            {
+                //iterating through the container of listeners
                 std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
                 while (it != map_listeners.end())
                 {
-                    it->first->onKeyUp(i);
+                    it->first->onKeyDown(i);
                     ++it;
                 }
 
-                    
+            }
+            //KEY is up 
+            else 
+            {
+
+                //KEY release event
+                if (key_states[i] != old_key_states[i])
+                {
+                    std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
+                    while (it != map_listeners.end())
+                    {
+
+                        it->first->onKeyUp(i);
+                        ++it;
+                    }
+
+
+                }
+
             }
         }
+        // store current key states to old key states buffer
+        ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
     }
-    // store current key states to old key states buffer
-    ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
-
 }
+
 
 
 InputSystem* InputSystem::getInstance()

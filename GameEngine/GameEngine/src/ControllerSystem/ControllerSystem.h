@@ -8,7 +8,7 @@ class ControllerSystem : public InputListener, public System
 {
 public:
 	// Inherited via InputListener
-	virtual void onKeyDown(int keyPress) override; //TODO Remove the message bus parameter to the onKeyDown/Up functions
+	virtual void onKeyDown(int keyPress) override;
 	virtual void onKeyUp(int keyPress) override;
 
 	// Inherited via System

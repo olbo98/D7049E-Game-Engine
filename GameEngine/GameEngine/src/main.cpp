@@ -10,15 +10,15 @@
 #include "RenderSystem/RenderSystem.h"
 #include "RenderSystem/WindowManager.h"
 #include "CollisionSystem/CollisionSystem.h"
-////#include "../src/audiosystem/sounddevice.h"
-////#include "../src/audiosystem/soundbuffer.h"
-////#include "../src/audiosystem/soundsource.h"
-////#include "../src/audiosystem/musicbuffer.h"
+#include "InputSystem/InputSystem.h"
+//#include "../src/audiosystem/sounddevice.h"
+//#include "../src/audiosystem/soundbuffer.h"
+//#include "../src/audiosystem/soundsource.h"
+//#include "../src/audiosystem/musicbuffer.h"
 #include <iostream>
 
 #include "EventSystem/MessageBus.h"
 #include "ControllerSystem/ControllerSystem.h"
-#include "EntityComponentSystem/Coordinator.h"
 #include "AnimationSystem/AnimationSystem.h"
 #include "InputSystem/InputSystem.h"
 
@@ -36,30 +36,33 @@ int main(int argc, char* argv[])
 	gWindManager.initApp();
 	gCoordinator.init();
 
-	// Register Components
+	 //Register Components
 	gCoordinator.registerComponent<Camera>();
 	gCoordinator.registerComponent<MeshRenderable>();
 	gCoordinator.registerComponent<Transform>();
 	gCoordinator.registerComponent<Light>();
 	gCoordinator.registerComponent<BoxCollider>();
 	gCoordinator.registerComponent<Animation>();
+	gCoordinator.registerComponent<PlayerId>();
 
-	// Register render system
+	gWindManager.addInputSystem(iSys);
+
+	 //Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
 	{
-		// Each entity used in the renderSystem must have a Mesh renderable component and a Transform component
+		 //Each entity used in the renderSystem must have a Mesh renderable component and a Transform component
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<MeshRenderable>());
 		signature.set(gCoordinator.getComponentType<Transform>());
 		gCoordinator.setSystemSignature<RenderSystem>(signature);
 	}
 	renderSystem->Init();
-	// Try to add a light to check
+	 //Try to add a light to check
 	renderSystem->addPointLight(Vec3(0, 150, 250));
 	renderSystem->addDirectionLight(Vec3(300, 0, 0), Vec3(-1, 0, 0));
 	gWindManager.addRenderSystem(renderSystem.get());
 
-	// Register physic system
+	 //Register physic system
 	auto collideSystem = gCoordinator.registerSystem<CollisionSystem>();
 	{
 		Signature signature;
@@ -70,7 +73,7 @@ int main(int argc, char* argv[])
 	collideSystem->Init();
 	gWindManager.addCollisionSystem(collideSystem.get());
 
-	// Register animation system
+	 //Register animation system
 	auto animSystem = gCoordinator.registerSystem<AnimationSystem>();
 	{
 		Signature signature;
@@ -80,7 +83,7 @@ int main(int argc, char* argv[])
 	animSystem->Init();
 	gWindManager.addAnimationSystem(animSystem.get());
 
-	// Register controller system
+	 //Register controller system
 	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
 	{
 		Signature signature;
@@ -88,15 +91,16 @@ int main(int argc, char* argv[])
 		gCoordinator.setSystemSignature<ControllerSystem>(signature);
 	}
 	controllerSystem->Init();
+	iSys->addListeners(controllerSystem.get());
 	gWindManager.addControllerSystem(controllerSystem.get());
 
 	gWindManager.addMessageBus(&msgBus);
 
-	// Create an entity to render
+	 //Create an entity to render
 	Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
 	meshRend.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity, meshRend);
 
@@ -111,7 +115,21 @@ int main(int argc, char* argv[])
 	collider.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity, collider);
 
-	Entity entity2 = gCoordinator.createEntity();
+	PlayerId player1Id;
+	player1Id.playerId = 1;
+	gCoordinator.addComponent(entity, player1Id);
+
+	//Enable all aimations for entity
+	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
+	idleState->setEnabled(true);
+	idleState->setLoop(true);
+
+	//Create animation component
+	Animation animComp;
+	animComp.animation = idleState;
+	gCoordinator.addComponent(entity, animComp);
+
+	/*Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
 	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
@@ -127,7 +145,7 @@ int main(int argc, char* argv[])
 	BoxCollider collider2;
 	collider2.relativePosition = Vec3(0, 0, 0);
 	collider2.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(entity2, collider2);
+	gCoordinator.addComponent(entity2, collider2);*/
 
 	gWindManager.render();
 

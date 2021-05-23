@@ -6,8 +6,7 @@
 #include "../EventSystem/Messages/ChangeStateMsg.h"
 #include "../EventSystem/Messages/ApplyVelocityMsg.h"
 #include <string>
-
-using namespace std;
+#include <iostream>
 
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
@@ -52,8 +51,8 @@ void ControllerSystem::changeState(Entity a_entity, State a_state) {
 }
 
 void ControllerSystem::notifyAnimationSystem(string newState, string currentState, Entity a_entity) {
-	ChangeAnimationMsg changeAnimMsg = ChangeAnimationMsg(newState, currentState, a_entity);
-	msgBus.postMessage(&changeAnimMsg);
+	ChangeAnimationMsg* changeAnimMsg = new ChangeAnimationMsg(newState, currentState, a_entity);
+	msgBus.postMessage(changeAnimMsg);
 }
 
 void ControllerSystem::notifyPhysicsSystem(Entity a_entity) {
@@ -214,6 +213,7 @@ void ControllerSystem::onKeyUp(int keyPress)
 	}
 	case 65://A
 	{
+		std::cout << "A UP" << std::endl;
 		stopMovement(firstPlayerEnt, player1Fsm);
 		break;
 	}

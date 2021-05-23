@@ -10,9 +10,16 @@ WindowManager::~WindowManager() {
 
 bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
+    
     if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
     {
         getRoot()->queueEndRendering();
+    }
+    if (evt.keysym.sym == OgreBites::SDLK_UP) {
+        std::cout << "up arrow" << std::endl;
+    }
+    if (evt.keysym.sym == OgreBites::SDLK_DOWN) {
+        std::cout << "down arrow" << std::endl;
     }
     return true;
 }
@@ -55,8 +62,14 @@ void WindowManager::addMessageBus(MessageBus* msgBus) {
     m_msgBus = msgBus;
 }
 
+void WindowManager::addInputSystem(InputSystem* inputSystem)
+{
+    m_inputSystem = inputSystem;
+}
 
-bool WindowManager::frameStarted(const Ogre::FrameEvent& evt) {
+
+bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
+    //m_inputSystem->update();
     m_renderSystem->Update();
     m_collisionSystem->Update();
     m_animSystem->Update(evt);
