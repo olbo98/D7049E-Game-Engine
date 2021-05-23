@@ -21,6 +21,11 @@
     <ClCompile Include="src\CollisionSystem\CollisionSystem.cpp" />
     <ClCompile Include="src\EventSystem\Messages\CollisionDetectionMsg.cpp" />
     <ClCompile Include="src\InputSystem\Test.cpp" />
+    <ClCompile Include="src\GUI\testMain.cpp" />
+    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\InputSystem\InputListener.h" />
@@ -60,6 +65,11 @@
     <ClInclude Include="src\EventSystem\Messages\CollisionDetectionMsg.h" />
     <ClInclude Include="src\PhysicsSystem\PhysicsSystem.h" />
     <ClInclude Include="src\InputSystem\Test.h" />
+    <ClInclude Include="src\GUI\OgreText.h" />
+    <ClInclude Include="src\AudioSystem\SoundSource.h" />
+    <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
+    <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
+    <ClInclude Include="src\AudioSystem\SoundDevice.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />
