@@ -69,7 +69,7 @@ void WindowManager::addInputSystem(InputSystem* inputSystem)
 
 
 bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
-    //m_inputSystem->update();
+    m_inputSystem->update();
     m_renderSystem->Update();
     m_collisionSystem->Update();
     m_animSystem->Update(evt);

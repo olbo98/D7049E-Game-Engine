@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 	Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
+	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Mesh.mesh");
 	meshRend.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity, meshRend);
 
@@ -108,6 +108,7 @@ int main(int argc, char* argv[])
 	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
 	trans.node->setPosition(150, 0, 0);
 	trans.node->attachObject(meshRend.mesh);
+	trans.node->yaw(Ogre::Radian(0));
 	gCoordinator.addComponent(entity, trans);
 
 	BoxCollider collider;
@@ -119,8 +120,10 @@ int main(int argc, char* argv[])
 	player1Id.playerId = 1;
 	gCoordinator.addComponent(entity, player1Id);
 
+	
+	
 	//Enable all aimations for entity
-	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
+	/*Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
 	idleState->setEnabled(true);
 	idleState->setLoop(true);
 	Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
@@ -137,7 +140,7 @@ int main(int argc, char* argv[])
 	//Create animation component
 	Animation animComp;
 	animComp.animation = idleState;
-	gCoordinator.addComponent(entity, animComp);
+	gCoordinator.addComponent(entity, animComp);*/
 
 	Entity entity2 = gCoordinator.createEntity();
 
