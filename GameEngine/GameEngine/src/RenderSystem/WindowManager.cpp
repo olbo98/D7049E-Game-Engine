@@ -62,11 +62,8 @@ void WindowManager::render() const {
 }
 
 
-void WindowManager::addRenderSystem(RenderSystem* renderSystem) {
-    m_renderSystem = renderSystem;
-}
-void WindowManager::addCollisionSystem(CollisionSystem* collisionSystem) {
-    m_collisionSystem = collisionSystem;
+void WindowManager::addSystem(System* system) {
+    m_systems.push_back(system);
 }
 void WindowManager::addAnimationSystem(AnimationSystem* animSystem) {
     m_animSystem = animSystem;
@@ -89,7 +86,6 @@ void WindowManager::addInputSystem(InputSystem* inputSystem)
     m_inputSystem = inputSystem;
 }
 
-
 bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     m_inputSystem->update();
     m_renderSystem->Update();
@@ -98,6 +94,7 @@ bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     m_controllerSystem->Update();
     m_msgBus->notify();
     m_music->UpdateBufferStream();
+
     return true;
 }
 

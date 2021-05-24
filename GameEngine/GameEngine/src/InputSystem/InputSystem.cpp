@@ -25,7 +25,7 @@ void InputSystem::removeListeners(InputListener* listener)
 }
 
 /* Notifies state changes to the listeners */
-void InputSystem::update()
+void InputSystem::Update(const Ogre::FrameEvent& fe)
 {
 	if (GetKeyboardState(key_states))
 	{

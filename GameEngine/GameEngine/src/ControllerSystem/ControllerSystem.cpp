@@ -306,3 +306,7 @@ void ControllerSystem::handleMessage(Message* msg)
 		changeState(entity, state);
 	}
 }
+
+void ControllerSystem::Update(const Ogre::FrameEvent& fe) {
+
+}

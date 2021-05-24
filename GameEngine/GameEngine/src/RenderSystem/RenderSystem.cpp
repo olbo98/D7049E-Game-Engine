@@ -35,7 +35,7 @@ void RenderSystem::Init() {
 
 }
 
-void RenderSystem::Update() {
+void RenderSystem::Update(const Ogre::FrameEvent& fe) {
 	// For each entity
 	for (auto const& entity : m_entities) {
 		auto const& renderable = gCoordinator.getComponent<MeshRenderable>(entity);

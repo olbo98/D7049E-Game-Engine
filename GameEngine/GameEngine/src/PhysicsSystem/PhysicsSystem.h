@@ -10,7 +10,7 @@ public:
 	virtual void handleMessage(Message* msg) override;
 
 	//! Applies gravity to all transforms of rigid body components
-	void update(const Ogre::FrameEvent& fe);
+	virtual void Update(const Ogre::FrameEvent& fe) override;
 
 private:
 	//! The maximum velocity of an entity

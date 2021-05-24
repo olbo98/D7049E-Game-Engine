@@ -5,9 +5,7 @@
 
 class CollisionSystem : public System {
 public:
-	void Init();
-
-	void Update();
+	virtual void Update(const Ogre::FrameEvent& fe) override;
 
 	/**
 	* Function that gives the world position of the collider given the world position of the entity 

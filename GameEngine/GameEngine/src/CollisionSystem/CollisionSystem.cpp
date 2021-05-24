@@ -12,11 +12,7 @@
 extern Coordinator gCoordinator;
 extern MessageBus msgBus;
 
-void CollisionSystem::Init() {
-
-}
-
-void CollisionSystem::Update() {
+void CollisionSystem::Update(const Ogre::FrameEvent& fe) {
 	// For each entity
 	for (auto const& entity : m_entities) {
 		auto const& collider = gCoordinator.getComponent<BoxCollider>(entity);

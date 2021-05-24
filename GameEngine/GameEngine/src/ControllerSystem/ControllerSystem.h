@@ -26,6 +26,7 @@ public:
 	void Init();
 	void Update();
 	void setActiveEntity(Entity a_entity);
+
 	ControllerSystem();
 
 private:

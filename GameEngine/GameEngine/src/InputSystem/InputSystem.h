@@ -12,9 +12,13 @@ public:
 	InputSystem();
 	~InputSystem();
 
-	void update();
 	void addListeners(InputListener* listener);
 	void removeListeners(InputListener* listener);
+	static InputSystem* getInstance();
+
+	// Inherited via System
+	virtual void handleMessage(Message* msg) override;
+	virtual void Update(const Ogre::FrameEvent& fe) override;
 
 private:
 

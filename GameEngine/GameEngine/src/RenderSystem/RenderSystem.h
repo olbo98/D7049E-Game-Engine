@@ -7,7 +7,7 @@ class RenderSystem : public System{
 public:
 	void Init();
 
-	void Update();
+	virtual void Update(const Ogre::FrameEvent& fe) override;
 
 	virtual void handleMessage(Message* msg);
 
