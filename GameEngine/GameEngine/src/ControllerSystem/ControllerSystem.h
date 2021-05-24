@@ -3,6 +3,15 @@
 #include "../InputSystem/InputListener.h"
 #include "FSM/PlayerFSM.h"
 #include "../Utils/Utils.h"
+#include "../EntityComponentSystem/Coordinator.h"
+#include "../EntityComponentSystem/Components/PlayerId.h"
+#include "../EntityComponentSystem/Components/Transform.h"
+#include "../EventSystem/Messages/ChangeAnimationMsg.h"
+#include "../EventSystem/Messages/ChangeStateMsg.h"
+#include "../EventSystem/Messages/ApplyVelocityMsg.h"
+#include <string>
+#include <iostream>
+
 
 class ControllerSystem : public InputListener, public System
 {
@@ -16,13 +25,15 @@ public:
 
 	void Init();
 	void Update();
+	ControllerSystem();
 
 private:
-	PlayerFSM player1Fsm;
-	PlayerFSM player2Fsm;
+	PlayerFSM* player1Fsm;
+	PlayerFSM* player2Fsm;
 	int velocity;
 	Entity firstPlayerEnt = 0;
 	Entity secondPlayerEnt = 0;
+	
 
 	//! Moves the Entity with a specified velocity
 	/*!
@@ -55,13 +66,13 @@ private:
 	* \param playerToMove the player Entity that should be moved
 	* \param xDirection either -1 or 1. -1 equals left, 1 equals right
 	*/
-	void handleHorizontalMove(State stateToChangeTo, PlayerFSM stateMachine, Entity playerToMove, float xDirection);
+	void handleHorizontalMove(State stateToChangeTo, PlayerFSM* stateMachine, Entity playerToMove, float xDirection);
 
-	void handleVerticalMove(Entity a_entity, PlayerFSM stateMachine);
+	void handleVerticalMove(Entity a_entity, PlayerFSM* stateMachine);
 
-	void stopMovement(Entity playerEntity, PlayerFSM stateMachine);
+	void stopMovement(Entity playerEntity, PlayerFSM* stateMachine);
 
-	void startFightAction(State a_move, PlayerFSM stateMachine);
+	void startFightAction(State a_move, PlayerFSM* stateMachine, Entity playerEntity);
 
 	//! Changes the state of an entity
 	/*!

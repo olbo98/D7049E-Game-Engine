@@ -1,21 +1,3 @@
-/*
-int main() {
-
-    std::cout << "Playing........" << std::endl;
-    SoundDevice* mySoundDevice = SoundDevice::getInstance();
-    //uint32_t sound2 = SoundBuffer::getInstance()->addSoundEffect("D:/D7049E_proj/407640__drotzruhn__countdown-30-seconds.wav");
-    //SoundSource speaker;
-
-    MusicBuffer myMusic("./music.wav");
-    std::cout << "Playing music...." << std::endl;
-    myMusic.Play();
-
-    while (true) {
-        myMusic.UpdateBufferStream();
-        //speaker.Play(sound2);
-    }
-}*/
-
 #include "EntityComponentSystem/Coordinator.h"
 #include "EntityComponentSystem/Components/Camera.h"
 #include "EntityComponentSystem/Components/MeshRenderable.h"
@@ -117,7 +99,7 @@ int main(int argc, char* argv[])
 	Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
+	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Mesh.mesh");
 	meshRend.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity, meshRend);
 
@@ -125,6 +107,7 @@ int main(int argc, char* argv[])
 	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
 	trans.node->setPosition(150, 0, 0);
 	trans.node->attachObject(meshRend.mesh);
+	trans.node->yaw(Ogre::Radian(0));
 	gCoordinator.addComponent(entity, trans);
 
 	BoxCollider collider;
@@ -136,10 +119,22 @@ int main(int argc, char* argv[])
 	player1Id.playerId = 1;
 	gCoordinator.addComponent(entity, player1Id);
 
+	
+	
 	//Enable all aimations for entity
-	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
+	/*Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
 	idleState->setEnabled(true);
 	idleState->setLoop(true);
+	Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
+	jmpState->setLoop(false);
+	Ogre::AnimationState* lPunchState = meshRend.mesh->getAnimationState("Light_punch");
+	lPunchState->setLoop(false);
+	Ogre::AnimationState* hPunchState = meshRend.mesh->getAnimationState("Heavy_punch");
+	hPunchState->setLoop(false);
+	Ogre::AnimationState* lKickState = meshRend.mesh->getAnimationState("Light_kick");
+	lKickState->setLoop(false);
+	Ogre::AnimationState* hKickState = meshRend.mesh->getAnimationState("Heavy_kick");
+	hKickState->setLoop(false);
 
 	//Create animation component
 	Animation animComp;
@@ -149,7 +144,7 @@ int main(int argc, char* argv[])
 	Entity entity2 = gCoordinator.createEntity();
 
 	MeshRenderable meshRend2;
-	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("ninja.mesh");
+	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
 	meshRend2.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity2, meshRend2);
 
@@ -165,7 +160,6 @@ int main(int argc, char* argv[])
 	collider2.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity2, collider2);
 	
-
 	Entity scene = gCoordinator.createEntity();
 
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
@@ -198,6 +192,29 @@ int main(int argc, char* argv[])
 	gCoordinator.addComponent(scene, sceneComp);
 	
 
+	PlayerId player2Id;
+	player2Id.playerId = 2;
+	gCoordinator.addComponent(entity2, player2Id);
+
+	//Enable all aimations for entity
+	Ogre::AnimationState* idleState2 = meshRend2.mesh->getAnimationState("Idle");
+	idleState2->setEnabled(true);
+	idleState2->setLoop(true);
+	Ogre::AnimationState* jmpState2 = meshRend2.mesh->getAnimationState("Jumping");
+	jmpState2->setLoop(false);
+	Ogre::AnimationState* lPunchState2 = meshRend2.mesh->getAnimationState("Light_punch");
+	lPunchState2->setLoop(false);
+	Ogre::AnimationState* hPunchState2 = meshRend2.mesh->getAnimationState("Heavy_punch");
+	hPunchState2->setLoop(false);
+	Ogre::AnimationState* lKickState2 = meshRend2.mesh->getAnimationState("Light_kick");
+	lKickState2->setLoop(false);
+	Ogre::AnimationState* hKickState2 = meshRend2.mesh->getAnimationState("Heavy_kick");
+	hKickState2->setLoop(false);
+
+	//Create animation component
+	Animation animComp2;
+	animComp2.animation = idleState2;
+	gCoordinator.addComponent(entity2, animComp2);
 
 	gWindManager.render();
 

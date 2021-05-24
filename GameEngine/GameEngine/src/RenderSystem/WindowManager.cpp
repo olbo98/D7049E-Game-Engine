@@ -17,16 +17,10 @@ WindowManager::~WindowManager() {
 
 bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-    
+    //std::cout << evt.keysym.sym << std::endl;
     if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
     {
         getRoot()->queueEndRendering();
-    }
-    if (evt.keysym.sym == OgreBites::SDLK_UP) {
-        std::cout << "up arrow pressed" << std::endl;
-    }
-    if (evt.keysym.sym == OgreBites::SDLK_DOWN) {
-        std::cout << "down arrow pressed" << std::endl;
     }
     return true;
 }
@@ -37,12 +31,12 @@ bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
-    if (evt.keysym.sym == OgreBites::SDLK_UP) {
-        std::cout << "up arrow realeased" << std::endl;
-    }
-    if (evt.keysym.sym == OgreBites::SDLK_DOWN) {
-        std::cout << "down arrow realeased" << std::endl;
-    }
+    m_controllerSystem->onKeyDown(evt.keysym.sym);
+    return true;
+}
+
+bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt) {
+    m_controllerSystem->onKeyUp(evt.keysym.sym);
     return true;
 }
 
