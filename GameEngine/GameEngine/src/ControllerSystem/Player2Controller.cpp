@@ -173,12 +173,12 @@ void Player2Controller::onKeyUp(int keyPress)
 	switch (keyPress) {
 		case 1073741906: //Arrow-UP
 		{
-			player2Fsm->changeState(State::IDLE);
+			//player2Fsm->changeState(State::IDLE);
 			break;
 		}
 		case 1073741905: //Arrow-DOWN
 		{
-			player2Fsm->changeState(State::IDLE);
+			//player2Fsm->changeState(State::IDLE);
 			break;
 		}
 		case 1073741904: //Arrow-LEFT

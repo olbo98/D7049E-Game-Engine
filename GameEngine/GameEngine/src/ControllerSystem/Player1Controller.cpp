@@ -157,12 +157,12 @@ void Player1Controller::onKeyUp(int keyPress)
 		//------------------------PLAYER 1 MOVEMENTS------------------------------
 	case 119://W
 	{
-		player1Fsm->changeState(State::IDLE);
+		//player1Fsm->changeState(State::IDLE);
 		break;
 	}
 	case 115://S
 	{
-		player1Fsm->changeState(State::IDLE);
+		//player1Fsm->changeState(State::IDLE);
 		break;
 	}
 	case 97://A
