@@ -1,8 +1,8 @@
 #include "WindowManager.h"
-#include "../AudioSystem/SoundDevice.cpp"
-#include "../AudioSystem/SoundBuffer.cpp"
-#include "../AudioSystem/SoundSource.cpp"
-#include "../AudioSystem/MusicBuffer.cpp"
+#include "../AudioSystem/SoundDevice.h"
+#include "../AudioSystem/SoundBuffer.h"
+#include "../AudioSystem/SoundSource.h"
+#include "../AudioSystem/MusicBuffer.h"
 
 MusicBuffer* m_music;
 
