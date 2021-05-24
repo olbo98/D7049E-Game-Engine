@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 	Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Mesh.mesh");
+	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
 	meshRend.mesh->setCastShadows(true);
 	gCoordinator.addComponent(entity, meshRend);
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
 	
 	
 	//Enable all aimations for entity
-	/*Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
+	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
 	idleState->setEnabled(true);
 	idleState->setLoop(true);
 	Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
 	//Create animation component
 	Animation animComp;
 	animComp.animation = idleState;
-	gCoordinator.addComponent(entity, animComp);*/
+	gCoordinator.addComponent(entity, animComp);
 
 	Entity entity2 = gCoordinator.createEntity();
 
