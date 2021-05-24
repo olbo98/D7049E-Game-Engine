@@ -26,12 +26,13 @@ WindowManager gWindManager;
 int main(int argc, char* argv[])
 {
 	InputSystem* iSys = InputSystem::getInstance();
-	ControllerSystem* cSys = new ControllerSystem();
 	AnimationSystem* aSys = new AnimationSystem();
-	msgBus.addReciever(cSys);
 	msgBus.addReciever(aSys);
 	gWindManager.initApp();
 	gCoordinator.init();
+
+	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
+	msgBus.addReciever(controllerSystem.get());
 
 	 //Register Components
 	gCoordinator.registerComponent<Camera>();
@@ -82,7 +83,7 @@ int main(int argc, char* argv[])
 	gWindManager.addAnimationSystem(animSystem.get());
 
 	 //Register controller system
-	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
+	//auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
 	{
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<PlayerId>());
@@ -95,7 +96,7 @@ int main(int argc, char* argv[])
 	gWindManager.addMessageBus(&msgBus);
 
 	 //Create an entity to render
-	/*
+	
 	Entity entity = gCoordinator.createEntity();
 
 	MeshRenderable meshRend;
@@ -107,7 +108,7 @@ int main(int argc, char* argv[])
 	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
 	trans.node->setPosition(150, 0, 0);
 	trans.node->attachObject(meshRend.mesh);
-	trans.node->yaw(Ogre::Radian(0));
+	trans.node->yaw(Ogre::Radian(-3.14/2));
 	gCoordinator.addComponent(entity, trans);
 
 	BoxCollider collider;
@@ -162,7 +163,7 @@ int main(int argc, char* argv[])
 	
 	Entity scene = gCoordinator.createEntity();
 
-	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+	/*Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 	Ogre::MeshManager::getSingleton().createPlane(
 		"ground", Ogre::RGN_DEFAULT,
 		plane,
@@ -189,7 +190,7 @@ int main(int argc, char* argv[])
 	gCoordinator.addComponent(scene, collider);
 
 	SceneComponent sceneComp;
-	gCoordinator.addComponent(scene, sceneComp);
+	gCoordinator.addComponent(scene, sceneComp);*/
 	
 
 	PlayerId player2Id;

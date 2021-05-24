@@ -31,8 +31,12 @@ private:
 	PlayerFSM* player1Fsm;
 	PlayerFSM* player2Fsm;
 	int velocity;
-	Entity firstPlayerEnt = 0;
-	Entity secondPlayerEnt = 0;
+	Entity activeEntity;
+	/*Entity firstPlayerEnt;
+	Entity secondPlayerEnt;*/
+
+	//int i = 0;
+	//void addPlayerEntity(Entity a_player);
 	
 
 	//! Moves the Entity with a specified velocity

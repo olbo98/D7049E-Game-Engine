@@ -29,5 +29,7 @@ private:
 	short* p_Membuf;
 	ALenum p_Format; 
 
+	float p_Gain = 0.1f;
+
 	MusicBuffer() = delete;
 };
