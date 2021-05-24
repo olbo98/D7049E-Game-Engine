@@ -11,15 +11,10 @@
 //
 //void Test::onKeyDown(int keyPress)
 //{
-//	
-//	if (keyPress == 'A') {
-//		std::cout << "KEY DOWN" << std::endl;
-//	}
 //}
 //
 //void Test::onKeyUp(int keyPress)
 //{
-//	std::cout << "KEY UP" << std::endl;
 //}
 //
 //int main() {
@@ -29,7 +24,7 @@
 //
 //	while(true){
 //		inp->update();
-//		//Sleep(100);
+//		Sleep(100);
 //	}
 //
 //

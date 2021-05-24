@@ -1,7 +1,14 @@
 #include "WindowManager.h"
+#include "../AudioSystem/SoundDevice.cpp"
+#include "../AudioSystem/SoundBuffer.cpp"
+#include "../AudioSystem/SoundSource.cpp"
+#include "../AudioSystem/MusicBuffer.cpp"
+
+MusicBuffer* m_music;
 
 WindowManager::WindowManager() : OgreBites::ApplicationContext("FightEngine")
 {
+
 }
 
 WindowManager::~WindowManager() {
@@ -16,10 +23,25 @@ bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
         getRoot()->queueEndRendering();
     }
     if (evt.keysym.sym == OgreBites::SDLK_UP) {
-        std::cout << "up arrow" << std::endl;
+        std::cout << "up arrow pressed" << std::endl;
     }
     if (evt.keysym.sym == OgreBites::SDLK_DOWN) {
-        std::cout << "down arrow" << std::endl;
+        std::cout << "down arrow pressed" << std::endl;
+    }
+    return true;
+}
+
+bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt)
+{
+    if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
+    {
+        getRoot()->queueEndRendering();
+    }
+    if (evt.keysym.sym == OgreBites::SDLK_UP) {
+        std::cout << "up arrow realeased" << std::endl;
+    }
+    if (evt.keysym.sym == OgreBites::SDLK_DOWN) {
+        std::cout << "down arrow realeased" << std::endl;
     }
     return true;
 }
@@ -39,6 +61,13 @@ void WindowManager::setup(void)
     // Register our scene with the RTSS
     m_shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     m_shaderGen->addSceneManager(m_sceneManager);
+
+    SoundDevice* mySoundDevice = SoundDevice::getInstance();
+
+    m_music = new MusicBuffer("./music.wav");
+
+    m_music->Play();
+
 }
 
 void WindowManager::render() const {
@@ -69,12 +98,13 @@ void WindowManager::addInputSystem(InputSystem* inputSystem)
 
 
 bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
-    //m_inputSystem->update();
+    m_inputSystem->update();
     m_renderSystem->Update();
     m_collisionSystem->Update();
     m_animSystem->Update(evt);
     m_controllerSystem->Update();
     m_msgBus->notify();
+    m_music->UpdateBufferStream();
     return true;
 }
 

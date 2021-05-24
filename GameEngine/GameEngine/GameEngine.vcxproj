@@ -169,6 +169,10 @@
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
     <ClCompile Include="src\InputSystem\Test.cpp" />
+	<ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
+	<ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
+	<ClCompile Include="src\AudioSystem\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
@@ -208,6 +212,10 @@
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
     <ClInclude Include="src\Utils\Utils.h" />
     <ClInclude Include="src\InputSystem\Test.h" />
+	<ClCompile Include="src\AudioSystem\MusicBuffer.h" />
+	<ClCompile Include="src\AudioSystem\SoundBuffer.h" />
+	<ClCompile Include="src\AudioSystem\SoundDevice.h" />
+	<ClCompile Include="src\AudioSystem\SoundSource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />
