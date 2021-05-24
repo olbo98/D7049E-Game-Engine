@@ -5,6 +5,8 @@
 #include "./../CollisionSystem/CollisionSystem.h"
 #include "../AnimationSystem/AnimationSystem.h"
 #include "../ControllerSystem/ControllerSystem.h"
+#include "../ControllerSystem/Player1Controller.h"
+#include "../ControllerSystem/Player2Controller.h"
 #include "../InputSystem/InputSystem.h"
 #include <iostream>
 
@@ -43,6 +45,8 @@ public:
 	void addCollisionSystem(CollisionSystem* collisionSystem);
 	void addAnimationSystem(AnimationSystem* animSystem);
 	void addControllerSystem(ControllerSystem* controllerSystem);
+	void addP1Controller(Player1Controller* p1Controller);
+	void addP2Controller(Player2Controller* p2Controller);
 	void addMessageBus(MessageBus* msgBus);
 	void addInputSystem(InputSystem* inputSystem);
 
@@ -54,6 +58,8 @@ public:
 	CollisionSystem* m_collisionSystem;
 	AnimationSystem* m_animSystem;
 	ControllerSystem* m_controllerSystem;
+	Player1Controller* m_p1Controller;
+	Player2Controller* m_p2Controller;
 	MessageBus* m_msgBus;
 	InputSystem* m_inputSystem; 
 };

@@ -18,23 +18,29 @@ void ControllerSystem::Update() {
 	
 }
 
+void ControllerSystem::setActiveEntity(Entity a_entity) {
+	activeEntity = a_entity;
+}
+
 
 void ControllerSystem::setPlayerEntityIds() {
-	auto& lastPlayerIdComponent = gCoordinator.getComponent<PlayerId>(activeEntity);
-	for (auto const& entity : m_entities) {
-		auto& playerIdComponent = gCoordinator.getComponent<PlayerId>(entity);
-		if (lastPlayerIdComponent.playerId != playerIdComponent.playerId) {
-			if (playerIdComponent.playerId == 1) {
-				//firstPlayerEnt = entity;
-				activeEntity = entity;
-			}
+	//auto& lastPlayerIdComponent = gCoordinator.getComponent<PlayerId>(activeEntity);
+	//for (auto const& entity : m_entities) {
+	//	auto& playerIdComponent = gCoordinator.getComponent<PlayerId>(entity);
 
-			if (playerIdComponent.playerId == 2) {
-				activeEntity == entity;
-				//secondPlayerEnt = entity;
-			}
-		}
-	}
+	//	if (lastPlayerIdComponent.playerId != playerIdComponent.playerId) {
+	//		std::cout << "Change active p" << std::endl;
+	//		if (playerIdComponent.playerId == 1) {
+	//			//firstPlayerEnt = entity;
+	//			activeEntity = entity;
+	//		}
+
+	//		if (playerIdComponent.playerId == 2) {
+	//			activeEntity == entity;
+	//			//secondPlayerEnt = entity;
+	//		}
+	//	}
+	//}
 }
 
 void ControllerSystem::moveEntity(Entity entityToMove, Vec3 a_velocity) {

@@ -22,12 +22,14 @@ bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
-    m_controllerSystem->onKeyDown(evt.keysym.sym);
+    m_p1Controller->onKeyDown(evt.keysym.sym);
+    m_p2Controller->onKeyDown(evt.keysym.sym);
     return true;
 }
 
 bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt) {
-    m_controllerSystem->onKeyUp(evt.keysym.sym);
+    m_p1Controller->onKeyUp(evt.keysym.sym);
+    m_p2Controller->onKeyUp(evt.keysym.sym);
     return true;
 }
 
@@ -71,6 +73,12 @@ void WindowManager::addAnimationSystem(AnimationSystem* animSystem) {
 }
 void WindowManager::addControllerSystem(ControllerSystem* controllerSystem) {
     m_controllerSystem = controllerSystem;
+}
+void WindowManager::addP1Controller(Player1Controller* p1Controller) {
+    m_p1Controller = p1Controller;
+}
+void WindowManager::addP2Controller(Player2Controller* p2Controller) {
+    m_p2Controller = p2Controller;
 }
 void WindowManager::addMessageBus(MessageBus* msgBus) {
     m_msgBus = msgBus;

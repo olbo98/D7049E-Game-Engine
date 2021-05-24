@@ -16,6 +16,8 @@
 
 #include "EventSystem/MessageBus.h"
 #include "ControllerSystem/ControllerSystem.h"
+#include "ControllerSystem/Player1Controller.h"
+#include "ControllerSystem//Player2Controller.h"
 #include "AnimationSystem/AnimationSystem.h"
 #include "InputSystem/InputSystem.h"
 
@@ -30,9 +32,6 @@ int main(int argc, char* argv[])
 	msgBus.addReciever(aSys);
 	gWindManager.initApp();
 	gCoordinator.init();
-
-	auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
-	msgBus.addReciever(controllerSystem.get());
 
 	 //Register Components
 	gCoordinator.registerComponent<Camera>();
@@ -84,20 +83,34 @@ int main(int argc, char* argv[])
 
 	 //Register controller system
 	//auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
+	auto p1Controller = gCoordinator.registerSystem<Player1Controller>();
 	{
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<PlayerId>());
-		gCoordinator.setSystemSignature<ControllerSystem>(signature);
+		gCoordinator.setSystemSignature<Player1Controller>(signature);
 	}
-	controllerSystem->Init();
-	iSys->addListeners(controllerSystem.get());
-	gWindManager.addControllerSystem(controllerSystem.get());
+	p1Controller->Init();
+	//iSys->addListeners(controllerSystem.get());
+	gWindManager.addP1Controller(p1Controller.get());
+	msgBus.addReciever(p1Controller.get());
+
+	auto p2Controller = gCoordinator.registerSystem<Player2Controller>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<PlayerId>());
+		gCoordinator.setSystemSignature<Player2Controller>(signature);
+	}
+	p2Controller->Init();
+	//iSys->addListeners(controllerSystem.get());
+	gWindManager.addP2Controller(p2Controller.get());
+	msgBus.addReciever(p2Controller.get());
 
 	gWindManager.addMessageBus(&msgBus);
 
 	 //Create an entity to render
 	
 	Entity entity = gCoordinator.createEntity();
+	p1Controller->setActiveEntity(entity);
 
 	MeshRenderable meshRend;
 	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
@@ -143,6 +156,7 @@ int main(int argc, char* argv[])
 	gCoordinator.addComponent(entity, animComp);
 
 	Entity entity2 = gCoordinator.createEntity();
+	p2Controller->setActiveEntity(entity2);
 
 	MeshRenderable meshRend2;
 	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
@@ -160,38 +174,6 @@ int main(int argc, char* argv[])
 	collider2.relativePosition = Vec3(0, 0, 0);
 	collider2.boxSize = Vec3(100, 100, 100);
 	gCoordinator.addComponent(entity2, collider2);
-	
-	Entity scene = gCoordinator.createEntity();
-
-	/*Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-	Ogre::MeshManager::getSingleton().createPlane(
-		"ground", Ogre::RGN_DEFAULT,
-		plane,
-		1500, 1500, 20, 20,
-		true,
-		1, 5, 5,
-		Ogre::Vector3::UNIT_Z);
-
-	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("ground");
-	meshRend.mesh->setCastShadows(true);
-	meshRend.mesh->setMaterialName("Examples/Rockwall");
-	gCoordinator.addComponent(scene, meshRend);
-
-	Transform trans;
-	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	trans.node->setPosition(0, 0, 0);
-	trans.node->attachObject(meshRend.mesh);
-	gCoordinator.addComponent(scene, trans);
-
-	BoxCollider collider;
-	collider.relativePosition = Vec3(0, 0, 0);
-	collider.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(scene, collider);
-
-	SceneComponent sceneComp;
-	gCoordinator.addComponent(scene, sceneComp);*/
-	
 
 	PlayerId player2Id;
 	player2Id.playerId = 2;
@@ -216,6 +198,37 @@ int main(int argc, char* argv[])
 	Animation animComp2;
 	animComp2.animation = idleState2;
 	gCoordinator.addComponent(entity2, animComp2);
+	
+	Entity scene = gCoordinator.createEntity();
+
+	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+	Ogre::MeshManager::getSingleton().createPlane(
+		"ground", Ogre::RGN_DEFAULT,
+		plane,
+		1500, 1500, 20, 20,
+		true,
+		1, 5, 5,
+		Ogre::Vector3::UNIT_Z);
+
+	MeshRenderable meshRendS;
+	meshRendS.mesh = gWindManager.m_sceneManager->createEntity("ground");
+	meshRendS.mesh->setCastShadows(true);
+	meshRendS.mesh->setMaterialName("Examples/Rockwall");
+	gCoordinator.addComponent(scene, meshRendS);
+
+	Transform transS;
+	transS.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+	transS.node->setPosition(0, 0, 0);
+	transS.node->attachObject(meshRendS.mesh);
+	gCoordinator.addComponent(scene, transS);
+
+	BoxCollider colliderS;
+	colliderS.relativePosition = Vec3(0, 0, 0);
+	colliderS.boxSize = Vec3(100, 100, 100);
+	gCoordinator.addComponent(scene, colliderS);
+
+	SceneComponent sceneComp;
+	gCoordinator.addComponent(scene, sceneComp);
 
 	gWindManager.render();
 

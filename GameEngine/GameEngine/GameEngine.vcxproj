@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ControllerSystem\Player2Controller.cpp" />
+    <ClCompile Include="src\ControllerSystem\Player1Controller.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
     <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
@@ -168,12 +170,14 @@
     <ClCompile Include="src\EntityComponentSystem\System.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
-	<ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
-	<ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
     <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
-	<ClCompile Include="src\AudioSystem\SoundSource.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ControllerSystem\Player2Controller.h" />
+    <ClInclude Include="src\ControllerSystem\Player1Controller.h" />
     <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
     <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
     <ClInclude Include="src\AudioSystem\SoundDevice.h" />

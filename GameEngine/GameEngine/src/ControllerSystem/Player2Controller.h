@@ -12,8 +12,7 @@
 #include <string>
 #include <iostream>
 
-
-class ControllerSystem : public InputListener, public System
+class Player2Controller : public InputListener, public System
 {
 public:
 	// Inherited via InputListener
@@ -26,10 +25,9 @@ public:
 	void Init();
 	void Update();
 	void setActiveEntity(Entity a_entity);
-	ControllerSystem();
+	Player2Controller();
 
 private:
-	PlayerFSM* player1Fsm;
 	PlayerFSM* player2Fsm;
 	int velocity;
 	Entity activeEntity;
@@ -38,12 +36,12 @@ private:
 
 	//int i = 0;
 	//void addPlayerEntity(Entity a_player);
-	
+
 
 	//! Moves the Entity with a specified velocity
 	/*!
 	* Moves adds the specified Vec3 to the Vec3 position of the specified entity
-	* 
+	*
 	* \param entityToMove the entity that will be moved
 	* \param a_velocity velocity
 	*/
@@ -65,7 +63,7 @@ private:
 	//! Handles the horizontal movement
 	/*!
 	* Changes the state of the state machine, moves the player and notifies the animation system to change animation
-	* 
+	*
 	* \param stateToChangeTo The state that the state machine should change to
 	* \param stateMachine state machine that should handle the state change
 	* \param playerToMove the player Entity that should be moved
