@@ -1,8 +1,7 @@
 #pragma once
 #include "InputListener.h"
 #include "../EntityComponentSystem/System.h"
-#include "Ogre.h"
-#include <map>
+#include <unordered_set>
 
 /* Publisher class (also a Singleton) that notifies all subscribers/listeners when any state changes */
 
@@ -24,11 +23,17 @@ public:
 private:
 
 	//containers for the listeners
-	std::map<InputListener*, InputListener*> map_listeners;
+	std::unordered_set<InputListener*> m_set_listeners;
 	//std::unordered_set<InputListener*> m_set_listeners;
 
 	//states of each key in the keyboard
 	unsigned char key_states[256] = {};
 	unsigned char old_key_states[256] = {};
+
+public:
+	static InputSystem* getInstance();
+
+	// Inherited via System
+	virtual void handleMessage(Message* msg) override;
 };
 

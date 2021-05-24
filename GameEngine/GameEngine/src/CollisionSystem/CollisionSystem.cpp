@@ -2,6 +2,8 @@
 #include "../EntityComponentSystem/Coordinator.h"
 #include "../EntityComponentSystem/Components/Transform.h"
 #include "../EntityComponentSystem/Components/BoxCollider.h"
+#include "../EntityComponentSystem/Components/SceneComponent.h"
+#include "../EntityComponentSystem/Components/PlayerId.h"
 #include "../EventSystem/Messages/CollisionDetectionMsg.h"
 #include "../EventSystem/MessageBus.h"
 #include <iostream>

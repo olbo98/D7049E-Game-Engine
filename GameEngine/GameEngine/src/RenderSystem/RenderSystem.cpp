@@ -21,8 +21,8 @@ void RenderSystem::Init() {
 
 	Transform cameraTrans;
 	cameraTrans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	cameraTrans.node->setPosition(-500, 150, 0);
-	cameraTrans.node->lookAt(Ogre::Vector3(0, 150, 0), Ogre::Node::TransformSpace::TS_WORLD);
+	cameraTrans.node->setPosition(0, 400, 1000);
+	cameraTrans.node->lookAt(Ogre::Vector3(0, 300, 0), Ogre::Node::TransformSpace::TS_WORLD);
 	cameraTrans.node->attachObject(cameraComp.camera);
 	gCoordinator.addComponent(
 		m_camera, 

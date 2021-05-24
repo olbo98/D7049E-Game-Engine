@@ -9,7 +9,7 @@ class FSM
 public:
 	//! Returns the current state of the FSM
 	State getCurrentState();
-
+	void setCurrentState(State newState);
 	//! Change the state of the FSM
 	/*!
 	* Changes the current state of the FSM to the new state

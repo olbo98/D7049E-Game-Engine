@@ -16,64 +16,54 @@ InputSystem::~InputSystem()
 
 void InputSystem::addListeners(InputListener* listener)
 {
-    //insterting the listeners into the map_container
-    map_listeners.insert(std::make_pair<InputListener*, InputListener*>
-        (std::forward<InputListener*>(listener), std::forward<InputListener*>(listener)));
-    
+    m_set_listeners.insert(listener);
 }
 
 void InputSystem::removeListeners(InputListener* listener)
 {
-    std::map<InputListener*, InputListener*>::iterator i = map_listeners.find(listener); //iterates the container and finds the listener
-
-    if (i != map_listeners.end())
-    {
-        map_listeners.erase(i);
-    }
-    
+    m_set_listeners.erase(listener);
 }
 
 /* Notifies state changes to the listeners */
 void InputSystem::Update(const Ogre::FrameEvent& fe)
 {
-    
-    for (int i = 0; i < 256; i++)
-    {
-        key_states[i] = GetAsyncKeyState(i);
-            
-        //KEY is down
-        if (key_states[i] > 0)
-        {
-             //iterating through the container of listeners
-            std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
-            while (it != map_listeners.end())
-            {
-                it->first->onKeyDown(i);
-                ++it;
-            }
-               
-        }
-        //KEY is up 
-        else if(key_states[i] == 0)
-        {
-            //KEY release event
-            if (key_states[i] != old_key_states[i]) 
-            {
-                std::map<InputListener*, InputListener*>::iterator it = map_listeners.begin();
-                while (it != map_listeners.end())
-                {
-                    it->first->onKeyUp(i);
-                    ++it;
-                }
+	if (GetKeyboardState(key_states))
+	{
+		for (unsigned int i = 0; i < 256; i++)
+		{
+			// KEY IS DOWN
+			if (GetAsyncKeyState(key_states[i]) & 0x8000)
+			{
+				std::cout << "A KEY IS DOWN" << std::endl;
+				std::unordered_set<InputListener*>::iterator it = m_set_listeners.begin();
+				while (it != m_set_listeners.end())
+				{
+					(*it)->onKeyDown(i);
+					++it;
+				}
+			}
+			else // KEY IS UP
+			{
+				//std::cout << "A KEY IS UP" << std::endl;
+				if (key_states[i] != old_key_states[i])
+				{
+					std::unordered_set<InputListener*>::iterator it = m_set_listeners.begin();
 
-                    
-            }
-        }
-    }
-    // store current key states to old key states buffer
-    ::memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
+					while (it != m_set_listeners.end())
+					{
+						(*it)->onKeyUp(i);
+						++it;
+					}
+				}
 
+			}
+
+		}
+		// store current keys state to old keys state buffer
+		memcpy(old_key_states, key_states, sizeof(unsigned char) * 256);
+	}
 }
+
 
 
 InputSystem* InputSystem::getInstance()

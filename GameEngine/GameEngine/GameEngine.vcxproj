@@ -139,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\Components\Bites\include;$(OGRE_HOME)\Components\RTShaderSystem\include;$(OGRE_HOME)\out\build\include;$(OGRE_HOME)\OgreMain\include;$(OGRE_HOME)\Components\Overlay\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,10 +147,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OGRE_HOME)\out\build\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain.lib;OgreBites.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreOverlay.lib;OgreMain.lib;OgreBites.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ControllerSystem\Player2Controller.cpp" />
+    <ClCompile Include="src\ControllerSystem\Player1Controller.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
     <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
@@ -168,15 +170,24 @@
     <ClCompile Include="src\EntityComponentSystem\System.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
+    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ControllerSystem\Player2Controller.h" />
+    <ClInclude Include="src\ControllerSystem\Player1Controller.h" />
+    <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
+    <ClInclude Include="src\AudioSystem\SoundBuffer.h" />
+    <ClInclude Include="src\AudioSystem\SoundDevice.h" />
+    <ClInclude Include="src\AudioSystem\SoundSource.h" />
     <ClInclude Include="src\EventSystem\Messages\ApplyVelocityMsg.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\RigidBody.h" />
     <ClInclude Include="src\EventSystem\Messages\ChangeStateMsg.h" />
     <ClInclude Include="src\ControllerSystem\FSM\PlayerFSM.h" />
     <ClInclude Include="src\ControllerSystem\FSM\FSM.h" />
     <ClInclude Include="src\ControllerSystem\ControllerSystem.h" />
-    <ClInclude Include="src\EntityComponentSystem\Components\Controller.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\PlayerId.h" />
     <ClInclude Include="src\EventSystem\Messages\ChangeAnimationMsg.h" />
     <ClInclude Include="src\ControllerSystem\FSM\States\State.h" />
@@ -187,6 +198,7 @@
     <ClInclude Include="src\EntityComponentSystem\Components\Light.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Animation.h" />
     <ClInclude Include="src\EventSystem\TestMessage.h" />
+    <ClInclude Include="src\GUI\OgreText.h" />
     <ClInclude Include="src\InputSystem\InputListener.h" />
     <ClInclude Include="src\InputSystem\InputSystem.h" />
     <ClInclude Include="src\AnimationSystem\AnimationSystem.h" />
