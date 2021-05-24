@@ -22,15 +22,6 @@ bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
-    return true;
-}
-
-bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt)
-{
-    if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
-    {
-        getRoot()->queueEndRendering();
-    }
     m_controllerSystem->onKeyDown(evt.keysym.sym);
     return true;
 }
