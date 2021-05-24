@@ -151,13 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
-    <ClCompile Include="src\AudioSystem\SoundSource.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ApplyVelocityMsg.cpp" />
     <ClCompile Include="src\EventSystem\Messages\ChangeStateMsg.cpp" />
-    <ClCompile Include="src\GUI\testMain.cpp" />
     <ClCompile Include="src\PhysicsSystem\PhysicsSystem.cpp" />
     <ClCompile Include="src\ControllerSystem\FSM\PlayerFSM.cpp" />
     <ClCompile Include="src\ControllerSystem\FSM\FSM.cpp" />
@@ -173,7 +168,10 @@
     <ClCompile Include="src\EntityComponentSystem\System.cpp" />
     <ClCompile Include="src\RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="src\RenderSystem\WindowManager.cpp" />
-    <ClCompile Include="src\InputSystem\Test.cpp" />
+	<ClCompile Include="src\AudioSystem\MusicBuffer.cpp" />
+	<ClCompile Include="src\AudioSystem\SoundBuffer.cpp" />
+    <ClCompile Include="src\AudioSystem\SoundDevice.cpp" />
+	<ClCompile Include="src\AudioSystem\SoundSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AudioSystem\MusicBuffer.h" />
@@ -217,7 +215,6 @@
     <ClInclude Include="src\EntityComponentSystem\SystemManager.h" />
     <ClInclude Include="src\EntityComponentSystem\Components\Transform.h" />
     <ClInclude Include="src\Utils\Utils.h" />
-    <ClInclude Include="src\InputSystem\Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\SimpleList.tpp" />

@@ -55,5 +55,5 @@ public:
 	AnimationSystem* m_animSystem;
 	ControllerSystem* m_controllerSystem;
 	MessageBus* m_msgBus;
-	InputSystem* m_inputSystem;
+	InputSystem* m_inputSystem; 
 };

@@ -1,7 +1,14 @@
 #include "WindowManager.h"
+#include "../AudioSystem/SoundDevice.h"
+#include "../AudioSystem/SoundBuffer.h"
+#include "../AudioSystem/SoundSource.h"
+#include "../AudioSystem/MusicBuffer.h"
+
+MusicBuffer* m_music;
 
 WindowManager::WindowManager() : OgreBites::ApplicationContext("FightEngine")
 {
+
 }
 
 WindowManager::~WindowManager() {
@@ -39,6 +46,13 @@ void WindowManager::setup(void)
     // Register our scene with the RTSS
     m_shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     m_shaderGen->addSceneManager(m_sceneManager);
+
+    SoundDevice* mySoundDevice = SoundDevice::getInstance();
+
+    m_music = new MusicBuffer("./music.wav");
+
+    m_music->Play();
+
 }
 
 void WindowManager::render() const {
@@ -75,6 +89,7 @@ bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
     m_animSystem->Update(evt);
     m_controllerSystem->Update();
     m_msgBus->notify();
+    m_music->UpdateBufferStream();
     return true;
 }
 
