@@ -81,9 +81,19 @@ int main(int argc, char* argv[])
 	}
 	gWindManager.addPhysicsSystem(physicSystem.get());
 
+	//Register animation system
+	auto animSystem = gCoordinator.registerSystem<AnimationSystem>();
+	{
+		Signature signature;
+		signature.set(gCoordinator.getComponentType<Animation>());
+		gCoordinator.setSystemSignature<AnimationSystem>(signature);
+	}
+	animSystem->Init();
+	gWindManager.addAnimationSystem(animSystem.get());
+
 	// TRY TO APPLY GRAVITY TO A HUNDRED ENTITIES
-	/*
-	for (int i = 0; i < 10; i++) {
+	
+	for (int i = 0; i < 1000; i++) {
 		Entity entity = gCoordinator.createEntity();
 
 		MeshRenderable meshRend;
@@ -93,7 +103,7 @@ int main(int argc, char* argv[])
 
 		Transform trans;
 		trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-		trans.node->setPosition(40, 0, 0);
+		trans.node->setPosition(40+(100*i), 0, 0);
 		trans.node->attachObject(meshRend.mesh);
 		gCoordinator.addComponent(entity, trans);
 
@@ -103,22 +113,18 @@ int main(int argc, char* argv[])
 		gCoordinator.addComponent(entity, collider);
 
 		RigidBody rigidbody;
-		rigidbody.gravity = i*10;
+		rigidbody.gravity = (i+1)*10;
 		rigidbody.upwardsVelocity = 0;
 		gCoordinator.addComponent(entity, rigidbody);
 
-	}*/
+		/*Animation animComp;
+		meshRend.mesh->getAnimationState("Heavy_kick")->setEnabled(true);
+		meshRend.mesh->getAnimationState("Heavy_kick")->setLoop(true);
+		animComp.animation = meshRend.mesh->getAnimationState("Heavy_kick");
+		gCoordinator.addComponent(entity, animComp);*/
 
-	
-	 //Register animation system
-	auto animSystem = gCoordinator.registerSystem<AnimationSystem>();
-	{
-		Signature signature;
-		signature.set(gCoordinator.getComponentType<Animation>());
-		gCoordinator.setSystemSignature<AnimationSystem>(signature);
 	}
-	animSystem->Init();
-	gWindManager.addAnimationSystem(animSystem.get());
+
 
 	 //Register controller system
 	//auto controllerSystem = gCoordinator.registerSystem<ControllerSystem>();
@@ -148,126 +154,126 @@ int main(int argc, char* argv[])
 
 	 //Create an entity to render
 	
-	Entity entity = gCoordinator.createEntity();
-	p1Controller->setActiveEntity(entity);
+	//Entity entity = gCoordinator.createEntity();
+	//p1Controller->setActiveEntity(entity);
 
-	MeshRenderable meshRend;
-	meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
-	meshRend.mesh->setCastShadows(true);
-	gCoordinator.addComponent(entity, meshRend);
+	//MeshRenderable meshRend;
+	//meshRend.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
+	//meshRend.mesh->setCastShadows(true);
+	//gCoordinator.addComponent(entity, meshRend);
 
-	Transform trans;
-	trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	trans.node->setPosition(150, 0, 0);
-	trans.node->attachObject(meshRend.mesh);
-	trans.node->yaw(Ogre::Radian(-3.14/2));
-	gCoordinator.addComponent(entity, trans);
+	//Transform trans;
+	//trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+	//trans.node->setPosition(150, 0, 0);
+	//trans.node->attachObject(meshRend.mesh);
+	//trans.node->yaw(Ogre::Radian(-3.14/2));
+	//gCoordinator.addComponent(entity, trans);
 
-	BoxCollider collider;
-	collider.relativePosition = Vec3(0, 0, 0);
-	collider.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(entity, collider);
+	//BoxCollider collider;
+	//collider.relativePosition = Vec3(0, 0, 0);
+	//collider.boxSize = Vec3(100, 100, 100);
+	//gCoordinator.addComponent(entity, collider);
 
-	PlayerId player1Id;
-	player1Id.playerId = 1;
-	gCoordinator.addComponent(entity, player1Id);
+	//PlayerId player1Id;
+	//player1Id.playerId = 1;
+	//gCoordinator.addComponent(entity, player1Id);
 
-	
-	
-	//Enable all aimations for entity
-	Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
-	idleState->setEnabled(true);
-	idleState->setLoop(true);
-	Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
-	jmpState->setLoop(false);
-	Ogre::AnimationState* lPunchState = meshRend.mesh->getAnimationState("Light_punch");
-	lPunchState->setLoop(false);
-	Ogre::AnimationState* hPunchState = meshRend.mesh->getAnimationState("Heavy_punch");
-	hPunchState->setLoop(false);
-	Ogre::AnimationState* lKickState = meshRend.mesh->getAnimationState("Light_kick");
-	lKickState->setLoop(false);
-	Ogre::AnimationState* hKickState = meshRend.mesh->getAnimationState("Heavy_kick");
-	hKickState->setLoop(false);
+	//
+	//
+	////Enable all aimations for entity
+	//Ogre::AnimationState* idleState = meshRend.mesh->getAnimationState("Idle");
+	//idleState->setEnabled(true);
+	//idleState->setLoop(true);
+	//Ogre::AnimationState* jmpState = meshRend.mesh->getAnimationState("Jumping");
+	//jmpState->setLoop(false);
+	//Ogre::AnimationState* lPunchState = meshRend.mesh->getAnimationState("Light_punch");
+	//lPunchState->setLoop(false);
+	//Ogre::AnimationState* hPunchState = meshRend.mesh->getAnimationState("Heavy_punch");
+	//hPunchState->setLoop(false);
+	//Ogre::AnimationState* lKickState = meshRend.mesh->getAnimationState("Light_kick");
+	//lKickState->setLoop(false);
+	//Ogre::AnimationState* hKickState = meshRend.mesh->getAnimationState("Heavy_kick");
+	//hKickState->setLoop(false);
 
-	//Create animation component
-	Animation animComp;
-	animComp.animation = idleState;
-	gCoordinator.addComponent(entity, animComp);
+	////Create animation component
+	//Animation animComp;
+	//animComp.animation = idleState;
+	//gCoordinator.addComponent(entity, animComp);
 
-	Entity entity2 = gCoordinator.createEntity();
-	p2Controller->setActiveEntity(entity2);
+	//Entity entity2 = gCoordinator.createEntity();
+	//p2Controller->setActiveEntity(entity2);
 
-	MeshRenderable meshRend2;
-	meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
-	meshRend2.mesh->setCastShadows(true);
-	gCoordinator.addComponent(entity2, meshRend2);
+	//MeshRenderable meshRend2;
+	//meshRend2.mesh = gWindManager.m_sceneManager->createEntity("Abe.mesh");
+	//meshRend2.mesh->setCastShadows(true);
+	//gCoordinator.addComponent(entity2, meshRend2);
 
-	Transform trans2;
-	trans2.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	trans2.node->setPosition(150, 10, 0);
-	trans2.node->yaw(Ogre::Radian(3.14/2));
-	trans2.node->attachObject(meshRend2.mesh);
-	gCoordinator.addComponent(entity2, trans2);
+	//Transform trans2;
+	//trans2.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+	//trans2.node->setPosition(150, 10, 0);
+	//trans2.node->yaw(Ogre::Radian(3.14/2));
+	//trans2.node->attachObject(meshRend2.mesh);
+	//gCoordinator.addComponent(entity2, trans2);
 
-	BoxCollider collider2;
-	collider2.relativePosition = Vec3(0, 0, 0);
-	collider2.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(entity2, collider2);
+	//BoxCollider collider2;
+	//collider2.relativePosition = Vec3(0, 0, 0);
+	//collider2.boxSize = Vec3(100, 100, 100);
+	//gCoordinator.addComponent(entity2, collider2);
 
-	PlayerId player2Id;
-	player2Id.playerId = 2;
-	gCoordinator.addComponent(entity2, player2Id);
+	//PlayerId player2Id;
+	//player2Id.playerId = 2;
+	//gCoordinator.addComponent(entity2, player2Id);
 
-	//Enable all aimations for entity
-	Ogre::AnimationState* idleState2 = meshRend2.mesh->getAnimationState("Idle");
-	idleState2->setEnabled(true);
-	idleState2->setLoop(true);
-	Ogre::AnimationState* jmpState2 = meshRend2.mesh->getAnimationState("Jumping");
-	jmpState2->setLoop(false);
-	Ogre::AnimationState* lPunchState2 = meshRend2.mesh->getAnimationState("Light_punch");
-	lPunchState2->setLoop(false);
-	Ogre::AnimationState* hPunchState2 = meshRend2.mesh->getAnimationState("Heavy_punch");
-	hPunchState2->setLoop(false);
-	Ogre::AnimationState* lKickState2 = meshRend2.mesh->getAnimationState("Light_kick");
-	lKickState2->setLoop(false);
-	Ogre::AnimationState* hKickState2 = meshRend2.mesh->getAnimationState("Heavy_kick");
-	hKickState2->setLoop(false);
+	////Enable all aimations for entity
+	//Ogre::AnimationState* idleState2 = meshRend2.mesh->getAnimationState("Idle");
+	//idleState2->setEnabled(true);
+	//idleState2->setLoop(true);
+	//Ogre::AnimationState* jmpState2 = meshRend2.mesh->getAnimationState("Jumping");
+	//jmpState2->setLoop(false);
+	//Ogre::AnimationState* lPunchState2 = meshRend2.mesh->getAnimationState("Light_punch");
+	//lPunchState2->setLoop(false);
+	//Ogre::AnimationState* hPunchState2 = meshRend2.mesh->getAnimationState("Heavy_punch");
+	//hPunchState2->setLoop(false);
+	//Ogre::AnimationState* lKickState2 = meshRend2.mesh->getAnimationState("Light_kick");
+	//lKickState2->setLoop(false);
+	//Ogre::AnimationState* hKickState2 = meshRend2.mesh->getAnimationState("Heavy_kick");
+	//hKickState2->setLoop(false);
 
-	//Create animation component
-	Animation animComp2;
-	animComp2.animation = idleState2;
-	gCoordinator.addComponent(entity2, animComp2);
-	
-	Entity scene = gCoordinator.createEntity();
+	////Create animation component
+	//Animation animComp2;
+	//animComp2.animation = idleState2;
+	//gCoordinator.addComponent(entity2, animComp2);
+	//
+	//Entity scene = gCoordinator.createEntity();
 
-	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-	Ogre::MeshManager::getSingleton().createPlane(
-		"ground", Ogre::RGN_DEFAULT,
-		plane,
-		1500, 1500, 20, 20,
-		true,
-		1, 5, 5,
-		Ogre::Vector3::UNIT_Z);
+	//Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+	//Ogre::MeshManager::getSingleton().createPlane(
+	//	"ground", Ogre::RGN_DEFAULT,
+	//	plane,
+	//	1500, 1500, 20, 20,
+	//	true,
+	//	1, 5, 5,
+	//	Ogre::Vector3::UNIT_Z);
 
-	MeshRenderable meshRendS;
-	meshRendS.mesh = gWindManager.m_sceneManager->createEntity("ground");
-	meshRendS.mesh->setCastShadows(true);
-	meshRendS.mesh->setMaterialName("Examples/Rockwall");
-	gCoordinator.addComponent(scene, meshRendS);
+	//MeshRenderable meshRendS;
+	//meshRendS.mesh = gWindManager.m_sceneManager->createEntity("ground");
+	//meshRendS.mesh->setCastShadows(true);
+	//meshRendS.mesh->setMaterialName("Examples/Rockwall");
+	//gCoordinator.addComponent(scene, meshRendS);
 
-	Transform transS;
-	transS.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-	transS.node->setPosition(0, 0, 0);
-	transS.node->attachObject(meshRendS.mesh);
-	gCoordinator.addComponent(scene, transS);
+	//Transform transS;
+	//transS.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
+	//transS.node->setPosition(0, 0, 0);
+	//transS.node->attachObject(meshRendS.mesh);
+	//gCoordinator.addComponent(scene, transS);
 
-	BoxCollider colliderS;
-	colliderS.relativePosition = Vec3(0, 0, 0);
-	colliderS.boxSize = Vec3(100, 100, 100);
-	gCoordinator.addComponent(scene, colliderS);
+	//BoxCollider colliderS;
+	//colliderS.relativePosition = Vec3(0, 0, 0);
+	//colliderS.boxSize = Vec3(100, 100, 100);
+	//gCoordinator.addComponent(scene, colliderS);
 
-	SceneComponent sceneComp;
-	gCoordinator.addComponent(scene, sceneComp);
+	//SceneComponent sceneComp;
+	//gCoordinator.addComponent(scene, sceneComp);
 
 	gWindManager.render();
 	gWindManager.closeApp();

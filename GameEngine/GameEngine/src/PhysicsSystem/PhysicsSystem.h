@@ -14,6 +14,6 @@ public:
 
 private:
 	//! The maximum velocity of an entity
-	const float MAXIMUM_VELOCITY = 3.0;
+	const float MAXIMUM_VELOCITY = 100;
 };
 
