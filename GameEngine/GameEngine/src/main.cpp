@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 	gWindManager.addSystem(physicSystem.get());
 
 	// TRY TO APPLY GRAVITY TO A HUNDRED ENTITIES
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 100; i++) {
 		Entity entity = gCoordinator.createEntity();
 
 		MeshRenderable meshRend;
