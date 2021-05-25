@@ -2,6 +2,7 @@
 #include "../Utils/Queue.h"
 #include "../Utils/SimpleList.h"
 #include "Messages/Message.h"
+#include <vector>
 
 class System;
 
@@ -35,6 +36,6 @@ public:
 	void notify();
 
 private:
-	Queue<Message> msgQueue;
+	std::vector<Message*> msgQueue;
 	SimpleList<System*> systems;
 };

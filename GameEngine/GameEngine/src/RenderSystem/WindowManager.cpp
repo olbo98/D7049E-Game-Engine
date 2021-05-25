@@ -2,18 +2,32 @@
 #include "../EntityComponentSystem/Components/Camera.h"
 #include "../EntityComponentSystem/Components/Transform.h"
 #include "../EntityComponentSystem/Coordinator.h"
+#include "../AudioSystem/SoundDevice.h"
+#include "../AudioSystem/SoundBuffer.h"
+#include "../AudioSystem/SoundSource.h"
+#include "../AudioSystem/MusicBuffer.h"
+
+MusicBuffer* m_music;
 
 WindowManager::WindowManager() : OgreBites::ApplicationContext("FightEngine")
 {
+
 }
 
 bool WindowManager::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-    std::cout << "TEST" << std::endl;
     if (evt.keysym.sym == OgreBites::SDLK_ESCAPE)
     {
         getRoot()->queueEndRendering();
     }
+    m_p1Controller->onKeyDown(evt.keysym.sym);
+    m_p2Controller->onKeyDown(evt.keysym.sym);
+    return true;
+}
+
+bool WindowManager::keyReleased(const OgreBites::KeyboardEvent& evt) {
+    m_p1Controller->onKeyUp(evt.keysym.sym);
+    m_p2Controller->onKeyUp(evt.keysym.sym);
     return true;
 }
 
@@ -32,6 +46,13 @@ void WindowManager::setup(void)
     // Register our scene with the RTSS
     Ogre::RTShader::ShaderGenerator* shaderGen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
     shaderGen->addSceneManager(m_sceneManager);
+
+    SoundDevice* mySoundDevice = SoundDevice::getInstance();
+
+    m_music = new MusicBuffer("./music.wav");
+
+    m_music->Play();
+
 }
 
 void WindowManager::render() {
@@ -39,15 +60,45 @@ void WindowManager::render() {
 }
 
 
-void WindowManager::addSystem(System* system) {
-    m_systems.push_back(system);
+void WindowManager::addRenderSystem(RenderSystem* renderSystem) {
+    m_renderSystem = renderSystem;
 }
 
 
-bool WindowManager::frameStarted(const Ogre::FrameEvent& evt) {
-    for (auto system : m_systems) {
-        system->Update(evt);
-    }
+void WindowManager::addCollisionSystem(CollisionSystem* collisionSystem) {
+    m_collisionSystem = collisionSystem;
+}
+
+void WindowManager::addAnimationSystem(AnimationSystem* animSystem) {
+    m_animSystem = animSystem;
+}
+void WindowManager::addControllerSystem(ControllerSystem* controllerSystem) {
+    m_controllerSystem = controllerSystem;
+}
+void WindowManager::addP1Controller(Player1Controller* p1Controller) {
+    m_p1Controller = p1Controller;
+}
+void WindowManager::addP2Controller(Player2Controller* p2Controller) {
+    m_p2Controller = p2Controller;
+}
+void WindowManager::addMessageBus(MessageBus* msgBus) {
+    m_msgBus = msgBus;
+}
+
+void WindowManager::addInputSystem(InputSystem* inputSystem)
+{
+    m_inputSystem = inputSystem;
+}
+
+bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
+    m_inputSystem->Update(evt);
+    m_renderSystem->Update(evt);
+    m_collisionSystem->Update(evt);
+    m_animSystem->Update(evt);
+    //m_controllerSystem->Update(evt);
+    m_msgBus->notify();
+    m_music->UpdateBufferStream();
+
     return true;
 }
 

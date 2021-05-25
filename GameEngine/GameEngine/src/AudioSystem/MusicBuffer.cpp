@@ -9,6 +9,7 @@ MusicBuffer::MusicBuffer(const char* filename)
 {
 	/* Generates the sources and buffers */
 	alGenSources(1, &Source);
+	alSourcef(Source, AL_GAIN, p_Gain);
 	alGenBuffers(NUM_BUFFERS, p_Buffers);
 
 	std::size_t frame_size;
