@@ -34,7 +34,6 @@ void InputSystem::Update(const Ogre::FrameEvent& fe)
 			// KEY IS DOWN
 			if (GetAsyncKeyState(key_states[i]) & 0x8000)
 			{
-				std::cout << "A KEY IS DOWN" << std::endl;
 				std::unordered_set<InputListener*>::iterator it = m_set_listeners.begin();
 				while (it != m_set_listeners.end())
 				{

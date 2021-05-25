@@ -6,8 +6,12 @@
 #include "../AudioSystem/SoundBuffer.h"
 #include "../AudioSystem/SoundSource.h"
 #include "../AudioSystem/MusicBuffer.h"
+#include <time.h>
+#include <limits>
+#include <iomanip>
 
 MusicBuffer* m_music;
+
 
 WindowManager::WindowManager() : OgreBites::ApplicationContext("FightEngine")
 {
@@ -85,20 +89,27 @@ void WindowManager::addMessageBus(MessageBus* msgBus) {
     m_msgBus = msgBus;
 }
 
+void WindowManager::addPhysicsSystem(PhysicsSystem* physicSystem) {
+    m_physicSystem = physicSystem;
+}
+
 void WindowManager::addInputSystem(InputSystem* inputSystem)
 {
     m_inputSystem = inputSystem;
 }
 
 bool WindowManager::frameRenderingQueued(const Ogre::FrameEvent& evt) {
-    m_inputSystem->Update(evt);
+    clock_t t = clock();
+    //m_inputSystem->Update(evt);
     m_renderSystem->Update(evt);
     m_collisionSystem->Update(evt);
     m_animSystem->Update(evt);
     //m_controllerSystem->Update(evt);
+    m_physicSystem->Update(evt);
     m_msgBus->notify();
     m_music->UpdateBufferStream();
-
+    t = clock() - t;
+    printf("It took me %d clicks (%f seconds) --> framerate: %f. \n", t, ((float)t) / CLOCKS_PER_SEC, 1.0f / (((float)t) / CLOCKS_PER_SEC));
     return true;
 }
 

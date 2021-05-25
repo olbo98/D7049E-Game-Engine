@@ -7,6 +7,7 @@
 #include "EntityComponentSystem/Components/Animation.h"
 #include "EntityComponentSystem/Components/PlayerId.h"
 #include "EntityComponentSystem/Components/SceneComponent.h"
+#include "EntityComponentSystem/Components/RigidBody.h"
 #include "EntityComponentSystem/EntityComponentDef.h"
 #include "PhysicsSystem/PhysicsSystem.h"
 #include "RenderSystem/RenderSystem.h"
@@ -30,7 +31,6 @@ WindowManager gWindManager;
 int main(int argc, char* argv[])
 {
 	gWindManager.initApp();
-	InputSystem* iSys = InputSystem::getInstance();
 	AnimationSystem* aSys = new AnimationSystem();
 	msgBus.addReciever(aSys);
 	gCoordinator.init();
@@ -44,8 +44,8 @@ int main(int argc, char* argv[])
 	gCoordinator.registerComponent<Animation>();
 	gCoordinator.registerComponent<PlayerId>();
 	gCoordinator.registerComponent<SceneComponent>();
+	gCoordinator.registerComponent<RigidBody>();
 
-	gWindManager.addInputSystem(iSys);
 
 	 //Register render system
 	auto renderSystem = gCoordinator.registerSystem<RenderSystem>();
@@ -72,17 +72,18 @@ int main(int argc, char* argv[])
 	}
 	gWindManager.addCollisionSystem(collideSystem.get());
 
-	/*auto physicSystem = gCoordinator.registerSystem<PhysicsSystem>();
+	auto physicSystem = gCoordinator.registerSystem<PhysicsSystem>();
 	{
 		Signature signature;
 		signature.set(gCoordinator.getComponentType<Transform>());
 		signature.set(gCoordinator.getComponentType<RigidBody>());
 		gCoordinator.setSystemSignature<PhysicsSystem>(signature);
 	}
-	gWindManager.addPhysic(physicSystem.get());*/
+	gWindManager.addPhysicsSystem(physicSystem.get());
 
 	// TRY TO APPLY GRAVITY TO A HUNDRED ENTITIES
-	/*for (int i = 0; i < 100; i++) {
+	/*
+	for (int i = 0; i < 10; i++) {
 		Entity entity = gCoordinator.createEntity();
 
 		MeshRenderable meshRend;
@@ -92,7 +93,7 @@ int main(int argc, char* argv[])
 
 		Transform trans;
 		trans.node = gWindManager.m_sceneManager->getRootSceneNode()->createChildSceneNode();
-		trans.node->setPosition(i*40, 0, 0);
+		trans.node->setPosition(40, 0, 0);
 		trans.node->attachObject(meshRend.mesh);
 		gCoordinator.addComponent(entity, trans);
 
@@ -102,12 +103,13 @@ int main(int argc, char* argv[])
 		gCoordinator.addComponent(entity, collider);
 
 		RigidBody rigidbody;
-		rigidbody.gravity = i*0.005;
+		rigidbody.gravity = i*10;
 		rigidbody.upwardsVelocity = 0;
 		gCoordinator.addComponent(entity, rigidbody);
 
 	}*/
 
+	
 	 //Register animation system
 	auto animSystem = gCoordinator.registerSystem<AnimationSystem>();
 	{

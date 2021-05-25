@@ -26,7 +26,7 @@ void PhysicsSystem::Update(const Ogre::FrameEvent& fe) {
 
 		float currentYVelocity = rigidBodyComponent.upwardsVelocity;
 		Vec3 currentPosition = transformComponent.node->getPosition();
-		float gravity = rigidBodyComponent.gravity;
+		float gravity = rigidBodyComponent.gravity * fe.timeSinceLastFrame;
 
 		Vec3 distToMove = Vec3(0, 1, 0) * currentYVelocity;
 		
