@@ -9,10 +9,10 @@ Step 1: Clone the repository in the desired directory
 ```
 git clone https://github.com/Microsoft/vcpkg.git
 ```
-Step 2: Run the bootstrap script to build vcpkg
+Step 2: Run the bootstrap script inside the folder to build vcpkg
 
 ```
-.\vcpkg\bootstrap-vcpkg.bat
+vcpkg bootstrap-vcpkg.bat
 ```
 Step 3: Download the openAL library for 64-bit windows
 
